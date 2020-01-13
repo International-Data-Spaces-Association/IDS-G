@@ -2,7 +2,7 @@
 
 |**Shortcuts**||
 |:---|:---|
-|**`IDS`**| [International Data Spaces](../README.md)
+|**`IDS`**| International Data Spaces
 |**`IDSA`**| [IDS Association](https://www.internationaldataspaces.org/)
-|**`IDS-G`**| IDS Global
+|**`IDS-G`**| [IDS Global](../README.md)
 |||
