@@ -3,5 +3,6 @@
 - [Repositories](./repositories/README.md)
 - [Glossary](./glossary/README.md)
 - [Shortcuts](./shortcuts/README.md)
+- [References](./references/README.md)
 
 ---
