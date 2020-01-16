@@ -128,6 +128,12 @@ Concept defining the rights and duties (“rules of the game”) for formal data
 
 Intermediary offering services to create, maintain, manage and validate identity information of and for Participants in the International Data Spaces.
 
+### IDS Communication Protocol (IDSCP)
+
+### IDSCP
+
+See [IDS Communication Protocol](#ids-communication-protocol-idscp).
+
 ### Information Model
 
 Set of vocabularies and related schema information for the semantic description of International Data Spaces entities (e.g.,[Data Endpoint](#data-endpoint)s or [Data App](#data-app)s), data provenance, or licensing information; the core IDS Vocabulary is domain-independent; it can be extended and/or reference third-party vocabularies to express domain-specific aspects.
