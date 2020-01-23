@@ -1,11 +1,6 @@
 # References
 
-In alphabetical order:
-
-|**Reference**| Short Description
-|:---|:---|
-|**[`ODRL Information Model 2.2`](https://www.w3.org/TR/odrl-model/)**| Open Digital Rights Language (ODRL), basis for IDS usage control
-|||
+Find here references to associated or included standards or relvant projects with regards to the [IDS-RAM](https://github.com/International-Data-Spaces-Association/IDS-G/blob/master/glossary/README.md#ids-ram-international-data-spaces-reference-architecture-model)
 
 
 In alphabetical order:
