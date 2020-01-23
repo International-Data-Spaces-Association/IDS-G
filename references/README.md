@@ -8,7 +8,7 @@ In alphabetical order:
 ## Attribute Based Access Control (ABAC)
 
 Related to Access Control that is not part of the [IDS-RAM](https://github.com/International-Data-Spaces-Association/IDS-G/blob/master/glossary/README.md#ids-ram-international-data-spaces-reference-architecture-model).
-[NIST, ABAC](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf)
+[NIST, Guide to Attribute Based Access Control (ABAC) Definition and Considerations](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-162.pdf)
 
 ## Linked Data Platform (LDP)
 
