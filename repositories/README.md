@@ -1,11 +1,5 @@
 # IDS Repositories
 
-In alphabetical order:
-
-|**Repository**| Short Description | vendor | last click |
-|:---|:---|:---|:---|
-|**[ IDS](https://github.com/nicosResearchAndDevelopment/nrd-ids)**| IDS related information done by nicos Research & Development | nicos Research & Development | 2020-01-16
-|ids-infomodel-demo, Fraunhofer IAIS| Documentation Java IDS Infomodel || 2020-01-16
 
 In alphabetical order:
 
