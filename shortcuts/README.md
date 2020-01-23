@@ -7,4 +7,3 @@
 |**`IDS-G`**   | [IDS Global](../README.md)
 |**`IDS-TSC`** | IDS Technical Steering Committee
 |||
-|||
