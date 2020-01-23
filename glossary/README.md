@@ -31,6 +31,7 @@ Governance body certifying components and entities seeking admission to the Inte
 ### Certification Scheme
 
 Scheme defining the processes, roles, targets, and criteria involved in the certification of components and entities; maintained by the Certification Body.
+[IDS Certification Scheme 2.0 (current version](https://www.internationaldataspaces.org/wp-content/uploads/2020/01/IDSA-Strategy-paper-certification-scheme-V.2.pdf)
 
 ### Clearing House
 
@@ -145,6 +146,19 @@ See [International Data Spaces](#international-data-spaces):
 ### International Data Spaces
 
 Distributed network of [Data Endpoint](#data-endpoint)s (i.e., instantiations of the International Data Spaces [Connector](#connector)), allowing secure exchange of data and guaranteeing Data Sovereignty.
+
+### International Data Spaces Association (IDSA)
+Association for the developement and maintenace of the IDS-RAM and associated standards, see [Executive Summary](https://www.internationaldataspaces.org/publications/sharing-data-while-keeping-data-ownership-the-potential-of-ids-for-the-data-economy/) and [IDSA Homepage](https://www.internationaldataspaces.org).
+
+### IDS-RAM (International Data Spaces Reference Architecture Model)
+Data Exchange and Data Sharing are essential for Data-Driven Business-Ecosystems, as well as the need for Data Sovereignty. The International Data Spaces Reference Architecture Model (IDS-RAM) defines fundamental concepts for Data Sovereignty, Data Sharing and Data Exchange. Focusing on the generalization of concepts, functionality, and overall processes involved in the creation of a secure “network of trusted data”, the IDS-RAM resides at a higher abstraction level than common architecture models of concrete software solutions do. The document provides an overview supplemented by dedicated architecture specifications defining the individual components of the International Data Spaces
+
+The model is made up of five layers: The Business Layer specifies and categorizes the different roles which the participants of the International Data Space can assume, and it specifies the main activities and interactions connected with each of these roles. The Functional Layer defines the functional requirements of the International Data Spaces, plus the concrete features to be derived from these. The Process Layer specifies the interactions taking place between the different components of the International Data Spaces; it provides a dynamic view of the Reference Architecture Model. The Information Layer defines a conceptual model which makes use of linked-data principles for describing both the static and the dynamic aspects of the International Data Spaces’s constituents. The System Layer is concerned with the decomposition of the logical software components, considering aspects such as integration, configuration, deployment, and extensibility of these components.
+
+In addition, the Reference Architecture Model comprises three perspectives that need to be implemented across all five layers: Security, Certification, and Governance. The Security Perspective defines the common security measures for the International Data Spaces and the concepts for Data Usage Control. The Certification Perspective describes the IDS Certification scheme as a foundation for every interaction in the IDS. The Governance Perspective describes the Responsibilities of the Roles in the IDS.
+
+[IDS-RAM 3.0 (current version)](https://www.internationaldataspaces.org/wp-content/uploads/2019/03/IDS-Reference-Architecture-Model-3.0.pdf)
+
 
 ## P
 
