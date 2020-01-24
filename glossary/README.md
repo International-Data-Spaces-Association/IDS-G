@@ -182,6 +182,8 @@ Defined set of a [Connector](#connector)’s security properties; specifies seve
 
 Set of rules and conditions regarding one or more transactions in the International Data Spaces.
 
+### Usage Control
+
 ### Usage Policy
 
 Set of rules specified by the Data Owner restricting usage of its data; covers aspects like time-to-live or forwarding conditions (e.g., anonymization or scope of usage); transmitted along with the respective data, and enforced while residing on the [Connector](#connector) of the Data Consumer.
