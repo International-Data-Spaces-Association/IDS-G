@@ -157,7 +157,7 @@ The model is made up of five layers: The Business Layer specifies and categorize
 
 In addition, the Reference Architecture Model comprises three perspectives that need to be implemented across all five layers: Security, Certification, and Governance. The Security Perspective defines the common security measures for the International Data Spaces and the concepts for Data Usage Control. The Certification Perspective describes the IDS Certification scheme as a foundation for every interaction in the IDS. The Governance Perspective describes the Responsibilities of the Roles in the IDS.
 
-[IDS-RAM 3.0 (current version)](https://www.internationaldataspaces.org/wp-content/uploads/2019/03/IDS-Reference-Architecture-Model-3.0.pdf)
+[IDS-RAM 3.0 (current version, PDF)](https://www.internationaldataspaces.org/wp-content/uploads/2019/03/IDS-Reference-Architecture-Model-3.0.pdf)
 
 
 ## P
