@@ -10,7 +10,7 @@ Maven repository for open libraries from Fraunhofer IAIS. In this case
 ---
 
 ## [IDS InformationModel](https://github.com/IndustrialDataSpace)
-[`IDS information model`, IDS-G glossary](../glossary/README.md#information-model)
+[`IDS information model`, IDS-G glossary](../glossary/README.md#ids-information-model)
 - last click: 2020-01-16
 ---
 
