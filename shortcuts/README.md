@@ -9,6 +9,7 @@
 |**`IDSA`**    | IDS Association, [homepage](https://www.internationaldataspaces.org/)
 |**`IDS-CH`**   | IDS "Clearing House"
 |**`IDS-DC`**   | *IDS Association* "Developers Communitiy"
+|**`IDS-UC`**   | IDS "Usage Control"
 |**`IDS-G`**   | [IDS Global](../README.md)
 |**`IDS-I`**   | *IDS Association* "Industrial Communitiy", [information under associations homepage](https://www.internationaldataspaces.org/idsa-industrial-community/)
 |**`IDS-MDB`**   | IDS Meta Data Broker

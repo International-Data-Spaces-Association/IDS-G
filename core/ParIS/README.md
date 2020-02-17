@@ -1,4 +1,4 @@
-# IDS Participant Information System
+# IDS Participant Information Service
 
 
 ---

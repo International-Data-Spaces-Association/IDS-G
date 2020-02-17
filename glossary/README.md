@@ -264,6 +264,8 @@ Stakeholder in the International Data Spaces, assuming one or more of
  the [Identity Provider](#identity-provider).
 
 ### Participant Information Service
+
+- [IDS-G specification "ParIS"](../core/ParIS/README.md)
 - Shortcut: ParIS
 
 ## S
