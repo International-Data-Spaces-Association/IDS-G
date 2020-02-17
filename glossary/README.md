@@ -50,11 +50,15 @@ Intermediary providing clearing and settlement services for all
  financial and data exchange transactions within the
  International Data Spaces.
 
+- [IDS-G specification "Clearing House"](../core/ClearingHouse/README.md)
+- Shortcut: `IDS-CH`
+
 ### Connector
 Dedicated communication server for sending and receiving data in
  compliance with the general Connector specification; different types
  of Connectors can be distinguished (Base Connector vs.
  Trusted Connector, or Internal Connector vs. External Connector).
+- [IDS-G specification "Connector"](../core/Connector/README.md)
 
 ### Connector-Self-description
 Description of a [Connector](#connector) participating in the IDS for
@@ -69,6 +73,7 @@ Description of a [Connector](#connector) participating in the IDS for
 ## D
 
 ### DAPS
+- [IDS-G specification "Dynamic Attribute Provisioning Service"](../core/DAPS/README.md)
 - See [Dynamic Attribute Provisioning Service](#dynamic-attribute-provisioning-service).
 
 ### DAT
@@ -104,19 +109,16 @@ Contractual agreement between a [Data Provider](#data-provider) and a
 Method or operation with defined functionality to be invoked on a
  [Data Endpoint](#data-endpoint).
 
-
 ### Data Owner
 Core [Participant](#participant) having complete control over the data
  it makes available in the International Data Spaces; defines the terms
  and conditions of use of its data.
-
 
 ### Data Provider
 Core [Participant](#participant) exposing [Data Source](#data-source)s
  via a [Connector](#connector); a Data Provider may be an enterprise or
  other organization, a data marketplace, an individual, or a
  “smart thing”.
-
 
 ### Data Sink
 [Data Endpoint](#data-endpoint) consuming data uploaded and offered by
@@ -133,7 +135,7 @@ The capability of an entity (natural person or corporate) of being
 ### Demilitarized Zone
 A Demilitarized Zone is an IT system (or a part of an IT system) with
  controlled access.
-- Shortcut: DMZ
+- Shortcut: `DMZ`
 
 ### DMZ
 - See [Demilitarized Zone](#demilitarized-zone).
@@ -142,12 +144,14 @@ A Demilitarized Zone is an IT system (or a part of an IT system) with
 Issues Dynamic Attribute Tokens ([DAT](#dynamic-attribute-token)s) to
  verify dynamic attributes of [Participant](#participant)s or
  [Connector](#connector)s.
+
+- [IDS-G specification "Dynamic Attribute Provisioning Service"](../core/DAPS/README.md)
 - Shortcut: `DAPS`
 
 ### Dynamic Attribute Token
 Contains signed dynamic attributes for [Participant](#participant)s and
  [Connector](#connector)s.
-- Shortcut: DAT
+- Shortcut: `DAT`
 
 ## E
 
@@ -188,10 +192,11 @@ Set of vocabularies and related schema information for the semantic
  provenance, or licensing information; the core IDS Vocabulary is
  domain-independent; it can be extended and/or reference third-party
  vocabularies to express domain-specific aspects.
-- Shortcut: IDS-IM
+- [IDS-G specification "Information Model"](../core/InformationModel/README.md)
+- Shortcut: `IDS-IM`
 
 ### IDS Communication Protocol
-- Shortcut: IDSCP
+- Shortcut: `IDSCP`
 
 ### IDSA
 - See [International Data Spaces Association](#international-data-spaces-association).
@@ -204,11 +209,11 @@ Distributed network of [Data Endpoint](#data-endpoint)s (i.e.,
  instantiations of the International Data Spaces
  [Connector](#connector)), allowing secure exchange of data and
  guaranteeing [Data Sovereignty](#data-sovereignty).
-- Shortcut: IDS
+- Shortcut: `IDS`
 
 ### International Data Spaces Association
 Association for the developement and maintenace of the [IDS-RAM](#ids-reference-architecture-model) and associated standards, see [Executive Summary](https://www.internationaldataspaces.org/publications/sharing-data-while-keeping-data-ownership-the-potential-of-ids-for-the-data-economy/) and [IDSA Homepage](https://www.internationaldataspaces.org).
-- Shortcut: IDSA
+- Shortcut: `IDSA`
 
 ### IDS Reference Architecture Model
 Data Exchange and Data Sharing are essential for Data-Driven
@@ -249,7 +254,7 @@ In addition, the Reference Architecture Model comprises three
  foundation for every interaction in the IDS. The Governance Perspective
  describes the Responsibilities of the Roles in the IDS.
 
-- Shortcut: IDS-RAM
+- Shortcut: `IDS-RAM`
 - [IDS-RAM 3.0 (current version, PDF)](https://www.internationaldataspaces.org/wp-content/uploads/2019/03/IDS-Reference-Architecture-Model-3.0.pdf)
 
 
@@ -257,6 +262,7 @@ In addition, the Reference Architecture Model comprises three
 
 ### ParIS
 - See [Participant Information Service](#participant-information-service)
+- [IDS-G specification "ParIS"](../core/ParIS/README.md)
 
 ### Participant
 Stakeholder in the International Data Spaces, assuming one or more of
@@ -266,7 +272,7 @@ Stakeholder in the International Data Spaces, assuming one or more of
 ### Participant Information Service
 
 - [IDS-G specification "ParIS"](../core/ParIS/README.md)
-- Shortcut: ParIS
+- Shortcut: `ParIS`
 
 ## S
 
