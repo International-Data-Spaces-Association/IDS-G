@@ -1,4 +1,4 @@
-# IDS Participant Information Service
+# IDS Participant Information Service (ParIS)
 
 
 ---

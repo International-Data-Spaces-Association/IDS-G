@@ -1,13 +1,14 @@
 # International Data Spaces Global (IDS-G)
 
-## Specification
+## Specifications
 
 - ["Information Model"](./core/InformationModel/README.md)
 - ["DAPS"](./core/DAPS/README.md)
 - ["Connector"](./core/Connector/README.md)
-- ["Usage Control"](./core/UsageControl/README.md)
 - ["Meta Data Broker"](./core/MetaDataBroker/README.md)
 - ["ParIS"](./core/ParIS/README.md)
+- ["Clearing House"](./core/ClearingHouse/README.md)
+- ["Usage Control"](./core/UsageControl/README.md)
 
 ---
 
