@@ -1,5 +1,7 @@
 # International Data Spaces Global (IDS-G)
 
+![](./resources/IDS_G_260x95.png)
+
 ## Specifications
 
 - ["Information Model"](./core/InformationModel/README.md)
