@@ -10,7 +10,10 @@
 - ["Meta Data Broker"](./core/MetaDataBroker/README.md)
 - ["ParIS"](./core/ParIS/README.md)
 - ["Clearing House"](./core/ClearingHouse/README.md)
-- ["Usage Control"](./core/UsageControl/README.md)
+- ["Technologies"](./core/Technologies/README.md)
+  - ["Usage Control"](./core/Technologies/UsageControl/README.md)
+  - ["IDS Communication Protocol (idscp)"](./core/Technologies/idscp/README.md)
+
 
 ---
 
