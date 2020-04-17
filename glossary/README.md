@@ -192,6 +192,9 @@ Set of vocabularies and related schema information for the semantic
  provenance, or licensing information; the core IDS Vocabulary is
  domain-independent; it can be extended and/or reference third-party
  vocabularies to express domain-specific aspects.
+
+See also:
+- [GitHub repository)](https://github.com/International-Data-Spaces-Association/InformationModel)
 - [IDS-G specification "Information Model"](../core/InformationModel/README.md)
 - Shortcut: `IDS-IM`
 

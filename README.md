@@ -4,15 +4,15 @@
 
 ## Specifications
 
-- ["Information Model"](./core/InformationModel/README.md)
-- ["DAPS"](./core/DAPS/README.md)
-- ["Connector"](./core/Connector/README.md)
-- ["Meta Data Broker"](./core/MetaDataBroker/README.md)
-- ["ParIS"](./core/ParIS/README.md)
-- ["Clearing House"](./core/ClearingHouse/README.md)
-- ["Technologies"](./core/Technologies/README.md)
-  - ["Usage Control"](./core/Technologies/UsageControl/README.md)
-  - ["IDS Communication Protocol (idscp)"](./core/Technologies/idscp/README.md)
+- [IDS Information Model (IDS-IM)](./core/InformationModel/README.md)
+- [Dynamic Attribute Provisioning Service (DAPS)](./core/DAPS/README.md)
+- [IDS Connector](./core/Connector/README.md)
+- [IDS Meta Data Broker (IDS-MDB)](./core/MetaDataBroker/README.md)
+- [Participant Information System (ParIS)](./core/ParIS/README.md)
+- [Clearing House](./core/ClearingHouse/README.md)
+- [IDS Technologies](./core/Technologies/README.md)
+  - [Usage Control](./core/Technologies/UsageControl/README.md)
+  - [IDS Communication Protocol (IDSCP)](./core/Technologies/idscp/README.md)
 
 
 ---
