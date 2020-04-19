@@ -2,6 +2,7 @@
 
 |**Shortcuts**||
 |:---|:---|
+|**`AKI`**.     | Authority Key Identifier, X.509 certificate, X509v3 extension
 |**`DAPS`**     | Dynamic Attribute Provisioning Service
 |**`DAT`**      | Dynamic Attribute Token
 |**`DMZ`**      | Demilitarized Zone, [glossary](../glossary/README.md#demilitarized-zone)
@@ -19,4 +20,5 @@
 |**`IDS-RAM`**  | IDS Reference Architecture Model, [glossary](../glossary/README.md#ids-reference-architecture-model), [IDS-RAM 3.0 (current version, PDF)](https://www.internationaldataspaces.org/wp-content/uploads/2019/03/IDS-Reference-Architecture-Model-3.0.pdf)
 |**`IDS-TSC`**  | IDS Technical Steering Committee
 |**`ParIS`**    | Participant Information Service, [glossary](../glossary/README.md#participant-information-service)
+|**`SKI`**.     | Subject Key Identifier, X.509 certificate, X509v3 extension
 |||
