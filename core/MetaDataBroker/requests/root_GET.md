@@ -12,7 +12,7 @@ Request the [MDB's](../README.md) Self-Description in JSON-LD.
 
 ## Examples
 
-### request
+### 1 request
 
 Remark: `ids-securityToken`is mandantory.
 
@@ -34,7 +34,7 @@ ids-contentVersion: 1.0.5
 ```
 
 
-### response
+### 1 response
 
 Header of response is dropped - the self-description of this [MDB](../README.md) in JSON-LD:
 

@@ -17,7 +17,7 @@ A client that requests a [DAT](../README.md#dynamic-attribute-token-dat) needs t
 
 ## Examples
 
-### request
+### 1 request
 
 ```http request
 POST /
@@ -32,7 +32,7 @@ Content-Type: application/x-www-form-urlencoded
 ```
 
 
-### response
+### 1 response
 
 The response to given request is a
  [Dynamic Attribute Token (DAT)](../README.md#dynamic-attribute-token-dat), here shown decoded:
