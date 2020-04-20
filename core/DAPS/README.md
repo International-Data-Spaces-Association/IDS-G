@@ -4,7 +4,6 @@ See also:
 - [Glossary "Dynamic Attribute Provisioning Service"](../../glossary/README.md#dynamic-attribute-provisioning-service)
 - Shortcut: `DAPS`
 
-
 --- 
 
 ## Dynamic Attribute Token (DAT)
