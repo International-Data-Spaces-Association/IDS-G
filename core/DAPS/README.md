@@ -105,15 +105,20 @@ See also:
 
 ### Example of a "request call to get a token"
 
-```bash
-curl https://daps.aisec.fraunhofer.de/token
- --data "
- grant_type=client_credentials
+```http request
+POST /
+Host: https://daps.example.com
+Content-Type: application/x-www-form-urlencoded
+
+"grant_type=client_credentials
  &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
  &client_assertion=eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJkZW1vY29ubmVjdG9yMSIsInN1YiI6ImRlbW9jb25uZWN0b3IxIiwiZXhwIjoxNTQ4Nzg1Mzg2LCJuYmYiOjE1NDg3ODE3ODYsImlhdCI6MTU0ODc4MTc4NiwiYXVkIjoiaHR0cHM6Ly9hcGkubG9jYWxob3N0In0.JSQuMf-9Fd7DNna_-s-sR7eXgcSYNCau5WgurrGJTuCSLKqhZe3odXfunN2vRFgUhU21ADFlEq96mlbQDueBlMtaXrcHFPSpIUtvuIMIVqQcGYkDdSJr_VmDuAykCYpyTCkLa7a8DTV-N3sECp-AxUgmEzYIfh8jW0WS6ehgUzrnpH6t_h_GWXKkNSAg3ERakDc4NY02pBGmiN7bmtLZNt5b4LWALiiFiduC7JbIpx4awOU6skMApmzgLnZmmTG20JlJRg6hAqyHEz5Cd4rUgrt0twmpC0Us_CG23KdUF5fWI55dcO2qAVvhNQXpqz7IiPcF7-jgkrx4oukYNY6eHA
- &scope=https://w3id.org/idsa/core/Connector
-"
+ &scope=https://w3id.org/idsa/core/Connector"
+
 ```
+
+More request can be found [here](./requests/README.md):
+
 
 See also:
 - [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD)
