@@ -26,5 +26,3 @@
 - [References](./references/README.md)
 
 ---
----
----
