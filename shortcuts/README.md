@@ -20,6 +20,7 @@
 |**`IDS-MDB`**  | IDS Meta Data Broker
 |**`IDS-RAM`**  | IDS Reference Architecture Model, [glossary](../glossary/README.md#ids-reference-architecture-model), [IDS-RAM 3.0 (current version, PDF)](https://www.internationaldataspaces.org/wp-content/uploads/2019/03/IDS-Reference-Architecture-Model-3.0.pdf)
 |**`IDS-TSC`**  | IDS Technical Steering Committee
+|**`JSON-LD`**  | [JSON for Linking Data](https://json-ld.org/)
 |**`ParIS`**    | Participant Information Service, [glossary](../glossary/README.md#participant-information-service)
 |**`SKI`**.     | Subject Key Identifier, X.509 certificate, X509v3 extension
 |||

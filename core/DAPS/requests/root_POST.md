@@ -1,20 +1,27 @@
 # DAPS DAT request 
 
+This request is a POST-request against the root of given DAPS-instance `https://daps.example.com`. The requester,
+ an IDS Connector, will hand in its `client_assertion` and recieves its very own
+ [Dynamic Attribute Token (DAT)](../README.md#dynamic-attribute-token-dat).
+
+
 ## Summary
 Request Dynamic Attribute Token
 
 ## Description
 
-A client that requests a DAT needs to create JWT as a request token. The JWT contains a header,
- payload and signature. The information content of the JWT is modeled as an instance of
- the ids:DatPayload class, with the content attributes as specified in the table below.
+A client that requests a [DAT](../README.md#dynamic-attribute-token-dat) needs to
+ create JWT as a request token. The JWT contains a header, payload and signature.
+ The information content of the JWT is modeled as an instance of the `ids:DatPayload`
+ class, with the content attributes as specified in the table below.
 
 ## Examples
 
 ### request
 
 ```http request
-POST {root}/
+POST /
+Host: https://daps.example.com
 Content-Type: application/x-www-form-urlencoded
 
 "grant_type=client_credentials
@@ -25,20 +32,10 @@ Content-Type: application/x-www-form-urlencoded
 ```
 
 
-
-```bash
-curl --request POST 'http://localhost/'                     \
---header 'Date: Tue, 11 Feb 2020 08:12:31 GMT'              \
---header 'Content-Type: application/x-www-form-urlencoded'  \
---data "grant_type=client_credentials"
---data "client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer"
---data "client_assertion=eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJkZW1vY29ubmVjdG9yMSIsInN1YiI6ImRlbW9jb25uZWN0b3IxIiwiZXhwIjoxNTQ4Nzg1Mzg2LCJuYmYiOjE1NDg3ODE3ODYsImlhdCI6MTU0ODc4MTc4NiwiYXVkIjoiaHR0cHM6Ly9hcGkubG9jYWxob3N0In0.JSQuMf-9Fd7DNna_-s-sR7eXgcSYNCau5WgurrGJTuCSLKqhZe3odXfunN2vRFgUhU21ADFlEq96mlbQDueBlMtaXrcHFPSpIUtvuIMIVqQcGYkDdSJr_VmDuAykCYpyTCkLa7a8DTV-N3sECp-AxUgmEzYIfh8jW0WS6ehgUzrnpH6t_h_GWXKkNSAg3ERakDc4NY02pBGmiN7bmtLZNt5b4LWALiiFiduC7JbIpx4awOU6skMApmzgLnZmmTG20JlJRg6hAqyHEz5Cd4rUgrt0twmpC0Us_CG23KdUF5fWI55dcO2qAVvhNQXpqz7IiPcF7-jgkrx4oukYNY6eHA"
---data "scope=https://w3id.org/idsa/core/Connector"
-```
-
 ### response
 
-The response to given request is a Dynamic Attribute Token (DAT), here shown decoded:
+The response to given request is a
+ [Dynamic Attribute Token (DAT)](../README.md#dynamic-attribute-token-dat), here shown decoded:
 
 ```
 {

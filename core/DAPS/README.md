@@ -1,11 +1,18 @@
 # Dynamic Attribute Provisioning Service (DAPS)
 
-The infrastructure component "Digital Attribute Provisioning Service" (DAPS) in a given IDS ecosystem enables enrichment of identities of organisations and connectors with additional attributes.
+The infrastructure component "Digital Attribute Provisioning Service" (DAPS)
+ in a given IDS ecosystem enables enrichment of identities of organisations
+ and connectors with additional attributes.
 
-These attributes are embedded into a [Dynamic Attribute Token (DAT)](). The advantages of this technique of *dynamic attribute provisioning* instead of embedding them into [X.509 certificates](https://en.wikipedia.org/wiki/X.509) are:
+These attributes are embedded into a [Dynamic Attribute Token (DAT)]().
+ The advantages of this technique of *dynamic attribute provisioning* instead
+ of embedding them into [X.509 certificates](https://en.wikipedia.org/wiki/X.509)
+ are:
 
-- Attribute revocation does not enforce certificate revocation and re-issuance. This is also true if new attributes are added. 
-- By defining scopes or attribute sets, only the needed attributes can be included in the DAT. This limits information leakage, so only needed attributes are communicated.
+- Attribute revocation does not enforce certificate revocation and re-issuance.
+ This is also true if new attributes are added. 
+- By defining scopes or attribute sets, only the needed attributes can be included
+ in the DAT. This limits information leakage, so only needed attributes are communicated.
 - Baseline certificates can be issued to enable connector deployment in uncomplicated manner.
 - More complex scenarios can be created as soon as attributes are assigned later on. 
 
@@ -17,14 +24,19 @@ See also:
 
 ## Unique Identifier
 
-Each (TODO: COMPONENT/entry) connector in the IDS needs a valid, outlasting and unique identifier, never be re-used for any other resource inside the IDS ecosystem.
+Each (TODO: COMPONENT/entry) connector in the IDS needs a valid, outlasting and unique
+ identifier, never be re-used for any other resource inside the IDS ecosystem.
 
-The architecture aims to be open to multiple [Certification Authorities](../CA/README.md) (CAs) issueing certificates. This means, a truly unique identifier needs to consist of the issuer of the certificate and the subject identifier. For an easy machine readable identifier, two ´X.509v3´ extensions will be used:
+The architecture aims to be open to multiple [Certification Authorities](../CA/README.md)
+ (CAs) issueing certificates. This means, a truly unique identifier needs to consist of
+  the issuer of the certificate and the subject identifier. For an easy machine readable
+  identifier, two ´X.509v3´ extensions will be used:
 
 ### Subject Key Identifier (SKI)
 ### Authority Key Identifier (AKI)
 
-The concatenation of ´SKI´ and ´AKI´ provides a unique identifier valid even if multiple CAs are able to issue valid certificates.
+The concatenation of ´SKI´ and ´AKI´ provides a unique identifier valid - even if multiple
+ CAs are able to issue valid certificates.
 
 EXAMPLE (snippet from a X.509 certificate):
 
@@ -57,15 +69,6 @@ See also:
 
 --- 
 
-## Request call to get a token
-
-|**Header field**|**content**
-|:---|:---|
-|**`grant_type`**  | OAuth based grant type. See [TODO : client_credentials grant](TODO). |
-|**`client_assertion_type`**  | See [JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants](https://tools.ietf.org/html/rfc7523). |
-|**`client_assertion`**  | The signed and base64 encoded request token. Paste the example to jwt.io to see the decoded JWT. The token is signed with the connectors private key belonging to the public key contained in the X.509 certificate. |
-|**`scope`**  | Currently, the scope is limited to "Connector" but can be used for scoping purposes in the future. Scope is currently fixed to [https://w3id.org/idsa/core/Connector](https://w3id.org/idsa/core/Connector). TODO : Open: Put this into request token? |
-
 
 ## Request token that is handed in at DAPS side
 
@@ -76,14 +79,29 @@ See also:
 |**`aud`**       | yes      | 1 | The audience of the token. This can limit the validity for certain connectors. |
 |**`exp`**       | yes      | 1 | Expiration date of the token. Can be chosen freely but should be limited to a short period of time (e.g., one minute).  |
 |**`TODO`**      |          |   | JLA: does `extendedGuarantee` fit in here?!? |
-|**`extendedGuarantee`**       | optional | 0..* | In case a connector fulfills a certain security profile but deviates for a subset of attributes, it can inform the receiving connector about its actual security features. This can only happen if a connector reaches a higher level for a certain security attribute than the actual reached certification asks for. A deviation to lower levels is not possible, as this would directly invalidate the complete certification level. |
-|**`iat`**       | yes      | 1 | Timestamp the token has been issued.  |
-|**`iss`**       | optional | 1 | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid connector. The value of `iss`  must be the combined entry of the SKI and AKI of the Connectors X509 certificate as presented in Sec. 4.2.1.  |
-|**`nbf`**        | yes     | 1 | "Valid not before" (`nbf`): for practical reasons this should be identical to `iat`. If systems time is not aynchronized with the DAPS, the request token will be rejected (so, `nbf` is in the future).  |
-|**`scope`**      | yes     | 1 | Currently, the scope is limited to `ids_connector_attributes` but can be used for scoping purposes in the future. TODO can we put this into the token? |
-|**`securityProfile`**       | yes | 1 | States that the requesting connector conforms to a certain security profile and has been certified to do so. The value must be an [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), in particular an instance of the `ids:SecurityProfile` class. |
-|**`sub`**       | yes      | 1 | Subject the requesting connector the token is created for. This is the connector requesting the [DAT](#dynamic-attribute-token). The `sub` value must be the  combined entry of the `SKI` and `AKI` of the IDS X509 as presented in Sec. 4.2.1.  In this context, this is identical to `iss`. |
+|**`extendedGuarantee`** | optional | 0..* | In case a connector fulfills a certain security profile but deviates for a subset of attributes, it can inform the receiving connector about its actual security features. This can only happen if a connector reaches a higher level for a certain security attribute than the actual reached certification asks for. A deviation to lower levels is not possible, as this would directly invalidate the complete certification level. |
+|**`iat`**               | yes      | 1 | Timestamp the token has been issued.  |
+|**`iss`**               | optional | 1 | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid connector. The value of `iss`  must be the combined entry of the SKI and AKI of the Connectors X509 certificate as presented in Sec. 4.2.1.  |
+|**`nbf`**               | yes      | 1 | "Valid not before" (`nbf`): for practical reasons this should be identical to `iat`. If systems time is not aynchronized with the DAPS, the request token will be rejected (so, `nbf` is in the future).  |
+|**`scope`**             | yes      | 1 | Currently, the scope is limited to `ids_connector_attributes` but can be used for scoping purposes in the future. TODO can we put this into the token? |
+|**`securityProfile`**   | yes      | 1 | States that the requesting connector conforms to a certain security profile and has been certified to do so. The value must be an [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), in particular an instance of the `ids:SecurityProfile` class. |
+|**`sub`**               | yes      | 1 | Subject the requesting connector the token is created for. This is the connector requesting the [DAT](#dynamic-attribute-token). The `sub` value must be the  combined entry of the `SKI` and `AKI` of the IDS X509 as presented in Sec. 4.2.1.  In this context, this is identical to `iss`. |
 |**`transportCertsSha256`**       | optional | 0..* | Contains the public keys of the used transport certificates. The identifying X509 certificate should not be used for the communication encryption. Therefore, the receiving party needs to connect the identity of a connector by relating its hostname (from the communication encryption layer) and the used private/public key pair, with its IDS identity claim of the DAT. The public transportation key must be one of the `transportCertsSha256` values. Otherwise, the receiving connector must expect that the requesting connector is using a false identity claim. |
+
+
+## Request call to get a token
+
+`client_assertion` id the base64 encoded request token, show under
+ ["Request token that is handed in at DAPS side"](#request-token-that-is-handed-in-at-daps-side).
+
+
+|**Header field**|**content**
+|:---|:---|
+|**`grant_type`**  | OAuth based grant type. See [TODO : client_credentials grant](TODO). |
+|**`client_assertion_type`**  | See [JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants](https://tools.ietf.org/html/rfc7523). |
+|**`client_assertion`**  | The signed and base64 encoded request token. Paste the example to jwt.io to see the decoded JWT. The token is signed with the connectors private key belonging to the public key contained in the X.509 certificate. |
+|**`scope`**  | Currently, the scope is limited to "Connector" but can be used for scoping purposes in the future. Scope is currently fixed to [https://w3id.org/idsa/core/Connector](https://w3id.org/idsa/core/Connector). TODO : Open: Put this into request token? |
+
 
 ### Example of a "request call to get a token"
 
@@ -108,7 +126,6 @@ See also:
 An example of a complete DAT, including header and payload is shown below:
 
 ```
-
 {
   "typ":"JWT",
   "alg":"HS256"
@@ -146,7 +163,8 @@ Collection of valid request templates can be found [here](./requests/README.md).
 
 ## REST API description
 
-REST API description can be found [here](https://app.swaggerhub.com/apis/IDS_Association/DynamicAttributeProvisioningService/0.1.1).
+REST API description can be found
+ [here](https://app.swaggerhub.com/apis/IDS_Association/DynamicAttributeProvisioningService).
 
 ---
 
