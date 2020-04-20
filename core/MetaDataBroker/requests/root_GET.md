@@ -2,12 +2,12 @@
 
 ## Summary
 
-Metadata Broker's Self-Description
+[MDB's](../README.md) Self-Description.
 
 
 ## Description
 
-Request the Metadata Broker's Self-Description in JSON-LD.
+Request the [MDB's](../README.md) Self-Description in JSON-LD.
 
 
 ## Examples
@@ -36,7 +36,7 @@ ids-contentVersion: 1.0.5
 
 ### response
 
-Header of response is dropped - the self-description of this IDS-MDB in JSON-LD:
+Header of response is dropped - the self-description of this [MDB](../README.md) in JSON-LD:
 
 ```json
 
