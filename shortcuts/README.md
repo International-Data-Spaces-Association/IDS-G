@@ -3,7 +3,7 @@
 |**Shortcuts**||
 |:---|:---|
 |**`CA`**       | Certification Authority, [IDS-G specification "Certification Authority"](../core/CA/README.md), [glossary](../glossary/README.md#certification-authority)
-|**`AKI`**.     | Authority Key Identifier, X.509 certificate, X509v3 extension
+|**`AKI`**      | Authority Key Identifier, X.509 certificate, X509v3 extension
 |**`DAPS`**     | Dynamic Attribute Provisioning Service
 |**`DAT`**      | Dynamic Attribute Token
 |**`DMZ`**      | Demilitarized Zone, [glossary](../glossary/README.md#demilitarized-zone)
