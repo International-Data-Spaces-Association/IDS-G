@@ -73,8 +73,8 @@ Description of a [Connector](#connector) participating in the IDS for
 ## D
 
 ### DAPS
-- [IDS-G specification "Dynamic Attribute Provisioning Service"](../core/DAPS/README.md)
-- See [Dynamic Attribute Provisioning Service](#dynamic-attribute-provisioning-service).
+- IDS-G specification: [Dynamic Attribute Provisioning Service](../core/DAPS/README.md)
+- Glossary: [Dynamic Attribute Provisioning Service](#dynamic-attribute-provisioning-service).
 
 ### DAT
 - See [Dynamic Attribute Token](#dynamic-attribute-token).
@@ -144,8 +144,7 @@ A Demilitarized Zone is an IT system (or a part of an IT system) with
 Issues Dynamic Attribute Tokens ([DAT](#dynamic-attribute-token)s) to
  verify dynamic attributes of [Participant](#participant)s or
  [Connector](#connector)s.
-
-- [IDS-G specification "Dynamic Attribute Provisioning Service"](../core/DAPS/README.md)
+- IDS-G specification: [Dynamic Attribute Provisioning Service](../core/DAPS/README.md)
 - Shortcut: `DAPS`
 
 ### Dynamic Attribute Token
@@ -194,18 +193,18 @@ Set of vocabularies and related schema information for the semantic
  vocabularies to express domain-specific aspects.
 
 See also:
-- [GitHub repository)](https://github.com/International-Data-Spaces-Association/InformationModel)
-- [IDS-G specification "Information Model"](../core/InformationModel/README.md)
+- GitHub: [repository](https://github.com/International-Data-Spaces-Association/InformationModel)
+- IDS-G specification: [Information Model](../core/InformationModel/README.md)
 - Shortcut: `IDS-IM`
 
 ### IDS Communication Protocol
 - Shortcut: `IDSCP`
 
 ### IDSA
-- See [International Data Spaces Association](#international-data-spaces-association).
+- Glossary: [International Data Spaces Association](#international-data-spaces-association).
 
 ### IDSCP
-- See [IDS Communication Protocol](#ids-communication-protocol).
+- Glossary: [IDS Communication Protocol](#ids-communication-protocol).
 
 ### International Data Spaces
 Distributed network of [Data Endpoint](#data-endpoint)s (i.e.,
@@ -256,16 +255,23 @@ In addition, the Reference Architecture Model comprises three
  describes the IDS [Certification Scheme](#certification-scheme) as a
  foundation for every interaction in the IDS. The Governance Perspective
  describes the Responsibilities of the Roles in the IDS.
-
-- Shortcut: `IDS-RAM`
 - [IDS-RAM 3.0 (current version, PDF)](https://www.internationaldataspaces.org/wp-content/uploads/2019/03/IDS-Reference-Architecture-Model-3.0.pdf)
+- Shortcut: `IDS-RAM`
 
+## J
+
+### JSON Web Token
+- [rfc7523](https://tools.ietf.org/html/rfc7523)
+- Shortcut: `JWT`
+
+### JWT
+- Glossary: [JSON Weg Token](#json-web-token)
 
 ## P
 
 ### ParIS
-- See [Participant Information Service](#participant-information-service)
-- [IDS-G specification "ParIS"](../core/ParIS/README.md)
+- Glossary: [Participant Information Service](#participant-information-service)
+- IDS-G specification: [ParIS](../core/ParIS/README.md)
 
 ### Participant
 Stakeholder in the International Data Spaces, assuming one or more of
@@ -273,8 +279,7 @@ Stakeholder in the International Data Spaces, assuming one or more of
  the [Identity Provider](#identity-provider).
 
 ### Participant Information Service
-
-- [IDS-G specification "ParIS"](../core/ParIS/README.md)
+- IDS-G specification: [ParIS](../core/ParIS/README.md)
 - Shortcut: `ParIS`
 
 ## S
