@@ -3,18 +3,24 @@
 The infrastructure component "Digital Attribute Provisioning Service" (DAPS)
  in a given IDS ecosystem enables enrichment of identities of organisations
  and connectors with additional attributes.
+ 
+DAPS can be understood (like the [Certification Authority](../CA/README.md), too) as building block of the construct of an
+ [IDS Identity Provider](../../glossary/README.md#identity-provider). 
 
-These attributes are embedded into a [Dynamic Attribute Token (DAT)]().
+These attributes are embedded by the DAPS into a [Dynamic Attribute Token (DAT)]().
  The advantages of this technique of *dynamic attribute provisioning* instead
  of embedding them into [X.509 certificates](https://en.wikipedia.org/wiki/X.509)
  are:
 
 - Attribute revocation does not enforce certificate revocation and re-issuance.
  This is also true if new attributes are added. 
-- By defining scopes or attribute sets, only the needed attributes can be included
- in the DAT. This limits information leakage, so only needed attributes are communicated.
-- Baseline certificates can be issued to enable connector deployment in uncomplicated manner.
-- More complex scenarios can be created as soon as attributes are assigned later on. 
+- By defining scopes or attribute sets, only the needed attributes can be
+ included in the DAT. This limits information leakage, so only needed
+ attributes are communicated.
+- Baseline certificates can be issued to enable connector deployment
+ in uncomplicated manner.
+- More complex scenarios can be created as soon as attributes are
+ assigned later on. 
 
 See also:
 - [Glossary "Dynamic Attribute Provisioning Service"](../../glossary/README.md#dynamic-attribute-provisioning-service)
@@ -28,7 +34,7 @@ Each (TODO: COMPONENT/entry) connector in the IDS needs a valid, outlasting and 
  identifier, never be re-used for any other resource inside the IDS ecosystem.
 
 The architecture aims to be open to multiple [Certification Authorities](../CA/README.md)
- (CAs) issueing certificates. This means, a truly unique identifier needs to consist of
+ (CAs) issuing certificates. This means, a truly unique identifier needs to consist of
   the issuer of the certificate and the subject identifier. For an easy machine readable
   identifier, two ´X.509v3´ extensions will be used:
 
@@ -42,15 +48,17 @@ EXAMPLE (snippet from a X.509 certificate):
 
 ```
 ...
+
 X509v3 extensions:
-X509v3 Subject Key Identifier:
- DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A
-    X509v3 Authority Key Identifier: 
+    X509v3 Subject Key Identifier:
+        DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A
+    X509v3 Authority Key Identifier:
         keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8
+
 ...
 ```
 
-leads to:
+... leads to an [connectors](../Connector/README.md) `unique identifier`:
 
 ```
 DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A:keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8
