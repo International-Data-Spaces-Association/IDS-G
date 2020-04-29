@@ -1,4 +1,4 @@
-# Paris request GET root 
+# ParIS request GET root 
 
 ## Summary
 
