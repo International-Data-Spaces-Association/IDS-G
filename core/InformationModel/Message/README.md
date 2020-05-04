@@ -55,11 +55,11 @@ All mandatory property declarations of the core ids:Message above still hold.
 
 ### Request Messages
 
-#### RequestMessage
+##### idsRequestMessage
 
 ### Response Messages
 
-##### ResponseMessage
+##### ids:ResponseMessage
 
 Response messages hold information about the reaction of a recipient to a
  formerly sent command or event. They must be correlated to this message. May
@@ -68,16 +68,16 @@ Response messages hold information about the reaction of a recipient to a
 
 ### Notification Messages
 
-#### MessageProcessedNotificationMessage
+##### ids:MessageProcessedNotificationMessage
 
-#### Connector Notification Message
+#### ids:ConnectorNotificationMessage
 
 Event notifying the recipient(s) about the availability of a new connector.
  The payload of the message must contain the new connector's self-description.
 
 See also: [International Data Space Information Model](https://w3id.org/idsa/core)
 
-##### ConnectorAvailableMessage
+##### ids:ConnectorAvailableMessage
 
 ---
 
@@ -85,8 +85,9 @@ See also: [International Data Space Information Model](https://w3id.org/idsa/cor
 
 | **Message Class** | Sub Class | Message Name |
 |:---|:---|:---|
-|**[Request Messages](#request-messages)**            |                               | [ids:RequestMessage](#requestmessage)
-|**[Notification Messages](#notification-messages)**  | ids:ConnectorNotificationMessage | [ids:ConnectorAvailableMessage](#connectoravailablemessage)
+|**[Request Messages](#request-messages)**            |                                 | [ids:RequestMessage](#requestmessage)
+|**[Response Messages](#response-messages)**            |                               | [ids:ResponseMessage](#responsemessage)
+|**[Notification Messages](#notification-messages)**  | [ids:ConnectorNotificationMessage](#connectornotificationmessage) | [ids:ConnectorAvailableMessage](#connectoravailablemessage)
 |||
 
 ---
