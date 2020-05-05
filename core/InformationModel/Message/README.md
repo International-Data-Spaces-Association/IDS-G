@@ -12,7 +12,7 @@ Correlated message. Usually needed, if a messages responds to a previous
 
 > TODO: MessageProcessedNotification >>> MessageProcessedNotification?
 
- message. A [Connector](../../Connector/) may, e.g., send a [MessageProcessedNotification](#messageprocessednotificationmessage)` as
+ message. A [Connector](../../Connector/) may, e.g., send a [MessageProcessedNotification](#idsmessageprocessednotificationmessage)` as
  a response to an incoming message and therefore needs this property to
  refer to the incoming message.
 
@@ -31,8 +31,8 @@ This token is called [Dynamic Attribute Token (DAT)](../../DAPS/README.md#dynami
 
 |**Property**|mandantory|cardinality|
 |:---|:---:|:---|
-|**[ids:correlationMessage](#correlationmessage)**|x|0..1|                        
-|**[ids:securityToken](#securityToken)**|x|1|                        
+|**[ids:correlationMessage](#idscorrelationmessage)**|x|0..1|                        
+|**[ids:securityToken](#idssecuritytoken)**|x|1|                        
 |||
 
 ---
@@ -85,9 +85,9 @@ See also: [International Data Space Information Model](https://w3id.org/idsa/cor
 
 | **Message Class** | Sub Class | Message Name |
 |:---|:---|:---|
-|**[Request Messages](#request-messages)**            |                                 | [ids:RequestMessage](#requestmessage)
-|**[Response Messages](#response-messages)**            |                               | [ids:ResponseMessage](#responsemessage)
-|**[Notification Messages](#notification-messages)**  | [ids:ConnectorNotificationMessage](#connectornotificationmessage) | [ids:ConnectorAvailableMessage](#connectoravailablemessage)
+|**[Request Messages](#request-messages)**            |                                 | [ids:RequestMessage](#idsrequestmessage)
+|**[Response Messages](#response-messages)**            |                               | [ids:ResponseMessage](#idsresponsemessage)
+|**[Notification Messages](#notification-messages)**  | [ids:ConnectorNotificationMessage](#idsconnectornotificationmessage) | [ids:ConnectorAvailableMessage](#idsconnectoravailablemessage)
 |||
 
 ---
