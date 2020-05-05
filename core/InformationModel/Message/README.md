@@ -23,7 +23,7 @@ The `mandantory` property 'securityToken' contains (value) a token, representing
  the sender supports a certain security profile.
 
 This token is called [Dynamic Attribute Token (DAT)](../../DAPS/README.md#dynamic-attribute-token-dat),
- (see further explanations there) an is provided by [Dynamic Attribute Provisioning Service (DAPS)](/DAPS/README.md#dynamic-attribute-provisioning-service-daps). 
+ (see further explanations there), so it is an instance of ids:DynamicAttributeToken and will be provided by [Dynamic Attribute Provisioning Service (DAPS)](/DAPS/README.md#dynamic-attribute-provisioning-service-daps). 
 
 ---
 
@@ -42,7 +42,7 @@ This token is called [Dynamic Attribute Token (DAT)](../../DAPS/README.md#dynami
 The table contans descriptions for each message, information about the payload
  as well as changes in the properties, i.e., new properties and additional
  mandatory properties. "Message Class" and "Message Subclass" are just for
- structural / hierarchical description. The "Message Name" contains the
+ structural / hierarchical descriptions. The "Message Name" contains the
  actual Message which is used.
  
 New properties, which are mandatory are marked with an (*). Existing
