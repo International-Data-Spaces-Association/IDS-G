@@ -6,7 +6,7 @@ Core `ids:Message` class with it's properties, which are equal for all messages.
 
 ## Properties of ids:Message
 
-### correlationMessage
+### ids:correlationMessage
 
 Correlated message. Usually needed, if a messages responds to a previous
 
@@ -17,7 +17,7 @@ Correlated message. Usually needed, if a messages responds to a previous
  refer to the incoming message.
 
 
-### securityToken
+### ids:securityToken
 
 The `mandantory` property 'securityToken' contains (value) a token, representing a claim, that
  the sender supports a certain security profile.
@@ -55,7 +55,7 @@ All mandatory property declarations of the core ids:Message above still hold.
 
 ### Request Messages
 
-##### idsRequestMessage
+##### ids:RequestMessage
 
 ### Response Messages
 
