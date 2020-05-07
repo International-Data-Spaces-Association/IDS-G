@@ -1,19 +1,26 @@
-# DAPS DAT request 
+# DAPS DAT request (root POST)
 
-This request is a POST-request against the root of given DAPS-instance `https://daps.example.com`. The requester,
- an IDS Connector, will hand in its `client_assertion` and recieves its very own
+This request is a POST-request against the root of given
+ DAPS-instance `https://daps.example.com`. The requester,
+ an IDS Connector, will hand in its `client_assertion`
+ and recieves its very own
  [Dynamic Attribute Token (DAT)](../README.md#dynamic-attribute-token-dat).
 
 
 ## Summary
-Request Dynamic Attribute Token
+
+Request Dynamic Attribute Token.
+
 
 ## Description
 
-A client that requests a [DAT](../README.md#dynamic-attribute-token-dat) needs to
- create JWT as a request token. The JWT contains a header, payload and signature.
- The information content of the JWT is modeled as an instance of the `ids:DatPayload`
- class, with the content attributes as specified in the table below.
+A client that requests a [DAT](../README.md#dynamic-attribute-token-dat)
+ needs to create JWT as a request token. The JWT contains
+ a header, payload and signature. The information content of
+ the JWT is modeled as an instance of the `ids:DatPayload`
+ class, with the content attributes as specified in the
+ table below.
+
 
 ## Examples
 
@@ -39,8 +46,8 @@ The response to given request is a
 
 ```
 {
-    "typ":"JWT",
-    "alg":"HS256"
+    "typ": "JWT",
+    "alg": "HS256"
 }
 .
 {
