@@ -89,8 +89,7 @@ See also:
 |**`iat`**       | yes   | 1 | Timestamp the token has been issued. |
 |**`nbf`**       | yes   | 1 | "Valid not before": For practical reasons this should be identical to iat. If the system time is not in synch with the DAPS, the request token will be rejected (e.g., nbf is in the future). |
 |**`aud`**       | yes   | 1 | The audience of the token. This can limit the validity for certain connectors. |
-|**TODO**      |       |   | JLA: cardinality '1' >>> '0..1' referring to 'optional'?
-|**`iss`**       | `opt` | 1 | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid connector. The "iss" value must be the combined entry of the SKI and AKI of the Connectors X509 certificate as presented in Sec. 4.2.1. |
+|**`iss`**       | yes   | 1 | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid connector. The "iss" value must be the combined entry of the SKI and AKI of the Connectors X509 certificate as presented in Sec. 4.2.1. |
 
 
 ## Request call to get a token
