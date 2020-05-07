@@ -120,9 +120,6 @@ Content-Type: application/x-www-form-urlencoded
 
 ```
 
-More request can be found [here](./requests/README.md):
-
-
 See also:
 - [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD)
 - [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier)
