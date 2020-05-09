@@ -94,11 +94,11 @@ See also:
 
 ## Request call to get a token
 
-`client_assertion` id the base64 encoded request token, show under
+`client_assertion` id the base64 encoded request token, shown under
  ["Request token that is handed in at DAPS side"](#request-token-that-is-handed-in-at-daps-side).
 
 
-|**Header field**|**content**
+|**FormBody Attribute**|**content**
 |:---|:---|
 |**`grant_type`**  | OAuth based grant type. See [TODO : client_credentials grant](TODO). |
 |**`client_assertion_type`**  | See [JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants](https://tools.ietf.org/html/rfc7523). |
