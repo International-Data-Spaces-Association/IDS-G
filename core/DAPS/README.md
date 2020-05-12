@@ -115,8 +115,12 @@ Content-Type: application/x-www-form-urlencoded
 "grant_type=client_credentials
  &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
  &client_assertion=eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJkZW1vY29ubmVjdG9yMSIsInN1YiI6ImRlbW9jb25uZWN0b3IxIiwiZXhwIjoxNTQ4Nzg1Mzg2LCJuYmYiOjE1NDg3ODE3ODYsImlhdCI6MTU0ODc4MTc4NiwiYXVkIjoiaHR0cHM6Ly9hcGkubG9jYWxob3N0In0.JSQuMf-9Fd7DNna_-s-sR7eXgcSYNCau5WgurrGJTuCSLKqhZe3odXfunN2vRFgUhU21ADFlEq96mlbQDueBlMtaXrcHFPSpIUtvuIMIVqQcGYkDdSJr_VmDuAykCYpyTCkLa7a8DTV-N3sECp-AxUgmEzYIfh8jW0WS6ehgUzrnpH6t_h_GWXKkNSAg3ERakDc4NY02pBGmiN7bmtLZNt5b4LWALiiFiduC7JbIpx4awOU6skMApmzgLnZmmTG20JlJRg6hAqyHEz5Cd4rUgrt0twmpC0Us_CG23KdUF5fWI55dcO2qAVvhNQXpqz7IiPcF7-jgkrx4oukYNY6eHA"
-
+ &scope=ids_connector_attributes"
+  
 ```
+ 
+> **!!!** REMARK: NO line breaks in front of '&', done for better readability only **!!!**
+
 
 See also:
 - [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD)
@@ -132,19 +136,19 @@ The DAPS issues the requested DAT, if authentication succeeds.
 
 |**Field name**|**mandantory**|**cardinality**|**content**
 |:---|:---|:---|:---|
-|**`@context`**             | yes      | 1 | The JSON-LD context containing the IDS classes, properties and instances. Must be "https://w3id.org/idsa/contexts/context.jsonld". |
-|**`@type`**                | yes      | 1 | In the context of the IDS, the request payload is an RDF instance and therefore must state that it has "@type" : "ids:DatRequestToken". TODO: @SBA: We need a type def for this... |
-|**`iss`**                  | yes      | 1 | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid connector. The value of `iss`  must be the combined entry of the SKI and AKI of the Connectors X509 certificate as presented in Sec. 4.2.1.  |
-|**`sub`**                  | yes      | 1 | Subject the requesting connector the token is created for. This is the connector requesting the [DAT](#dynamic-attribute-token-dat). The `sub` value must be the  combined entry of the `SKI` and `AKI` of the IDS X509 as presented in Sec. 4.2.1.  In this context, this is identical to `iss`. |
-|**`exp`**                  | yes      | 1 | Expiration date of the token. Can be chosen freely but should be limited to a short period of time (e.g., one minute).  |
-|**`iat`**                  | yes      | 1 | Timestamp the token has been issued.  |
-|**`nbf`**                  | yes      | 1 | "Valid not before" (`nbf`): for practical reasons this should be identical to `iat`. If systems time is not aynchronized with the DAPS, the request token will be rejected (so, `nbf` is in the future).  |
-|**`aud`**                  | yes      | 1 | The audience of the token. This can limit the validity for certain connectors. |
-|**`scope`**                | yes      | 1 | List of scopes. Currently, the scope is limited to "ids_connector_attributes" but can be used for scoping purposes in the future. |
-|**`securityProfile`**      | yes      | 1 | States that the requesting connector conforms to a certain security profile and has been certified to do so. The value must be an URI, in particular an instance of the ids:SecurityProfile class. |
-|**`referringConnector`**   | `opt`    | 0..1 | The URI of the subject, the connector represented by the DAT. Is used to connect identifier of the connector with the self-description identifier as defined by the IDS Information Model. A receiving connector can use this information to request more information at a Broker or directly by dereferencing this URI. |
-|**`transportCertsSha256`** | `opt`    | 0..* | Contains the public keys of the used transport certificates. The identifying X509 certificate should not be used for the communication encryption. Therefore, the receiving party needs to connect the identity of a connector by relating its hostname (from the communication encryption layer) and the used private/public key pair, with its IDS identity claim of the DAT. The public transportation key must be one of the "transportCertsSha256" values. Otherwise, the receiving connector must expect that the requesting connector is using a false identity claim. |
-|**`extendedGuarantee`**    | `opt`    | 0..* | In case a connector fulfills a certain security profile but deviates for a subset of attributes, it can inform the receiving connector about its actual security features. This can only happen if a connector reaches a higher level for a certain security attribute than the actual reached certification asks for. A deviation to lower levels is not possible, as this would directly invalidate the complete certification level. |
+|**`@context`**             | yes    | 1    | The JSON-LD context containing the IDS classes, properties and instances. Must be "https://w3id.org/idsa/contexts/context.jsonld". |
+|**`@type`**                | yes    | 1    | In the context of the IDS, the request payload is an RDF instance and therefore must state that it has "@type" : "ids:DatRequestToken". TODO: @SBA: We need a type def for this... |
+|**`iss`**                  | yes    | 1    | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid connector. The value of `iss`  must be the combined entry of the SKI and AKI of the Connectors X509 certificate as presented in Sec. 4.2.1.  |
+|**`sub`**                  | yes    |      | Subject the requesting connector the token is created for. This is the connector requesting the [DAT](#dynamic-attribute-token-dat). The `sub` value must be the  combined entry of the `SKI` and `AKI` of the IDS X509 as presented in Sec. 4.2.1.  In this context, this is identical to `iss`. |
+|**`exp`**                  | yes    | 1    | Expiration date of the token. Can be chosen freely but should be limited to a short period of time (e.g., one minute).  |
+|**`iat`**                  | yes    | 1    | Timestamp the token has been issued.  |
+|**`nbf`**                  | yes    | 1    | "Valid not before" (`nbf`): for practical reasons this should be identical to `iat`. If systems time is not aynchronized with the DAPS, the request token will be rejected (so, `nbf` is in the future).  |
+|**`aud`**                  | yes    | 1    | The audience of the token. This can limit the validity for certain connectors. |
+|**`scope`**                | yes    | 1..* | List of scopes. Currently, the scope is limited to "ids_connector_attributes" but can be used for scoping purposes in the future. |
+|**`securityProfile`**      | yes    | 1    | States that the requesting connector conforms to a certain security profile and has been certified to do so. The value must be an URI, in particular an instance of the ids:SecurityProfile class. |
+|**`referringConnector`**   | `opt`  | 0..1 | The URI of the subject, the connector represented by the DAT. Is used to connect identifier of the connector with the self-description identifier as defined by the IDS Information Model. A receiving connector can use this information to request more information at a Broker or directly by dereferencing this URI. |
+|**`transportCertsSha256`** | `opt`  | 0..* | Contains the public keys of the used transport certificates. The identifying X509 certificate should not be used for the communication encryption. Therefore, the receiving party needs to connect the identity of a connector by relating its hostname (from the communication encryption layer) and the used private/public key pair, with its IDS identity claim of the DAT. The public transportation key must be one of the "transportCertsSha256" values. Otherwise, the receiving connector must expect that the requesting connector is using a false identity claim. |
+|**`extendedGuarantee`**    | `opt`  | 0..* | In case a connector fulfills a certain security profile but deviates for a subset of attributes, it can inform the receiving connector about its actual security features. This can only happen if a connector reaches a higher level for a certain security attribute than the actual reached certification asks for. A deviation to lower levels is not possible, as this would directly invalidate the complete certification level. |
 |||||
 
 
