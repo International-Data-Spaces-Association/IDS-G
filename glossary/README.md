@@ -150,6 +150,8 @@ Issues Dynamic Attribute Tokens ([DAT](#dynamic-attribute-token)s) to
 ### Dynamic Attribute Token
 Contains signed dynamic attributes for [Participant](#participant)s and
  [Connector](#connector)s.
+ 
+- IDS-G specification: [Dynamic Attribute Token](../core/DAPS/README.md#- IDS-G specification: [Dynamic Attribute Provisioning Service](../core/DAPS/README.md#dynamic-attribute-token-content)
 - Shortcut: `DAT`
 
 ## E
