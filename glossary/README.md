@@ -278,6 +278,7 @@ In addition, the Reference Architecture Model comprises three
 Stakeholder in the International Data Spaces, assuming one or more of
  the predefined roles; every Participant is given a unique identity by
  the [Identity Provider](#identity-provider).
+- IDS-G specification: [Participant](../core/Participant/README.md)
 
 ### Participant Information Service
 - IDS-G specification: [ParIS](../core/ParIS/README.md)
