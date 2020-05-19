@@ -1,6 +1,7 @@
 # IDS Participant Information Service (ParIS)
 
 See also:
+- [IDS-G Specification "Participant"](../Participant/README.md)
 - [Glossary "Participant Information Service"](../../glossary/README.md#participant-information-service)
 - Shortcut: `ParIS`
 
