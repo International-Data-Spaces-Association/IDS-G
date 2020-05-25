@@ -9,9 +9,10 @@
 |**`DMZ`**      | Demilitarized Zone, [glossary](../glossary/README.md#demilitarized-zone)
 |**`IDS`**      | International Data Spaces, [glossary](../glossary/README.md#international-data-spaces)
 |**`IDSA`**     | IDS Association, [homepage](https://www.internationaldataspaces.org/)
-|**`IDSZ`**		| International Data Spaces Certification Scheme
+|**`IDSA-HO`**  | IDS Association Head Office
 |**`IDSA-SO`**  | IDS Service Organization
 |**`IDSCP`**    | IDS Communication Protocol
+|**`IDSZ`**		| International Data Spaces Certification Scheme
 |**`IDS-CH`**   | IDS "Clearing House"
 |**`IDS-DC`**   | *IDS Association* "Developers Communitiy"
 |**`IDS-UC`**   | IDS "Usage Control"
