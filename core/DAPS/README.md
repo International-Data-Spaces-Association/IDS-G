@@ -129,6 +129,7 @@ See also:
 
 ---
 
+
 ## Dynamic Attribute Token Content
 
 The DAPS issues the requested DAT, if authentication succeeds.
