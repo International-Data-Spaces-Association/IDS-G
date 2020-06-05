@@ -141,7 +141,6 @@ The DAT has these header fields:
 |**`kid`**             | yes    | 1    | Key id used to sign that token. Must match the jwks.json entry found at daps-url/.well-known/jwks.json |
 |**`alg`**             | yes    | 1    | Algorithm used to sign the token.   |
 
-
 The DAT has these payload fields:
 
 |**Field name**|**mandantory**|**cardinality**|**content**
