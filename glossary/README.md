@@ -202,8 +202,11 @@ See also:
 - Shortcut: `IDSCP`
 
 ### IDS Rule Book
+The IDSA Rule Book defines structures and processes for the implementation of the IDS-Reference
+ Architecture Model in real-world scenarios. This includes the realization of the essential
+ service as well as the definition of required workflows for the relevant processes, e.g.
+ admission of and withdrawal of participants, or maintenance of the IDS-Standard. 
 - Shortcut: `IDS-RB`
-The IDSA rule book defines structures and processes for the implementation of the IDS-Reference Architecture Model in real-world scenarios. This includes the realization of the essential service as well as the definition of required workflows for the relevant processes, e.g. admission of and withdrawal of participants, or maintenance of the IDS-Standard. 
 
 ### IDSA
 - Glossary: [International Data Spaces Association](#international-data-spaces-association).
