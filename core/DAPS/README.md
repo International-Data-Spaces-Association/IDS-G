@@ -92,6 +92,7 @@ See also:
 |**`iss`**       | yes   | 1 | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid connector. The "iss" value must be the combined entry of the SKI and AKI of the Connectors X509 certificate as presented in Sec. 4.2.1. |
 
 
+
 ## Request call to get a token
 
 `client_assertion` id the base64 encoded request token, shown under
