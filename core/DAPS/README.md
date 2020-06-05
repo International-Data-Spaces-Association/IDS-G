@@ -178,7 +178,7 @@ An example of a complete DAT, including header and payload is shown below:
     "iss": "https://daps.aisec.fraunhofer.de",
     "sub": "DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A:keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8",
     "referringConnector": "http://some-connector-uri.com",
-    "securityProfile": "idsc:BASE_SECURITY_PROFILE",
+    "securityProfile": "idsc:BASE_CONNECTOR_SECURITY_PROFILE",
     "extendedGuarantee": "idsc:USAGE_CONTROL_POLICY_ENFORCEMENT",
     "transportCertsSha256": ["bacb879575730bb083f283fd5b67a8cb..." ],
     "iat": 1516239022,
