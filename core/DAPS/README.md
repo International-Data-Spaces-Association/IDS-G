@@ -193,7 +193,7 @@ An example of a complete DAT, including header and payload is shown below:
 ```
 
 See also:
-- [Info Model : idsc:USAGE_CONTROL_POLICY_ENFORCEMENT]()
+- [Info Model : idsc:USAGE_CONTROL_POLICY_ENFORCEMENT](https://github.com/International-Data-Spaces-Association/InformationModel/blob/develop/codes/SecurityGuarantee.ttl)
 - [Glossary "Dynamic Attribute Token"](../../glossary/README.md#dynamic-attribute-token)
 - Shortcut: `DAT`
 
