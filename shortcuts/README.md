@@ -15,6 +15,7 @@
 |**`IDSZ`**		| International Data Spaces Certification Scheme
 |**`IDS-CH`**   | IDS "Clearing House"
 |**`IDS-DC`**   | *IDS Association* "Developers Communitiy"
+|**`IDS-RB`**   | IDS "Rule Book"
 |**`IDS-UC`**   | IDS "Usage Control"
 |**`IDS-G`**    | [IDS Global](../README.md)
 |**`IDS-I`**    | *IDS Association* "Industrial Communitiy", [information under associations homepage](https://www.internationaldataspaces.org/idsa-industrial-community/)
