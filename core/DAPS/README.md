@@ -131,8 +131,17 @@ See also:
 ## Dynamic Attribute Token Content
 
 The DAPS issues the requested DAT, if authentication succeeds.
- The DAT has these fields:
 
+The DAT has these header fields:
+
+|**Field name**|**mandantory**|**cardinality**|**content**
+|:---|:---|:---|:---|
+|**`typ`**             | yes    | 1    | The token type. Must be "JWT". |
+|**`kid`**             | yes    | 1    | Key id used to sign that token. Must match the jwks.json entry found at daps-url/.well-known/jwks.json |
+|**`alg`**             | yes    | 1    | Algorithm used to sign the token.   |
+
+
+The DAT has these payload fields:
 
 |**Field name**|**mandantory**|**cardinality**|**content**
 |:---|:---|:---|:---|
@@ -149,7 +158,6 @@ The DAPS issues the requested DAT, if authentication succeeds.
 |**`referringConnector`**   | `opt`  | 0..1 | The URI of the subject, the connector represented by the DAT. Is used to connect identifier of the connector with the self-description identifier as defined by the IDS Information Model. A receiving connector can use this information to request more information at a Broker or directly by dereferencing this URI. |
 |**`transportCertsSha256`** | `opt`  | 0..* | Contains the public keys of the used transport certificates. The identifying X509 certificate should not be used for the communication encryption. Therefore, the receiving party needs to connect the identity of a connector by relating its hostname (from the communication encryption layer) and the used private/public key pair, with its IDS identity claim of the DAT. The public transportation key must be one of the "transportCertsSha256" values. Otherwise, the receiving connector must expect that the requesting connector is using a false identity claim. |
 |**`extendedGuarantee`**    | `opt`  | 0..* | In case a connector fulfills a certain security profile but deviates for a subset of attributes, it can inform the receiving connector about its actual security features. This can only happen if a connector reaches a higher level for a certain security attribute than the actual reached certification asks for. A deviation to lower levels is not possible, as this would directly invalidate the complete certification level. |
-|||||
 
 
 ## Dynamic Attribute Token (DAT)
@@ -183,6 +191,7 @@ An example of a complete DAT, including header and payload is shown below:
 ```
 
 See also:
+- [Info Model : idsc:USAGE_CONTROL_POLICY_ENFORCEMENT]()
 - [Glossary "Dynamic Attribute Token"](../../glossary/README.md#dynamic-attribute-token)
 - Shortcut: `DAT`
 
