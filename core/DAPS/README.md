@@ -174,7 +174,7 @@ An example of a complete DAT, including header and payload is shown below:
 {
     "@context": "https://w3id.org/idsa/contexts/context.jsonld",
     "@type": "ids:DatPayload",  
-    "iss": "AE:2F:31:46:93:48:33:10:11:BE:D5:49:49:88:EB:87:D7:75:CF:A4:keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8",
+    "iss": "https://daps.aisec.fraunhofer.de",
     "sub": "DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A:keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8",
     "referringConnector": "http://some-connector-uri.com",
     "securityProfile": "idsc:BASE_SECURITY_PROFILE",
