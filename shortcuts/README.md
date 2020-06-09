@@ -12,8 +12,8 @@
 |**`IDSA-HO`**  | IDS Association Head Office
 |**`IDSA-SO`**  | IDS Service Organization
 |**`IDSCP`**    | IDS Communication Protocol
-|**`IDSZ`**		| International Data Spaces Certification Scheme
 |**`IDS-CH`**   | IDS "Clearing House"
+|**`IDS-CS`**	| IDS "Certification Scheme"
 |**`IDS-DC`**   | *IDS Association* "Developers Communitiy"
 |**`IDS-RB`**   | IDS "Rule Book"
 |**`IDS-UC`**   | IDS "Usage Control"
