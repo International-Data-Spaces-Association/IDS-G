@@ -90,4 +90,9 @@ See also: [International Data Space Information Model](https://w3id.org/idsa/cor
 |**[Notification Messages](#notification-messages)**  | [ids:ConnectorNotificationMessage](#idsconnectornotificationmessage) | [ids:ConnectorAvailableMessage](#idsconnectoravailablemessage)
 |||
 
+
+## Requests
+
+Collection of valid request templates can be found [here](./requests/README.md).
+
 ---
