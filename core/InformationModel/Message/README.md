@@ -19,11 +19,12 @@ Correlated message. Usually needed, if a messages responds to a previous
 
 ### ids:securityToken
 
-The `mandantory` property 'securityToken' contains (value) a token, representing a claim, that
- the sender supports a certain security profile.
+The `mandantory` property 'securityToken' contains (value) a token, representing
+ a claim, that the sender supports a certain security profile.
 
 This token is called [Dynamic Attribute Token (DAT)](../../DAPS/README.md#dynamic-attribute-token-dat),
- (see further explanations there), so it is an instance of ids:DynamicAttributeToken and will be provided by [Dynamic Attribute Provisioning Service (DAPS)](/DAPS/README.md#dynamic-attribute-provisioning-service-daps). 
+ (see further explanations there), so it is an instance of ids:DynamicAttributeToken
+ and will be provided by [Dynamic Attribute Provisioning Service (DAPS)](../../DAPS/README.md). 
 
 ---
 
