@@ -6,6 +6,16 @@ Core `ids:Message` class with it's properties, which are equal for all messages.
 
 ## Properties of ids:Message
 
+### Table of Message Properties
+
+|**Property**|mandantory|cardinality|
+|:---|:---:|:---|
+|**[ids:correlationMessage](#idscorrelationmessage)**|x|0..1|                        
+|**[ids:securityToken](#idssecuritytoken)**|x|1|                        
+|||
+
+---
+
 ### ids:correlationMessage
 
 Correlated message. Usually needed, if a messages responds to a previous
@@ -19,22 +29,12 @@ Correlated message. Usually needed, if a messages responds to a previous
 
 ### ids:securityToken
 
-The `mandantory` property 'securityToken' contains (value) a token, representing
- a claim, that the sender supports a certain security profile.
+The **mandantory** property `ìds: securityToken` contains (value) a token,
+ representing a claim, that the sender supports a certain security profile.
 
 This token is called [Dynamic Attribute Token (DAT)](../../DAPS/README.md#dynamic-attribute-token-dat),
- (see further explanations there), so it is an instance of ids:DynamicAttributeToken
+ (see further explanations there), so it is an instance of `ids:DynamicAttributeToken`
  and will be provided by [Dynamic Attribute Provisioning Service (DAPS)](../../DAPS/README.md). 
-
----
-
-### Table of Message Properties
-
-|**Property**|mandantory|cardinality|
-|:---|:---:|:---|
-|**[ids:correlationMessage](#idscorrelationmessage)**|x|0..1|                        
-|**[ids:securityToken](#idssecuritytoken)**|x|1|                        
-|||
 
 ---
 
@@ -54,6 +54,17 @@ All mandatory property declarations of the core ids:Message above still hold.
  Optional properties are supported but not required.
 
 
+### Table of Message Types
+
+| **Message Class** | Sub Class | Message Name |
+|:---|:---|:---|
+| **[Request Messages](#request-messages)**            |                                 | [ids:RequestMessage](#idsrequestmessage)
+| **[Response Messages](#response-messages)**            |                               | [ids:ResponseMessage](#idsresponsemessage)
+| **[Notification Messages](#notification-messages)**  | [ids:ConnectorNotificationMessage](#idsconnectornotificationmessage) | [ids:ConnectorAvailableMessage](#idsconnectoravailablemessage)
+|||
+
+---
+
 ### Request Messages
 
 ##### ids:RequestMessage
@@ -62,9 +73,9 @@ All mandatory property declarations of the core ids:Message above still hold.
 
 Message requesting metadata. If no URI is supplied via the ids:requestedElement field,
  this messages is treated like a self-description request and the recipient should
- return its self-description via an ids:DescriptionResponseMessage. However, if a URI
+ return its self-description via an `ids:DescriptionResponseMessage`. However, if a URI
  is supplied, the Connector should either return metadata about the requested element
- via an ids:DescriptionResponseMessage, or send an ids:RejectionMessage, e.g. because
+ via an `ids:DescriptionResponseMessage`, or send an `ids:RejectionMessage`, e.g. because
  the element was not found.
 
 Requests: 
@@ -93,15 +104,6 @@ See also: [International Data Space Information Model](https://w3id.org/idsa/cor
 ##### ids:ConnectorAvailableMessage
 
 ---
-
-### Table of Message Types
-
-| **Message Class** | Sub Class | Message Name |
-|:---|:---|:---|
-|**[Request Messages](#request-messages)**            |                                 | [ids:RequestMessage](#idsrequestmessage)
-|**[Response Messages](#response-messages)**            |                               | [ids:ResponseMessage](#idsresponsemessage)
-|**[Notification Messages](#notification-messages)**  | [ids:ConnectorNotificationMessage](#idsconnectornotificationmessage) | [ids:ConnectorAvailableMessage](#idsconnectoravailablemessage)
-|||
 
 
 ## Requests
