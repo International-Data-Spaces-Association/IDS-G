@@ -2,7 +2,7 @@
 
 ## ids:Message
 
-[ids:Message](./Message/.README.md)
+[ids:Message](./Message/README.md)
 
 
 See also:
