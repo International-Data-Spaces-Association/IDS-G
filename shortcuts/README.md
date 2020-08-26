@@ -14,6 +14,7 @@
 |**`IDSCP`**    | IDS Communication Protocol
 |**`IDS-CH`**   | IDS "Clearing House"
 |**`IDS-DC`**   | *IDS Association* "Developers Communitiy"
+|**`IDSA-HO`**  | *IDS Association* "Head Office"
 |**`IDS-UC`**   | IDS "Usage Control"
 |**`IDS-G`**    | [IDS Global](../README.md)
 |**`IDS-I`**    | *IDS Association* "Industrial Communitiy", [information under associations homepage](https://www.internationaldataspaces.org/idsa-industrial-community/)
