@@ -10,6 +10,7 @@
 |**`IDS`**      | International Data Spaces, [glossary](../glossary/README.md#international-data-spaces)
 |**`IDSA`**     | IDS Association, [homepage](https://www.internationaldataspaces.org/)
 |**`IDSA-SO`**  | IDS Service Organization
+|**`IDSA-SC`**  | IDS Steering Committee
 |**`IDSCP`**    | IDS Communication Protocol
 |**`IDS-CH`**   | IDS "Clearing House"
 |**`IDS-DC`**   | *IDS Association* "Developers Communitiy"
