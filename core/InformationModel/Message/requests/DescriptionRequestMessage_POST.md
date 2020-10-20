@@ -19,11 +19,16 @@ Content-Disposition: form-data; name="header"
 
 {
   "@context" : "https://w3id.org/idsa/contexts/context.jsonld",
+  "@id" : "https://w3id.org/idsa/autogen/selfDescriptionRequest/b0731661-7df1-43e5-bb75-50f0709f31c9"
   "@type" : "ids:DescriptionRequestMessage",
   "modelVersion" : "3.1.0",
   "issued" : "2020-05-21T13:32:33.073+02:00",
   "issuerConnector" : "http://example.org#connector",
-  "@id" : "https://w3id.org/idsa/autogen/selfDescriptionRequest/b0731661-7df1-43e5-bb75-50f0709f31c9"
+  "securityToken" : {
+    "@type" : "ids:DynamicAttributeToken",
+    "tokenFormat" : "https://w3id.org/idsa/code/tokenformat/JWT",
+    "tokenValue" : "eyJhbGciOiJSUzI1NiIsInR5cCI..."
+  }  
 }
 ----------------------------949567736778671771657427--
 
@@ -32,7 +37,8 @@ Content-Disposition: form-data; name="header"
 ### 1 response
 
 
-```
+
+```http request
 --mPLw1UTMYjqqYqh1Bb_ttWBKcdSPfB9FBgz3
 Content-Disposition: form-data; name="header"
 Content-Type: application/json
@@ -83,7 +89,6 @@ Content-Length: 965
 --mPLw1UTMYjqqYqh1Bb_ttWBKcdSPfB9FBgz3--
 
 ```
-
 
 ## REST API description
 
