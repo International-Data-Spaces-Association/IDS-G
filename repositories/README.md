@@ -7,6 +7,7 @@ In alphabetical order:
 Maven repository for open libraries from Fraunhofer IAIS. In this case
  especially for the Java implementation of the IDS Infomodel.
 - last click: 2020-01-16
+- [get access](mailto:contact@ids.fraunhofer.de)
 ---
 
 ## [IDS InformationModel](https://github.com/IndustrialDataSpace)
