@@ -6,7 +6,7 @@
 
 - [IDS Information Model (IDS-IM)](./core/InformationModel/README.md)
 - [Dynamic Attribute Provisioning Service (DAPS)](./core/DAPS/README.md)
-- [IDS Connector](./core/Connector/README.md)
+- [IDS Connector](./core/Connector/README.md) 
 - [IDS Meta Data Broker (IDS-MDB)](./core/MetaDataBroker/README.md)
 - [Participant Information System (ParIS)](./core/ParIS/README.md)
 - [Clearing House](./core/ClearingHouse/README.md)
