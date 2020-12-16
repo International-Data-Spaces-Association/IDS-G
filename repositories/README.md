@@ -10,13 +10,13 @@ Maven repository for open libraries from Fraunhofer IAIS. In this case
 - [get access](mailto:contact@ids.fraunhofer.de)
 ---
 
-## [IDS InformationModel](https://github.com/IndustrialDataSpace)
+## [IDS InformationModel](https://github.com/International-Data-Spaces-Association/InformationModel)
 [`IDS information model`, IDS-G glossary](../glossary/README.md#ids-information-model)
 - last click: 2020-01-16
 - stable release located at the master branch, the develop branch contains the working version
-- Find downloadable [releases](https://github.com/IndustrialDataSpace/InformationModel/releases)
+- Find downloadable [releases](https://github.com/International-Data-Spaces-Association/InformationModel/releases)
 - See the whole Information Model: Clone the repository and use [Protégé](https://protege.stanford.edu/) to open Ontology.ttl
-- found a bug or need more functionalities? [Submit an issue!](https://github.com/IndustrialDataSpace/InformationModel/issues)
+- found a bug or need more functionalities? [Submit an issue!](https://github.com/International-Data-Spaces-Association/InformationModel/issues)
 ---
 
 ## [ids-infomodel-demo, Fraunhofer IAIS](https://jira.iais.fraunhofer.de/stash/projects/ICTSL/repos/ids-infomodel-demo/browse)
