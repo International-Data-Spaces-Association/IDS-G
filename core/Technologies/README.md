@@ -11,3 +11,9 @@
 - [idscp](./idscp/README.md)
 
 ---
+
+## IDS REST Protocol (ids-rest)
+
+- [ids-rest](./ids-rest/README.md)
+
+---

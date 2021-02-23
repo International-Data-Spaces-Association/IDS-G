@@ -8,3 +8,4 @@
 - [IDS Technologies](./Technologies/README.md)
   - [Usage Control](./Technologies/UsageControl/README.md)
   - [IDS Communication Protocol (IDSCP)](./Technologies/idscp/README.md)
+  - [IDS REST Protocol, aka. IDS-LDP](./Technologies/ids-rest/README.md)
