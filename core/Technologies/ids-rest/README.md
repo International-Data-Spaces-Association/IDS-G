@@ -6,21 +6,21 @@
 
 [on its way to `IDS-G`](./GOTO/IDS-G)
 
-<!--general remarks sk: 1. since the term "[client, server, network] socket" is not used in any of the relating specifications(LDP, HTTP, Rest), the term is ambiguous. The term WebSocket as used in WebSocket Protocol (RFC6455) is referenced in context of the IDSCP but to my knowledge not widely used in the context of rest-->
-<!--sba: 'sockets' are defined terms in regard to internet definitions, therefore I think we can expect that the readers will understand it accordingly.-->
 
 ## Scope of this Document
 
-Linked Data Platform (LDP) is the W3C recommended architecture to allow read/write interactions on distributed data using Semantic Web technologies. It combines the well-established identification methods of Web resources (HTTP URIs/URLs) and
- vocabularies from RDF with the access concepts from Linked Data (data retrieval using HTTP GET, Content-Negotiation).
- This document presents a binding of IDS interactions to the LDP Recommendation in order to merge the
- advantages of both approaches: LDP allows the dynamic interaction with unknown entities
- while the IDS defines patterns to ensure a sovereign and controlled data ecosystem.
+Linked Data Platform (LDP) is the W3C recommended architecture to allow REST-based read/write interactions on distributed
+data using Semantic Web technologies. It combines the well-established identification methods of Web resources (HTTP URIs/URLs) and
+vocabularies from RDF with the access concepts from Linked Data (data retrieval using HTTP GET, Content-Negotiation).
+This document presents a binding of IDS interactions to the LDP Recommendation in order to merge the
+advantages of both approaches: LDP allows the dynamic interaction with unknown entities
+while the IDS defines patterns to ensure a sovereign and controlled data ecosystem.
 
 The merged approach in this specification presents a union of both LDP and IDS concepts.
 As such, the resulting binding limits the interaction opportunities of the original LDP
 Recommendation regarding the requirements of the IDS specifications and vice versa. The benefits of the
-combined approach lie in (a) the simplification of IDS interactions using the LDP best practices, while (b) the trustworthiness of the IDS ecosystem is introduced into LDP-conform applications.
+combined approach lie in (a) the simplification of IDS interactions using the LDP best practices,
+while (b) the trustworthiness of the IDS ecosystem is introduced into LDP-conform applications.
 
 
 ## Terminology and Roles
@@ -28,19 +28,20 @@ combined approach lie in (a) the simplification of IDS interactions using the LD
 | Term  | Explanation | Example |
 | :--- | --- | :--- |
 | LDP Client	| User Agent behaving according to the LDP Recommendation	| |
-| HTTP Client, Client| The network socket sending HTTP requests and receiving response messages. Usually tightly connected with the User-Agent. <!-- definition of rfc2616--> | |
-| HTTP Server, Server | The network socket receiving HTTP requests and sending response messages. <!-- definition of rfc2616-->Usually tightly connected with the Origin Server.	| One Origin Server could have several server sockets, for instance, one for HTTP, one for MQTT, and one for WebSockets. As all supply the same resources, none of them can be the origin server. The resources are maintained by the Origin Server but their interactions happen through the respective protocol-dependent servers. <!--network sockets vs server sockets--> |
-| User Agent | Software artifact acting on behalf of a user or another component. <!-- definition of rfc2616--> | Web Browser, HTTP client socket |
+| HTTP Client, Client| The network socket sending HTTP requests and receiving response messages. Usually tightly connected with the User-Agent. | |
+| HTTP Server, Server | The network socket receiving HTTP requests and sending response messages. Usually tightly connected with the Origin Server.	| One Origin Server could have several server sockets, for instance, one for HTTP, one for MQTT, and one for WebSockets. As all supply the same resources, none of them can be the origin server. The resources are maintained by the Origin Server but their interactions happen through the respective protocol-dependent servers. |
+| User Agent | Software artifact acting on behalf of a user or another component. | Web Browser, HTTP client socket |
 | Connector Operator, Operator | Legal entity controlling and maintaining a specific IDS Connector.	| |
-| LDP Server | HTTP Server acting as the origin server for an LDP Client. <!--what about LDP definition?--> | Marmotta Reference Server, SOLID Server, GAIAboX |
+| LDP Server | HTTP Server acting as the origin server for an LDP Client. | Marmotta Reference Server, SOLID Server, GAIAboX |
 | resource | Generic data entity, identifiable through an URI | |
 | IDS Connector | Gateway providing and requesting data according to IDS specifications. | IDS Metadata Broker, Trusted Connector |
-| Origin server | Entity containing the original data ("the truth") as defined by REST,<!--the webserver as defined in rest?--> | IDS Connector, HTTP Server |
-| LDP Resource | A Web-based resource <!--term not clear--> which is conform to the LDP specification. | |
-| LDP Container | A Web-based resource <!--term not clear--> which conforms to the LDP specification and can host further resources as children. | |
-| IDS Resource	| A resource which is also an instance of the class ids:Resource. <!--reference to ids information model--> | |
-| ids: | Prefix for the IDS namespace: <https://w3id.org/idsa/core/> | |
-| ldp: | Prefix for the LDP namespace: <http://www.w3.org/ns/ldp#> | |
+| Origin server | Entity containing the original data ("the truth") as defined by REST | IDS Connector, HTTP Server |
+| LDP Resource | A Web-based resource which is conform to the LDP specification. | [ex:Resource1](http://example.org/Resource1) [rdf:type](http://www.w3.org/1999/02/22-rdf-syntax-ns#type) [ldp:Resource](http://www.w3.org/ns/ldp#Resource) . | |
+| LDP Container | A Web-based resource which conforms to the LDP specification and can host further resources as children. | [ex:Container1](http://example.org/Container1) [rdf:type](http://www.w3.org/1999/02/22-rdf-syntax-ns#type) [ldp:BasicContainer](http://www.w3.org/ns/ldp#BasicContainer) . |
+| IDS Resource	| A resource which is also an instance of the class ids:Resource. | [ex:this]("http://example.org/590b2f53fa6e") [rdf:type](http://www.w3.org/1999/02/22-rdf-syntax-ns#type) [ids:Resource](https://w3id.org/idsa/core/Resource); [rdfs:label](http://www.w3.org/2000/01/rdf-schema#label) "highway statistics"@en; [ids:title](https://w3id.org/idsa/core/title) "European highway statistics - accident report"@en .
+| ids: | Prefix for the IDS namespace: <https://w3id.org/idsa/core/> | [ids:Resource](https://w3id.org/idsa/core/Resource) |
+| idsc: | Prefix for the IDSC namespace for instances: <https://w3id.org/idsa/code/> | [idsc:READ](https://w3id.org/idsa/code/READ) |
+| ldp: | Prefix for the LDP namespace: <http://www.w3.org/ns/ldp#> | [ldp:BasicContainer](http://www.w3.org/ns/ldp#BasicContainer) |
 
 ##### *Table 1: Relevant terms and their roles.*
 
@@ -77,36 +78,34 @@ It has been shown that the proposed Multipart and message-driven communication i
  messages is rather limited, while there is a massive trend towards REST APIs in the Web but also in any kind of distributed architectures.
 
 First and foremost, REST APIs restrict the number of assumptions a consuming
- application needs to make about a remote endpoint. <!--Link between sentences missing--> The protocol, possible states,
- state transformations, exchange sequences, error behavior, and so on need to be
- understood by all parties. REST is already a well-known and commonly accepted
- paradigm providing recommendations (not necessarily answers!) to a lot of these
- topics. Reusing them simplifies the life of the developers, increases the
- maintainability, and last but not least presents the condensed lessons learned
- of a huge community.
+application needs to make about a remote endpoint. The paradigm expresses
+state transformations, exchange sequences, error behavior, and so on need to be
+understood by all parties. REST is already a well-known and commonly accepted
+paradigm providing recommendations (not necessarily answers!) to a lot of these
+topics. Reusing them simplifies the life of the developers, increases the
+maintainability, and last but not least presents the condensed lessons learned
+of a huge community.
 
 Apart from these design advantages, the tool support for REST APIs is significantly
- better-especially in terms of open source projects- than
- for any other communication pattern. Because we <!--who?--> want to avoid discussions about the lack of tools and frustrated developers because they cannot use their favorite tools and
- development environments, tool support is a very valid argument in favor of REST APIs.
+better - especially in terms of open source projects - than
+for any other communication pattern.
 
 Following this argumentation, the IDS community agreed that a REST binding is
- desired. Whether it - at some point - might even replace the currently used
- interaction patterns is not in the scope of this document. The hereby presented
- binding is intended as an coequal binding with the same relevance and commitment
- than the other bindings.
+desired. Whether it - at some point - might even replace the currently used
+interaction patterns is not in the scope of this document. The hereby presented
+binding is intended as an coequal binding with the same relevance and commitment
+than the other bindings.
 
 
 ## Operations and Interactions
 
-The instance of an IDS Messages, as defined in the IDS Information Model, encodes i.a. the intended command, content, target, expected response
- . For example, an ArtifactRequestMessage
- contains its operational semantics <!--=command?-->('return an IDS Artifact'), the target
- resource, expected response (ArtifactResponseMessage), data format (Multipart) etc.
- This implies that both the sender and the receiver of the message need to share all
- these assumptions and deeply understand the IDS requirements and side-effects.
- Obviously, this is especially hard for people joining the IDS community but also
- for experienced IDS developers.
+The instance of an IDS Messages, as defined in the IDS Information Model, encodes i.a. the intended command, content, target, expected response. For example, an ArtifactRequestMessage
+contains its operational semantics ('return an IDS Artifact'), the target
+resource, expected response (ArtifactResponseMessage), data format (Multipart) etc.
+This implies that both the sender and the receiver of the message need to share all
+these assumptions and deeply understand the IDS requirements and side-effects.
+Obviously, this is especially hard for people joining the IDS community but also
+for experienced IDS developers.
 
 The REST paradigm on the other hand separates the command semantics from the content
  and deeply integrates the communication pattern with HTTP methods. This reduces
@@ -136,21 +135,21 @@ Currently, TLS encryption of all messages is required in the IDS. Unencrypted
 ### Identification and Location
 
 Following the IDS Information Model, IDS entities, like Participants, Connectors, or Resources, are represented by information
- documents containing a description <!--use the term self-description (document)?--> . In addition,
+ documents containing a description. In addition,
  each IDS entity has its own unique identifier. This identifier must be a unique URI.
 
 IDS components can use this URI to find a document representing the entity.
  For instance, Connector A (https://example.org/ConnectorA) asks the IDS Metadata
  Broker for information about a Connector B (https://example.org/ConnectorB). Subsequently, the Broker
  responds with a document containing a representation of the current state of the
- Connector B (ConnectorB.jsonld) as far as it <!--what is "it"?-->has stored it.
+ Connector B (ConnectorB.jsonld) as far as it has stored it.
 
 Note that in this example, the URI of Connector B is not necessarily equal to the URL
  (https://companyB.com/ids/connector/) at which it's endpoints (https://companyB.com/ids/connector/data/)
- are located. <!--don't understand the sentence--> Furthermore, Connector A must know the Broker's endpoint URL
+ are located. Furthermore, Connector A must know the Broker's endpoint URL
  (https://industrialdataspace.jiveon.com/external-link.jspa?url=https%3A%2F%2Ftools.ietf.org%2Fhtml%2Frfc6749 )
- in advance <!--what for?-->. Connector A can then lookup the received document representing Connector B
- (ConnectorB.jsonld), discover the endpoint URL, and send a request to it. <!--Given this example I presume, the Connector description entails information on what endpoints to use. But I strongly needed to read between the lines. Also it is not clear that the current approach is described-->
+ in advance. Connector A can then lookup the received document representing Connector B
+ (ConnectorB.jsonld), discover the endpoint URL, and send a request to it.
 
 The REST and LDP approach is significantly different. The identifying URI is bound to the
  location of the entity itself. Therefore, Connector B must not use
@@ -158,14 +157,14 @@ The REST and LDP approach is significantly different. The identifying URI is bou
  and provide at least a self-description document at this location. This enables
  Connector A by learning about a Connector B (identified by https://companyB.com/ids/connector/ )
  to directly communicate with it without further lookups on endpoints. The identification
- URI <!--identification Uniform resource identifier?--> must always be the same as the root URL under which the entity is hosted. However,
+ URI must always be the same as the root URL under which the entity is hosted. However,
  this simplification on the client connector-side increases the effort on the server
  connector-side as the later must always synchronize identities with hosting locations.
 
 
 ### Authentication
 
-One of LDP's place is seen in solid <!--sentence not clear. social linked data? solid principles? -->. solid uses WebID for authentication.
+One of LDP's inspirations can be seen in the [Solid](https://solidproject.org) platform. In contrast to the here defined approach, Solid uses WebID for authentication. <!-- sba: delete this reference?-->
 
 The IDS transfers and validates identity claims using the Dynamic Attribute
  Token (DAT). The DAT contains, among other attributes, the signed identity
@@ -177,18 +176,18 @@ Each IDS Connector involved in an interaction, both the origin server and the
 1. Compare the signature with the public key of the referenced Dynamic Attribute Provisioning Service (DAPS)
 2. Compare the announced public keys with the certificate used for the TLS channel
 3. Verify the iat, exp, nbf time stamps.
-4. Check if the security attributes match<!--security level--> their own security specifications.
+4. Check if the security attributes match their own security specifications.
 
 
 ### Protocol
 
-The call semantic <!--semantics of a call?--> follows the typical REST semantics for CRUD operations. The
+The call semantics follows the typical REST semantics for CRUD operations. The
  following items state the usual interpretation of the eight HTTP methods
  as remote commands.
 
 - GET: Read the target resource
 - PUT: Overwrite the target resource state. If it did not exist, create it with the sent state. The desired resource state is in the request body.
-- POST: Create a new resource <!--in the resource container?--> (if the target resource is an LDP Container). The desired resource state is in the request body. Undefined for non-LDP Containers.
+- POST: Create a new resource inside the target URL (if the target resource is an LDP Container). The desired resource state is in the request body. Undefined for non-LDP Containers.
 - DELETE: Delete the target resource.
 - HEAD: Read the meta-information of the target resource.
 - OPTIONS: Read the allowed HTTP operations on the target resource.
@@ -214,10 +213,10 @@ Content-Disposition: form-data; name="header"
 {
   "@context" : "https://w3id.org/idsa/contexts/context.jsonld",
   "@type" : "ids:ConnectorAvailableMessage",
-  "id" : "http://industrialdataspace.org/connectorAvailableMessage/34d761cf-5ca4-4a77-a7f4-b14d8f75636a",
-  "issued" : "2019-12-02T08:25:08.245Z",
-  "modelVersion" : "3.0.0",
-  "issuerConnector" : "https://companyA.com/connector/59a68243-dd96-4c8d-88a9-0f0e03e13b1b",
+  "id" : "http://industrialdataspace.org/34d761cf-5ca4-4a77-a7f4-b14d8f75636a",
+  "issued" : "2020-12-02T08:25:08.245Z",
+  "modelVersion" : "4.0.0",
+  "issuerConnector" : "https://companyA.com/59a68243-dd96-4c8d-88a9-0f0e03e13b1b",
   "securityToken" : {
     "@type" : "ids:DynamicAttributeToken",
     "tokenFormat" : "https://w3id.org/idsa/code/tokenformat/JWT",
@@ -237,10 +236,10 @@ and we transmute it to
 
 ```http
 GET https://www.example.org/server/cpu_3
-ids-modelVersion : "3.0.0",
+ids-modelVersion : "4.0.0",
 ids-issuerConnector: "https://wall-e.nicos-rd.com/"
 ids-securityToken: "eyJ1c2VyIjoiam90dCJ9...42"
-ids-issued: "2019-12-02T08:25:08.245Z",
+ids-issued: "2020-12-02T08:25:08.245Z",
 Accept: text/turtle
 ```
 
@@ -249,8 +248,7 @@ Full list of http-header attributes to use see [here](./header).:
 
 ## Request Body
 
-For every class except an ids:Artifact, the body of the HTTP request must always contain a
- valid RDF serialization. <!--Comming from Rest: why do we need request bodies for GET requets? or is this the for multipart messages? For this a reference to the coresponding IDS speification might be useful--> An ids:Artifact can also contain non-RDF or even binary data.
+For every class except an ids:Artifact, the body of a sending HTTP request (POST, PUT) must always contain a valid RDF serialization. An ids:Artifact can also contain non-RDF or even binary data.
  In any case, the serialization of the body must be announced in the corresponding value
  of the "Content-Type" header. The default serialization in the IDS is JSON-LD
  (media type: 'application/ld+json'). Systems not able to operate on RDF can also treat
@@ -261,7 +259,7 @@ Still, every IDS compliant message exchange must use valid JSON-LD serialization
  definition or by linking to an appropriate remote context document. The default
  context element for the IDS is  "@context": "https://w3id.org/idsa/contexts/context.jsonld".
 
-The context key-value pair must always be the first one <!--key value pair?--> in any IDS compliant JSON
+The context key-value pair must always be the first entry in any IDS compliant JSON
  or JSON-LD object.
 
 > TODO
@@ -310,10 +308,10 @@ Full list of http-header attributes to use see [here](./header).:
 |  |  |  |
 | Content-Type         | MIME type of the data in the response body. | `mandatory` if a response body is present. |
 | Accept-Post	       | A comma-separated list of allowed media types, for instance "text/turtle", "application/ld+json" (for descriptions conforming to the IDS Information Model), or "application/octet-stream" (for binary data or IDS Artifacts). | `optional`  |
-| Link                 | '<IDS class URI>; rel="type"' and/or '<http://www.w3.org/ns/ldp#Resource>; rel="type"' and/or '<http://www.w3.org/ns/ldp#BasicContainer>; rel="type"' | `mandatory` if the response body contains a LDP or IDS resource. |
+| Link                 | '\<IDS class URI\>; rel="type"' and/or '<[http://www.w3.org/ns/ldp#Resource](http://www.w3.org/ns/ldp#Resource)>; rel="type"' and/or '<[http://www.w3.org/ns/ldp#BasicContainer](http://www.w3.org/ns/ldp#BasicContainer)>; rel="type"' | `mandatory` if the response body contains a LDP or IDS resource. |
 | ETag                 | A unique version identifier representing the current state of the requested resource. | `mandatory` |
 | Allow                | The enabled HTTP methods, selection of GET, OPTIONS, HEAD, PUT, PATCH, POST, DELETE, CONNECT | `mandatory` |
-|  |  |  |
+
 ##### *Table 3: Response headers.*
 
 
@@ -325,8 +323,7 @@ Although the IDS Information Model contains its own status codes, the
 
 | Code  | Meaning |  Example |
 | :--- | --- | --- |
-| 1xx   |	The origin server has received the request and will continue working on it. The IDS not explicitly specifies the meaning of this group of status codes. ||
-| 102   | Processing. The server needs some time to process the request. | Sebastian Bader: Is 102 really the correct code? |
+| 1xx   |	The origin server has received the request and will continue working on it. The IDS not explicitly specifies the meaning of this group of status codes. | |
 | 200   | Ok. The request is valid. May or may not respond with data. | |
 | 201   | Created. A new resource has been created. The URL of the new resource has to be announced through the "Link" header. | |
 | 204   | No Content. The server has received the request but does not send any content back. | |
@@ -342,7 +339,7 @@ Although the IDS Information Model contains its own status codes, the
 | 500   | Internal Server Error. Something went wrong. The server may or may not indicate the problem or how to solve it. | |
 | 501   | Not (Yet) Implemented. Endpoint might show up later. | |
 | 503   | Service (Temporarily) Unavailable. Try later. | |
-| > TODO? | | |
+
 ##### *Table 4: Status codes.*
 
 
@@ -360,7 +357,7 @@ That implies that even though the single interactions are stateless, and
  results of previous interactions to some degree. The respective obligations
  depend on the type of intended operation and is specified through the
  sub-classes of the IDS Message class. The following table outlines the
- binding of the Message semantic with the respective LDP binding for the IDS: <!--it is not clear how the properies (un)safe and (not) idempotent are defined-->
+ binding of the Message semantic with the respective LDP binding for the IDS:
 
 | Interaction Pattern  | IDS-LDP Request Binding |  IDS-LDP Response Binding | Consequence |
 | :--- | --- | --- | --- |
@@ -449,7 +446,7 @@ That implies that even though the single interactions are stateless, and
 |	ids:ContractRequestMessage	|	POST to the referenced ContractOffer. If no (suitable) ids:ContractOffer is provided, target resource is the ids:Resource itself. Must contain a valid IDS Contract Request (in JSON-LD, if the server has not signaled other supported content types before).	|	200: ContractRequest is accepted, ContractAgreement is in the response body.	|	unsafe, not idempotent, both connectors must store at least the resulting ids:ContractAgreement.	|
 |		|		|	400: HTTP Request itself is fine but the Contract Request is not accepted. A desired respective Contract Offer may be sent in the response payload.	|		|
 |		|		| 	|		|
-|	ids:ContractOfferMessage	|	POST to the referenced ContractRequest. If no (suitable) ids:ContractRequest is provided, target resource is the ids:Resource itself. Must contain a valid IDS Contract Offer (in JSON-LD, if the server has not signaled other supported content types before).	|	200: ContractOffer is accepted, ContractAgreement is in the response body.	|	unsafe, not idempotent, both connectors must store at least the resulting ids:ContractAgreement. <!--unsure what problem is outlined here-->	|
+|	ids:ContractOfferMessage	|	POST to the referenced ContractRequest. If no (suitable) ids:ContractRequest is provided, target resource is the ids:Resource itself. Must contain a valid IDS Contract Offer (in JSON-LD, if the server has not signaled other supported content types before).	|	200: ContractOffer is accepted, ContractAgreement is in the response body.	|	unsafe, not idempotent, both connectors must store at least the resulting ids:ContractAgreement.	|
 |		|		|	400: HTTP Request itself is fine but the Contract Request is not accepted. A desired respective Contract Offer may be sent in the response payload.	|		|
 |		|		| 	|		|
 |	Execute a remote operation (ids:InvokeOperationMessage)	|	POST to the operation endpoint. Further parameters or requirements need to be described by the endpoint itself.	|	102: Operation execution takes more time, please wait.	|	unsafe, not idempotent	|
@@ -489,17 +486,15 @@ That implies that even though the single interactions are stateless, and
 |		|		|	409: Conflict	|		|
 
 ##### *Table 5: Interaction patterns and their mapping in the IDS-LDP binding.*
-|		|		| 	|		|
+
+
 This binding, in particular, requires the following:
 
-- An IDS Connector must have
-  - a self-description hosted at its root,
-  - a inbox for notifications at /inbox <!--messages are not covered in the holde document yet-->
-- All entities have at least one URL which points to their location on a Connector server.
-- All Resources/Representations/Artifacts must be able to handle related Contract
- interactions sent to them. At least an error message must be returned. <!--again the contract issue is not clear from reading this document, this should be explained further-->
-
-tbc.
+- A compliant IDS Connector must have a self-description hosted at its root.
+- A compliant IDS Connector may have an inbox for notifications at /inbox.
+- All entities of a complaint IDS Connector have at least one URL which points to their location on a Connector server.
+- All Resources, Representations, and Artifacts of a complaint IDS Connector must be able to handle related Contract
+ interactions sent to them. At least an error message must be returned.
 
 
 ## Notifications
@@ -508,7 +503,6 @@ See [here `IDS Linked Data Notification (IDS-LDN)`](./ldn)
 
 ## IDS Message Mapping
 
-<!-- i am not sure whether the understanding of  notifications in LD is the same as in IDS. As I am aware notication should only inform about an event. The resulting actions that are taken in response to these events are not notifications-->
 
 | Notification Message Name  | LDP-Mapping |  Description |
 | :--- | --- | --- |
@@ -516,17 +510,17 @@ See [here `IDS Linked Data Notification (IDS-LDN)`](./ldn)
 |		|		| 	|
 |	ResultMessage	|	HTTP Response	|	Result messages are intended to annotate the results of a query command.	|
 |		|		| 	|
-|	ResponseMessage	|	HTTP Response	|	Response messages hold information about the reaction of a recipient to a formerly sent command or event. They must be correlated to this message <!--previous action--->. |
+|	ResponseMessage	|	HTTP Response	|	Response messages hold information about the reaction of a recipient to a formerly sent command or event. They must be correlated to this message. |
 |		|		|	May be used for messages, which are not covered by the core IDS messages.	|
-|		|		| <!--the first three message discriptions are not very clear, might be due to the more general nature---> |
-|	ResourceUpdateMessage	|	PUT {Resource URL} <br/><br/>	Resource instance as serialized RDF in the request body	|	Message indicating an update of a specific resource<!--Following my undertstanding of notifications in LD there are only get and post requests for messages --->	|
+|		|		|  |
+|	ResourceUpdateMessage	|	PUT {Resource URL} <br/><br/>	Resource instance as serialized RDF in the request body	|	Message indicating an update of a specific resource	|
 |		|	POST {Connector Inbox URL} <br/><br/> message content as serialized RDF in the request body	|		|
 |		|		| 	|
-|	ResourceUnavailableMessage	|	DELETE {Resource URL}	|	Message indicating that a specific resource is unavailable <!--why delete?-->	|
+|	ResourceUnavailableMessage	|	DELETE {Resource URL}	|	Message indicating that a specific resource is not longer available	|
 |		|	POST {Connector Inbox URL}<br/><br/>message content as serialized RDF in the request body	|		|
 |		|		| 	|
 |	ResourceAvailableMessage	|	POST {Connector Offers URL at the Broker Catalog}<br/><br/>Resource instance as serialized RDF in the request body	|	Message indicating that a specific resource is available.	|
-|		|	PUT {URL of the connector at the server}<br/><br/>Resource instance as serialized RDF in the request body	| <!-- Why put? why should a notification be updated? or is the ressource updated? Why should a ressource be updated using a notification message--> |
+|		|	PUT {URL of the connector at the server}<br/><br/>Resource instance as serialized RDF in the request body	|  |
 |		|	POST {Connector Inbox URL}<br/><br/>Message content as serialized RDF in the request body	|		|
 |		|		| 	|
 |	RequestInProcessMessage	|	HTTP Response with status code 1xx	|	Notification that a request has been accepted and is being processed.	|
@@ -542,8 +536,6 @@ See [here `IDS Linked Data Notification (IDS-LDN)`](./ldn)
 |	ParticipantUnavailableMessage	|	DELETE {Participant URL}	|	Event notifying the recipient(s) that a participant will be unavailable and never be available again	|
 |		|	POST {Connector Inbox URL}<br/><br/>message content as serialized RDF in the request body	|		|
 |		|		| 	|
-|	ParticipantResponseMessage	|	HTTP Response	|	Message that follows up a ParticipantRequestMessage and contains the Participant's information in the payload section.	|
-|		|		| 	|
 |	ParticipantRequestMessage	|	GET {Participant URL}<br/><br/>Header: "Accept: application/ld+json" or any other well-known RDF MIME type	|	Message asking for retrieving the specified Participants information as the payload of an ParticipantResponse message	|
 |		|		| 	|
 |	ParticipantCertificateUnavailableMessage	|	POST {Connector Inbox URL}<br/><br/>message content as serialized RDF in the request body	|	Indicates that a (previously certified) Participant is no more certified. This could happen, for instance, if the Certification Body revokes a granted certificate or if the certificate has just expired.	|
@@ -556,19 +548,17 @@ See [here `IDS Linked Data Notification (IDS-LDN)`](./ldn)
 |		|		| 	|
 |	OperationResultMessage	|	HTTP Response	|	Message indicating that the result of a former InvokeOperation message is available. May transfer the result data in its associated payload section	|
 |		|		| 	|
-|	OperationResultMessage	|	HTTP Response	|	Message indicating that the result of a former InvokeOperation message is available. May transfer the result data in its associated payload section. <!--duplicat--->	|
-|		|		| 	|
 |	NotificationMessage	|	POST {Connector Inbox URL}<br/><br/>message content as serialized RDF in the request body	|	Notification messages are informative and no response is expected by the sender. May be used for scenarios, which are not covered by the core IDS messages.	|
 
 | Request Message Name  | LDP-Mapping |  Description |
 | :--- | --- | --- |
-|	MessageProcessedNotificationMessage	|	HTTP Response with status code 2xx	|	Notification that a message has been successfully processed (i.e., not ignored or rejected). <!-- if it's a notification, why is this under request message -->	|
+|	MessageProcessedNotificationMessage	|	HTTP Response with status code 2xx	|	Notification that a message has been successfully processed (i.e., not ignored or rejected).	|
 |		|		| 	|
 |	LogMessage	|	POST {Connector Inbox URL} <br/><br/> message content as serialized RDF in the request body	|	Log Message which can be used to transfer logs e.g. to the clearing house.	|
 |		|		| 	|
 |	InvokeOperationMessage	|	POST {ids:Interactive Endpoint URL}[?{query parameter}]	|	Message requesting the recipient to invoke a specific operation.	|
 |		|		| 	|
-|	DescriptionResponseMessage	|	HTTP Response	|	Message containing the metadata, which a Connector previously requested via the ids:DescriptionRequestMessage, in its payload.<!-- response message under request message -->	|
+|	DescriptionResponseMessage	|	HTTP Response	|	Message containing the metadata, which a Connector previously requested via the ids:DescriptionRequestMessage, in its payload.	|
 |		|		| 	|
 |	DescriptionRequestMessage	|	GET {resource URL} <br/><br/> Header: "Accept: application/ld+json" or any other well-known RDF MIME type	|	Message requesting metadata. If no URI is supplied via the ids:requestedElement field, this messages is treated like a self-description request and the recipient should return its self-description via an ids:DescriptionResponseMessage. However, if a URI is supplied, the Connector should either return metadata about the requested element via an ids:DescriptionResponseMessage, or send an ids:RejectionMessage, e.g. because the element was not found 	|
 |		|		| 	|
@@ -578,14 +568,14 @@ See [here `IDS Linked Data Notification (IDS-LDN)`](./ldn)
 |		|		| 	|
 |	ContractRequestMessage	|	POST {ids:Interactive Endpoint URL} or {Target resource URL}	|	Message containing a suggested content contract (as offered by the data consumer to the data provider) in the associated payload (which is an instance of ids:ContractRequest).	|
 |		|		| 	|
-|	ContractRejectionMessage	|	HTTP Response with status code 400	|	Message indicating rejection of a contract. .<!-- response message under request message -->	|
+|	ContractRejectionMessage	|	HTTP Response with status code 400	|	Message indicating rejection of a contract. .	|
 |		|		| 	|
 |	ContractOfferMessage	|	POST {ids:Interactive Endpoint URL} or {Target resource URL}	|	Message containing a offered content contract (as offered by a data provider to the data consumer) in the associated payload (which is an instance of ContractOffer). In contrast to the ids:ContractResponseMessage, the ids:ContractOfferMessage is not related to a previous contract request.	|
 |		|		| 	|
-|	ContractAgreementMessage	|	HTTP Response to a ContractOfferMessage or ContractRequestMessage	|	Message containing a contract with resource access modalities on which two parties have agreed. .<!-- response message under request message -->	|
+|	ContractAgreementMessage	|	HTTP Response to a ContractOfferMessage or ContractRequestMessage	|	Message containing a contract with resource access modalities on which two parties have agreed.	|
 |		|		| 	|
 |	ConnectorUpdateMessage	|	PUT {URL of the connector at the server}<br/><br/>Connector instance as serialized RDF in the request body |	Event notifying the recipient(s) about a connector's configuration change. The payload of the message must contain the updated connector's self-description.	|
-|		|	POST {Connector Inbox URL}<br/><br/>message content as serialized RDF in the request body	| <!--for me that's a notification--> |
+|		|	POST {Connector Inbox URL}<br/><br/>message content as serialized RDF in the request body	| |
 |		|		| 	|
 |	ConnectorUnavailableMessage	|	DELETE {URL of the connector at the server}	|	Event notifying the recipient(s) that a connector will be unavailable and never be available again.	|
 |		|	POST {Connector Inbox URL}	|	message content as serialized RDF in the request body	|
@@ -659,12 +649,14 @@ And update its state as:
     a ids:BaseConnector, ldp:BaseContainer ;
     ids:catalog [
           a <https://example.org/connector/Catalog> ;
-          ids:offers <https://example.org/connector/Catalog/some-resourcehttps://bad-example.org/some-resource> ;
+          ids:offers <https://example.org/connector/Catalog/some-resource> ;
           ldp:contains <https://example.org/connector/Catalog/some-resource> ;
     ] ;
     ldp:contains <https://example.org/connector/Catalog> ;
     #...
 .
+
+<https://example.org/connector/Catalog/some-resource> owl:sameAs https://bad-example.org/some-resource .
 ```
 
 Therefore, the User Agent must not expect its originally suggested name to be used by the Origin Server.
@@ -690,20 +682,20 @@ Furthermore, no IDS Connector is allowed to rename, extend, update or shorten an
 ## Example (non-normative)
 > TODO:
 ```
-
+a example
 ```
 
-## REST API (draft!!!)
+## REST API (non-normative)
 
 - https://app.swaggerhub.com/apis/jlangkau/IDS-LDP/
 - https://app.swaggerhub.com/apis/idsa/ids-connector/
 
 ## References
 
-|   |  |
+| Reference | Explanation |
 | :--- | --- |
-|	IDS Message Taxonomy	|		|
-|	Linked Data Platform 1.0	|		|
+|	IDS Message Taxonomy	|	Vocabulary of possible message in the IDS |
+|	Linked Data Platform 1.0	|	The 	|
 |	Linked Data Platform 1.0 Primer	|		|
 |	WebAccessControl - W3C Wiki	|		|
 |	GitHub - solid/web-access-control-spec: Web Access Control (WAC) specification (as used by the Solid project)	|		|
