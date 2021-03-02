@@ -2,8 +2,6 @@
 
 [swagger](https://app.swaggerhub.com/apis/IDS_Association/PolicyInformationPoint/0.3.0#/IDS-LDP)
 
-[TODO](./TODO.md)
-
 
 ## Scope of this Document
 
@@ -255,12 +253,16 @@ For every class except an ids:Artifact, the body of a sending HTTP request (POST
 Still, every IDS compliant message exchange must use valid JSON-LD serializations,
  in particular by using the JSON key "@context" with either a proper local context
  definition or by linking to an appropriate remote context document. The default
- context element for the IDS is  "@context": "https://w3id.org/idsa/contexts/context.jsonld".
+ context element for the IDS is  `"@context": "https://w3id.org/idsa/contexts/context.jsonld"`.
 
 The context key-value pair must always be the first entry in any IDS compliant JSON
  or JSON-LD object.
 
-> TODO
+```ld+json
+{
+    "@context": "https://w3id.org/idsa/contexts/context.jsonld"
+}
+```
 
 
 ## Access Control
@@ -268,9 +270,10 @@ The context key-value pair must always be the first entry in any IDS compliant J
 Access control (AC) to a given resource in a pure LDP-world is handled by w3c
  "Web Access Control" (WAC). But the permissions/restrictions expressed by WAC
  are NOT sufficient, because some contexts - not least context 'time' - are not
- considered by WAC. <!--What context?-->
-
-> TODO
+ considered by WAC.
+<!--What context? @SBA: what context ist mentioned in WAC, ist it this you ment?!?-->
+<!-- see also: http://solid.github.io/web-access-control-spec/ -->
+> TODO:  
 
 
 ## Usage Control
@@ -685,6 +688,9 @@ a example
 
 ## REST API (non-normative)
 
+<!-- TODO: we should discuss, how to handle examples and how-tos -->
+> TODO:
+
 - https://app.swaggerhub.com/apis/jlangkau/IDS-LDP/
 - https://app.swaggerhub.com/apis/idsa/ids-connector/
 
@@ -705,6 +711,8 @@ a example
 |	LDN 2017	|	Linked Data Notifications, W3C Recommendation: Linked Data Notifications	|
 
 ---
+
+<!-- TODO: do we handle authos/contirbutors?!? -->
 
 ## Authors
 | | | |
