@@ -4,8 +4,6 @@
 
 [TODO](./TODO.md)
 
-[on its way to `IDS-G`](./GOTO/IDS-G)
-
 
 ## Scope of this Document
 
