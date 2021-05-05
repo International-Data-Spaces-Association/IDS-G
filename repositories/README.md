@@ -19,10 +19,6 @@ Maven repository for open libraries from Fraunhofer IAIS. In this case
 - found a bug or need more functionalities? [Submit an issue!](https://github.com/International-Data-Spaces-Association/InformationModel/issues)
 ---
 
-## [ids-infomodel-demo, Fraunhofer IAIS](https://jira.iais.fraunhofer.de/stash/projects/ICTSL/repos/ids-infomodel-demo/browse)
-Documentation Java IDS Infomodel.
-- last click: 2020-01-16
----
 
 ## [IDSCP, Fraunhofer AISEC](https://github.com/industrial-data-space/trusted-connector/tree/develop/ids-comm)
 [`IDS Communication Protocol`, IDS-G glossary](../glossary/README.md#idscp), public Open Source code from Fraunhofer AISEC regarding the optional
