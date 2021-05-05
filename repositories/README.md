@@ -3,7 +3,7 @@
 
 In alphabetical order:
 
-## [Artifactory, Fraunhofer IAIS](http://maven.iais.fraunhofer.de/artifactory/webapp/#/home)
+## [Artifactory, Fraunhofer IAIS](https://maven.iais.fraunhofer.de/artifactory/eis-ids-public/de/fraunhofer/iais/eis/ids)
 Maven repository for open libraries from Fraunhofer IAIS. In this case
  especially for the Java implementation of the IDS Infomodel.
 - last click: 2020-01-16
