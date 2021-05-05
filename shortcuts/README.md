@@ -19,7 +19,7 @@
 |**`IDS-G`**    | [IDS Global](../README.md)
 |**`IDS-I`**    | *IDS Association* "Industrial Communitiy", [information under associations homepage](https://www.internationaldataspaces.org/idsa-industrial-community/)
 |**`IDS-IM`**   | IDS Information Model, [glossary](../glossary/README.md#ids-information-model), [GitHub repository)](https://github.com/International-Data-Spaces-Association/InformationModel)
-|**`IDS-MDB`**  | IDS Meta Data Broker
+|**`IDS-MDB`**  | IDS Meta Data Broker ([Specification Version 2.0](https://www.internationaldataspaces.org/wp-content/uploads/2020/09/IDSA-White-Paper-Specification-IDS-Meta-Data-Broker.pdf))
 |**`IDS-RAM`**  | IDS Reference Architecture Model, [glossary](../glossary/README.md#ids-reference-architecture-model), [IDS-RAM 3.0 (current version, PDF)](https://www.internationaldataspaces.org/wp-content/uploads/2019/03/IDS-Reference-Architecture-Model-3.0.pdf)
 |**`IDS-TSC`**  | IDS Technical Steering Committee
 |**`ParIS`**    | Participant Information Service, [glossary](../glossary/README.md#participant-information-service)
