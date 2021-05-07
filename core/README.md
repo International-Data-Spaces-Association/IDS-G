@@ -1,5 +1,6 @@
 
 - [IDS Information Model (IDS-IM)](./InformationModel/README.md)
+- [Certification Authority (CA)](./CA/README.md)
 - [Dynamic Attribute Provisioning Service (DAPS)](./DAPS/README.md)
 - [IDS Connector](./Connector/README.md)
 - [IDS Meta Data Broker (IDS-MDB)](./MetaDataBroker/README.md)
