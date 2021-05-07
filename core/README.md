@@ -8,4 +8,6 @@
 - [Clearing House](./ClearingHouse/README.md)
 - [IDS Technologies](./Technologies/README.md)
   - [Usage Control](./Technologies/UsageControl/README.md)
+    - [Contract](./Technologies/UsageControl/Contract/README.md)
+    - [Enforcement](./Technologies/UsageControl/Enforcement/README.md)
   - [IDS Communication Protocol (IDSCP)](./Technologies/idscp/README.md)
