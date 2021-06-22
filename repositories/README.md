@@ -3,21 +3,22 @@
 
 In alphabetical order:
 
-## [Artifactory, Fraunhofer IAIS](http://maven.iais.fraunhofer.de/artifactory/webapp/#/home)
+## [Artifactory, Fraunhofer IAIS](https://maven.iais.fraunhofer.de/artifactory/eis-ids-public/de/fraunhofer/iais/eis/ids)
 Maven repository for open libraries from Fraunhofer IAIS. In this case
  especially for the Java implementation of the IDS Infomodel.
 - last click: 2020-01-16
+- [get access](mailto:contact@ids.fraunhofer.de)
 ---
 
-## [IDS InformationModel](https://github.com/IndustrialDataSpace)
+## [IDS InformationModel](https://github.com/International-Data-Spaces-Association/InformationModel)
 [`IDS information model`, IDS-G glossary](../glossary/README.md#ids-information-model)
 - last click: 2020-01-16
+- stable release located at the master branch, the develop branch contains the working version
+- Find downloadable [releases](https://github.com/International-Data-Spaces-Association/InformationModel/releases)
+- See the whole Information Model: Clone the repository and use [Protégé](https://protege.stanford.edu/) to open Ontology.ttl
+- found a bug or need more functionalities? [Submit an issue!](https://github.com/International-Data-Spaces-Association/InformationModel/issues)
 ---
 
-## [ids-infomodel-demo, Fraunhofer IAIS](https://jira.iais.fraunhofer.de/stash/projects/ICTSL/repos/ids-infomodel-demo/browse)
-Documentation Java IDS Infomodel.
-- last click: 2020-01-16
----
 
 ## [IDSCP, Fraunhofer AISEC](https://github.com/industrial-data-space/trusted-connector/tree/develop/ids-comm)
 [`IDS Communication Protocol`, IDS-G glossary](../glossary/README.md#idscp), public Open Source code from Fraunhofer AISEC regarding the optional

@@ -1,8 +1,8 @@
 # IDS Usage Control
 
-## IDS Usage Policy
+## IDS Usage Contract
 
-- [IDS-G specification "IDS Usage Policy"](./Policy/README.md)
+- [IDS-G specification "IDS Usage Contract"](./Contract/README.md)
 
 ---
 

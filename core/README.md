@@ -1,5 +1,6 @@
 
 - [IDS Information Model (IDS-IM)](./InformationModel/README.md)
+- [Certification Authority (CA)](./CA/README.md)
 - [Dynamic Attribute Provisioning Service (DAPS)](./DAPS/README.md)
 - [IDS Connector](./Connector/README.md)
 - [IDS Meta Data Broker (IDS-MDB)](./MetaDataBroker/README.md)
@@ -7,5 +8,6 @@
 - [Clearing House](./ClearingHouse/README.md)
 - [IDS Technologies](./Technologies/README.md)
   - [Usage Control](./Technologies/UsageControl/README.md)
+    - [Contract](./Technologies/UsageControl/Contract/README.md)
+    - [Enforcement](./Technologies/UsageControl/Enforcement/README.md)
   - [IDS Communication Protocol (IDSCP)](./Technologies/idscp/README.md)
-  - [IDS REST Protocol, aka. IDS-LDP](./Technologies/ids-rest/README.md)
