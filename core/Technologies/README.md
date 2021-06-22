@@ -14,6 +14,6 @@
 
 ## IDS REST Protocol (ids-rest)
 
-- [ids-rest](./ids-rest/README.md)
+- [ids-rest](../../Communication/protocols/ids-rest/README.md)
 
 ---
