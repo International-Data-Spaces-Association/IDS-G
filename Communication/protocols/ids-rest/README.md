@@ -288,7 +288,7 @@ The operation semantics follows the typical REST semantics for CRUD operations. 
 - HEAD: Read the meta-information of the target resource.
 - OPTIONS: Read the allowed HTTP operations on the target resource.
 - PATCH: Attach content to the target resource.
-- CONNECT: unclear
+- CONNECT: undefined method for IDS-REST
 
 The IDS REST binding follows this pattern. The following sections explain the
  generally used parts like headers, body and response structure, the error
@@ -485,7 +485,7 @@ That implies that even though the single interactions are stateless, and
 |		|		| 	|		|
 |	Response Message	|	Response messages are directly defined by HTTP Responses. No (asynchronous) interaction sequence is intended by the IDS-REST Binding.	|		|		|
 |		|		| 	|		|
-|	Request an Access Token (ids:AccessTokenRequest-Message)	|	POST to the Authorization Server as specified by OAuth2: CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, (AUTHORIZATION_)CODE, CALLBACK_URL, SCOPE, STATE	|	200: AccessToken in response body.	|		|
+|	Request an Access Token (ids:AccessTokenRequest-Message)	|	POST to the Authorization Server as specified by OAuth2: CLIENT_ID, CLIENT_SECRET, GRANT_TYPE, (AUTHORIZATION_)CODE, CALLBACK_URL, SCOPE, STATE; Note: An Access Token is different to the Dynamic Attribute Token that is issued from the IDS DAPS. The Access Token as referenced here is intended for authorization mechanisms on top of the IDS specifications.	|	200: AccessToken in response body.	|		|
 |		|		|	invalid_request	|	see RFC 6749 - The OAuth 2.0 Authorization Framework 	|
 |		|		|	unauthorized_client	|		|
 |		|		|	access_denied	|		|
@@ -652,7 +652,7 @@ And update its state as:
     a ids:BaseConnector, ldp:BaseContainer ;
     ids:catalog [
           a <https://example.org/connector/Catalog> ;
-          ids:offers <https://example.org/connector/Catalog/some-resourcehttps://bad-example.org/some-resource> ;
+          ids:offers <https://example.org/connector/Catalog/some-resource> ;
           ldp:contains <https://example.org/connector/Catalog/some-resource> ;
     ] ;
     ldp:contains <https://example.org/connector/Catalog> ;
@@ -724,10 +724,10 @@ This Multipart Message can be transformed to the following REST request:
 
 ```http
 GET https://www.example.org/server/cpu_3
-ids-modelVersion : "3.0.0",
+ids-modelVersion : "3.0.0"
 ids-issuerConnector: "https://wall-e.nicos-rd.com/"
 ids-securityToken: "eyJ1c2VyIjoiam90dCJ9...42"
-ids-issued: "2019-12-02T08:25:08.245Z",
+ids-issued: "2019-12-02T08:25:08.245Z"
 Accept: text/turtle
 ```
 
