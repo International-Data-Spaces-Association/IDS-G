@@ -1,4 +1,0 @@
-# IDS Communication Protocol (IDSCP)
-
-
----

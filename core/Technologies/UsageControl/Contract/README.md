@@ -1,4 +1,0 @@
-# IDS Usage Contact
-
-
----
