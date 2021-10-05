@@ -2,7 +2,7 @@
 
 IDS-G is the official repository of [IDSA](https://www.internationaldataspaces.org) to publish the [IDS-RAM]() and the subsequent specifications.
 
-All content published here is approved by the IDSA Technical Steering Committee and the ISDA Working Groups. Detailed information on the contribution process can be found in the [IDS-G Handbook](Handbook/README.md). Nevertheless, you are very welcome to contribute
+All content published here is approved by the IDSA Technical Steering Committee and the IDSA Working Groups. Detailed information on the contribution process can be found in the [IDS-G Handbook](Handbook/README.md). Nevertheless, you are very welcome to contribute
 to this project when you find a bug, want to suggest an improvement, or have an idea for a useful
 feature. For this, always create an issue and a corresponding branch, and follow our style
 guides as described below.
