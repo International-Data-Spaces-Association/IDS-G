@@ -95,7 +95,7 @@ See also:
 
 ## Request call to get a token
 
-`client_assertion` id the base64 encoded request token, shown under
+`client_assertion` is the base64 encoded request token, shown under
  ["Request token that is handed in at DAPS side"](#request-token-that-is-handed-in-at-daps-side).
 
 
@@ -130,9 +130,21 @@ See also:
 
 ## Dynamic Attribute Token Content
 
-The DAPS issues the requested DAT, if authentication succeeds.
+The DAPS issues the requested DAT, if authentication succeeds, embedded in a JSON Object under the key _access_token_, e.g.
 
-The DAT has these header fields:
+```
+{
+    "access_token": "<DAT>",
+    "scope": "ids_connector_attributes",
+    "token_type": "bearer",
+    "expires_in": "3600"
+}
+```
+
+For details about this format, please refer to [RFC 6749, Section 5.1](https://datatracker.ietf.org/doc/html/rfc6749#section-5.1)
+
+The DAT itself is represented as an encoded JSON Web Token.
+Decoded it has these header fields:
 
 |**Field name**|**mandantory**|**cardinality**|**content**
 |:---|:---|:---|:---|
@@ -161,7 +173,7 @@ The DAT has these payload fields:
 
 ## Dynamic Attribute Token (DAT)
 
-An example of a complete DAT, including header and payload is shown below:
+An example of a complete decoded DAT, including header and payload is shown below:
 
 ```
 {
