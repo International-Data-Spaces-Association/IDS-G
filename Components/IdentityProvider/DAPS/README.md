@@ -42,7 +42,7 @@ The JWT-Bearer itself adheres to [RFC 7519](https://www.rfc-editor.org/rfc/rfc75
 It contains [JSON-LD](https://www.w3.org/TR/json-ld11/) data, and must additionally contain all of the following claims:
 
 |**Field name**|**additional restrictions**
-|:---|:---|:---|:---|
+|:---|:---|
 |**@context**  | Must be `https://w3id.org/idsa/contexts/context.jsonld` |
 |**@type**     | Must be `ids:DatRequestToken` |
 |**sub**       | Must be the connector's ID |
@@ -78,8 +78,8 @@ The DAPS issues the requested DAT, or an error response, as per [RFC 6749](https
 The Access Token ("the DAT") itself is a JWT adhering to [RFC 9068](https://datatracker.ietf.org/doc/html/rfc9068),
 which in turn contains [JSON-LD](https://www.w3.org/TR/json-ld11/) encoded data, subject to the following additional constraints:
 
-|**Field name**|**additional constraints**
-|:---|:---|:---|:---|
+|**Field name**|**additional constraints** |
+|:---|:---|
 |**@context**             | Must be `https://w3id.org/idsa/contexts/context.jsonld` |
 |**@type**                | Must be `ids:DatPayload` |
 |**iss**                  | Must be the DAPS URI |
