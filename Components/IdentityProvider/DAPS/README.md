@@ -45,8 +45,8 @@ It contains [JSON-LD](https://www.w3.org/TR/json-ld11/) data, and must additiona
 |:---|:---|
 |**@context**  | Must be `https://w3id.org/idsa/contexts/context.jsonld` |
 |**@type**     | Must be `ids:DatRequestToken` |
-|**sub**       | Must be the connector's ID |
-|**iss**       | Must be the connector's ID |
+|**sub**       | Must be the [connector's ID](../Connector_Identities.md) |
+|**iss**       | Must be the [connector's ID](../Connector_Identities.md) |
 |**aud**       | Must be `idsc:IDS_CONNECTORS_ALL` |
 |**iat**       | Must be present |
 |**nbf**       | Must equal **iat** |
@@ -83,10 +83,10 @@ which in turn contains [JSON-LD](https://www.w3.org/TR/json-ld11/) encoded data,
 |**@context**             | Must be `https://w3id.org/idsa/contexts/context.jsonld` |
 |**@type**                | Must be `ids:DatPayload` |
 |**iss**                  | Must be the DAPS URI |
-|**sub**                  | Must be the requesting connector's ID |
+|**sub**                  | Must be the requesting [connector's ID](../Connector_Identities.md) |
 |**exp**                  | Should be limited to a short time period (Recommendation: 1 hour) |
 |**nbf**                  | Must equal `iat` |
-|**aud**                  | Should include `idsc:IDS_CONNECTORS_ALL`. Alternatively, individual connector IDs may be specified. |
+|**aud**                  | Should include `idsc:IDS_CONNECTORS_ALL`. Alternatively, individual [connector IDs](../Connector_Identities.md) may be specified. |
 |**scope**                | Must include `idsc:IDS_CONNECTOR_ATTRIBUTES_ALL` |
 |**securityProfile**      | Must be an instance of the [`ids:SecurityProfile` class](https://w3id.org/idsa/core/SecurityProfile) |
 
