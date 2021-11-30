@@ -106,14 +106,14 @@ Therefore, the receiving party needs to connect the identity of a connector by r
 with its IDS identity claim of the DAT.
 The public transportation key must be one of the `transportCertsSha256` values.
 Otherwise, the receiving connector must expect that the requesting connector is using a false identity claim.
-Multiple values can be specified within a single string, separated by a single space character.
+In general, this claim holds an Array of Strings, but it may optionally hold a single String instead if the Array would have exactly one element.
 
 * **extendedGuarantee**
 In case a connector fulfills a certain security profile but deviates for a subset of attributes,
 it can inform the receiving connector about its actual security features.
 This can only happen if a connector reaches a higher level for a certain security attribute than the actual reached certification asks for.
 A deviation to lower levels is not possible, as this would directly invalidate the complete certification level.
-Multiple values can be specified within a single string, separated by a single space character.
+In general, this claim holds an Array of Strings, but it may optionally hold a single String instead if the Array would have exactly one element.
 
 
 ## Example
