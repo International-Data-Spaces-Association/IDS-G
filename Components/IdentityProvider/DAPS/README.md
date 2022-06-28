@@ -157,7 +157,7 @@ The DAT has these payload fields:
 |**Field name**|**mandantory**|**cardinality**|**content**
 |:---|:---|:---|:---|
 |**`@context`**             | yes    | 1    | The JSON-LD context containing the IDS classes, properties and instances. Must be "https://w3id.org/idsa/contexts/context.jsonld". |
-|**`@type`**                | yes    | 1    | In the context of the IDS, the request payload is an RDF instance and therefore must state that it has "@type" : "ids:DatRequestToken".
+|**`@type`**                | yes    | 1    | In the context of the IDS, the request payload is an RDF instance and therefore must state that it has "@type" : "ids:DatPayload".
 |**`iss`**                  | yes    | 1    | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid DAPS. The "iss" value must be a valid URL for the DAPS such as "https://daps.aisec.fraunhofer.de".  |
 |**`sub`**                  | yes    |      | Subject the requesting connector the token is created for. This is the connector requesting the [DAT](#dynamic-attribute-token-dat). The `sub` value must be the  combined entry of the `SKI` and `AKI` of the IDS X509 as presented in Sec. 4.2.1.  In this context, this is identical to `iss`. |
 |**`exp`**                  | yes    | 1    | Expiration date of the token. Can be chosen freely but should be limited to a short period of time (e.g., one minute).  |
