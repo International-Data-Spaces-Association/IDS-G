@@ -1,8 +1,7 @@
-# International Data Spaces Global (IDS-G-pre)
+# International Data Spaces Global (IDS-G)
 
 ![](./resources/IDS_G_260x95.png)
 
-Preparation of work items for IDS-G
 
 Please raise an issue and create a pull request.
 
