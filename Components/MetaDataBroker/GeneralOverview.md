@@ -16,7 +16,7 @@ the International Data Spaces. Still, an IDS Meta Data Broker provides a collect
 This document serves as a specification defining what an IDS Meta Data Broker is, which functionalities it must support and which services other IDS components can expect.
 The described content is aligned with the explanations of the IDS-RAM 3.0 and complements the[“The IDS Communication Guide”](https://industrialdataspace.jiveon.com/docs/DOC-2524).<p>
 A software component is allowed to describe it self as an IDS Connector only after an IDS compliant Certification Body verified that the necessary capabilities are in place and
-operate in IDS conformant manners. The list of certification criteria ([Certification Criteria -Components v2.1.0](https://industrialdataspace.jiveon.com/docs/DOC-2811)) contains the respective requirements. 
+operate in IDS conformant manners. The list of certification criteria ([Certification Criteria -Components v2.1.2](https://industrialdataspace.jiveon.com/docs/DOC-3823)) contains the respective requirements. 
 The same procedure is valid for an IDS Meta Data Broker, with additional requirements for broker-functionalities as documented in this list.
 After a successful certification of the relevant Criteria of an IDS Connector and as an IDS Meta Data Broker, a software component can include the following RDF statement
 into its Self-Description:<p>

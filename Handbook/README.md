@@ -133,6 +133,8 @@ Links should always be relative, do not absolut paths
 
 
 ### Case sensitive
+
 Github is case sensitive with regards to links, so please check your use of capital and small initial letters 
+
 =======
 

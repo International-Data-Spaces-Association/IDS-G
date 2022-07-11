@@ -1,0 +1,237 @@
+ {    
+   "@context": {
+      "ids":"https://w3id.org/idsa/core/",
+      "idsc" : "https://w3id.org/idsa/code/"
+   },    
+  "@type": "ids:ContractAgreement",    
+  "@id": "https://w3id.org/idsa/autogen/contract/complex-policy-access",    
+  "profile": "http://example.com/ids-profile",    
+  "ids:provider": "http://ids.org/party/my-party",    
+  "ids:consumer": "http://ids.org/party/consumer-party",    
+  "ids:permission": [{    
+      "ids:target": {
+          "@id":"http://ids.org/data/1234"
+       },    
+      "ids:action": [{
+        "@id":"idsc:USE"
+      }],     
+      "ids:constraint": [{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:CONNECTOR"},  
+        "ids:operator": { "@id": "idsc:IN"}, 
+      "ids:rightOperand": [{"@value": "http://ids.org/connector/12", "@type": "xsd:anyURI"}, 
+{"@value": "http://ids.org/connector/34", "@type": "xsd:anyURI"}, 
+{"@value": "http://ids.org/connector/56", "@type": "xsd:anyURI"}] 
+, 
+        "ids:pipEndpoint":{
+          "@type":"ids:PIP", 
+          "ids:interfaceDescription":{
+            "@value":"https://ids.org/PIP/interfaceDescription/connector", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/PXPendpoint/connector", 
+            "@type":"anyURI"
+          } 
+        } 
+      },{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "https://w3id.org/idsa/core/purpose"},  
+        "ids:operator": { "@id": "idsc:SAME_AS"}, 
+      "ids:rightOperand": [{"@value": "http://example.com/ids-purpose/Marketing", "@type": "xsd:anyURI"}] 
+, 
+        "ids:pipEndpoint":{
+          "@type":"ids:PIP", 
+          "ids:interfaceDescription":{
+            "@value":"https://ids.org/PIP/interfaceDescription/purpose", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/PXPendpoint/purpose", 
+            "@type":"anyURI"
+          } 
+        } 
+      } ,{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:COUNT"},  
+        "ids:operator": { "@id": "idsc:LTEQ"}, 
+      "ids:rightOperand": [{"@value": "10", "@type": "xsd:decimal"}] 
+, 
+        "ids:pipEndpoint":{
+          "@type":"ids:PIP", 
+          "ids:interfaceDescription":{
+            "@value":"https://ids.org/PIP/interfaceDescription/count", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/PXPendpoint/count", 
+            "@type":"anyURI"
+          } 
+        } 
+      }     
+],    "ids:preDuty": [{    
+      "@type":"ids:Duty",  
+      "ids:action": [{
+        "@id":"idsc:REPLACE",     
+        "ids:refinement": [{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:REPLACE_WITH"},  
+        "ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+      "ids:rightOperand": [{"@value": "xxxx", "@type": "xsd:string"}] 
+ 
+      }     
+,{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:JSON_PATH"},  
+        "ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+      "ids:rightOperand": [{"@value": "$.name", "@type": "xsd:string"}] 
+ 
+      }     
+] , 
+        "ids:pxpEndpoint":{
+          "@type":"ids:PXP", 
+          "ids:interfaceDescription":{
+            "@value":"https://ids.org/PXP/interfaceDescription/replace", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/PXPendpoint/replace", 
+            "@type":"anyURI"
+          } 
+        }
+      }]
+  }], 
+    "ids:postDuty": [{    
+      "@type":"ids:Duty",  
+      "ids:action": [{
+        "@id":"idsc:DELETE",     
+        "ids:refinement": [{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:DATE_TIME"},  
+        "ids:operator": { "@id": "idsc:BEFORE"}, 
+      "ids:rightOperand": [{
+         "@type": "ids:Instant", 
+            "ids:dateTime": {
+               "@type": "xsd:datetimeStamp",
+               "@value": "2021-10-09T15:03"
+            } 
+       }] 
+, 
+        "ids:pipEndpoint":{
+          "@type":"ids:PIP", 
+          "ids:interfaceDescription":{
+            "@value":"https://ids.org/PIP/interfaceDescription/date_time", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/PXPendpoint/date_time", 
+            "@type":"anyURI"
+          } 
+        } 
+      }     
+] , 
+        "ids:pxpEndpoint":{
+          "@type":"ids:PXP", 
+          "ids:interfaceDescription":{
+            "@value":"https://ids.org/PXP/interfaceDescription/delete", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/PXPendpoint/delete", 
+            "@type":"anyURI"
+          } 
+        }
+      }]
+  },{    
+      "@type":"ids:Duty",  
+      "ids:action": [{
+        "@id":"idsc:INCREMENT_COUNTER", 
+        "ids:pxpEndpoint":{
+          "@type":"ids:PXP", 
+          "ids:interfaceDescription":{
+            "@value":"https://ids.org/PXP/interfaceDescription/increment_counter", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/PXPendpoint/increment_counter", 
+            "@type":"anyURI"
+          } 
+        }
+      }]
+  },{    
+      "@type":"ids:Duty",  
+      "ids:action": [{
+        "@id":"idsc:LOG",     
+        "ids:refinement": [{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:LOG_LEVEL"},  
+        "ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+      "ids:rightOperand": [{"@value": "idsc:ON_ALLOW", "@type": "xsd:string"}] 
+, 
+        "ids:comment": "  " 
+      }     
+,{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:SYSTEM_DEVICE"},  
+        "ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+      "ids:rightOperand": [{"@value": "http://ids.org/system/logserver", "@type": "xsd:anyURI"}] 
+, 
+        "ids:comment": "  " 
+      }     
+] , 
+        "ids:pxpEndpoint":{
+          "@type":"ids:PXP", 
+          "ids:interfaceDescription":{
+            "@value":"https://ids.org/PXP/interfaceDescription/log", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/PXPendpoint/log", 
+            "@type":"anyURI"
+          } 
+        }
+      }]
+  },{    
+      "@type":"ids:Duty",  
+      "ids:action": [{
+        "@id":"idsc:NOTIFY",     
+        "ids:refinement": [{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:NOTIFICATION_LEVEL"},  
+        "ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+      "ids:rightOperand": [{"@value": "idsc:ON_ALLOW", "@type": "xsd:string"}] 
+, 
+        "ids:comment": "  " 
+      }     
+,{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:RECIPIENT"},  
+        "ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+      "ids:rightOperand": [{"@value": "http://ids.org/party/data-owner-party", "@type": "xsd:anyURI"}] 
+, 
+        "ids:comment": "  " 
+      }     
+] , 
+        "ids:pxpEndpoint":{
+          "@type":"ids:PXP", 
+          "ids:interfaceDescription":{
+            "@value":"https://ids.org/PXP/interfaceDescription/notify", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/PXPendpoint/notify", 
+            "@type":"anyURI"
+          } 
+        }
+      }]
+  }]  
+  }],
+  "ids:prohibition": [{    
+      "ids:target": {
+          "@id":"http://ids.org/data/1234"
+       },    
+      "ids:action": [{
+        "@id":"idsc:DISTRIBUTE"
+      }] 
+  }] 
+} 

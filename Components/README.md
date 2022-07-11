@@ -1,12 +1,10 @@
+This folder contains descriptions of the different components that are a part of the IDS ecosystem:
 
-- [IDS Information Model (IDS-IM)](../InformationModel/README.md)
-- [Certificate Authority (CA)](./IdentityProvider/CA/README.md)
-- [Dynamic Attribute Provisioning Service (DAPS)](./IdentityProvider/DAPS/README.md)
-- [IDS Connector](./Connector/README.md)
-- [IDS Meta Data Broker (IDS-MDB)](./MetaDataBroker/README.md)
-- [Participant Information System (ParIS)](./IdentityProvider/ParIS/README.md)
+- [App Store](./AppStore/README.md)
 - [Clearing House](./ClearingHouse/README.md)
-- [IDS Technologies](./Technologies/README.md)
-  - [Contract](./Technologies/UsageControl/README.md)
-  - [Enforcement](../UsageControl/Enforcement/README.md)
-- [IDS Communication Protocol (IDSCP)](../Communication/Protocols/idscp/README.md)
+- [IDS Connector](./Connector/README.md)
+- [Identity Provider](./IdentityProvider/README.md) consisting of:
+  - [Certificate Authority (CA)](./IdentityProvider/CA/README.md)
+  - [Dynamic Attribute Provisioning Service (DAPS)](./IdentityProvider/DAPS/README.md)
+  - [IDS Participant Information Service (IDS-ParIS)](./IdentityProvider/ParIS/README.md)
+- [IDS Meta Data Broker (IDS-MDB)](./MetaDataBroker/README.md)

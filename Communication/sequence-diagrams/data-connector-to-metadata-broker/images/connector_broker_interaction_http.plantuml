@@ -1,0 +1,56 @@
+@startuml
+participant "**Connector**" as C
+participant "**Broker**" as B
+participant "Keycloak\n(Identity/Access management)" as K
+participant "Apache Fuseki" as F
+
+autonumber
+hide footbox
+
+== Authorized Connection Established ==
+
+group Registration
+    note right of C: *message of type ""ConnectorAvailable""\n*payload: connector self-description
+    C -[#blue]> B : register request with JWT
+
+    B -[#blue]> K : check authorization
+    K --[#blue]> B : authorization result
+
+    alt on successfull authorization
+        B -[#blue]> F : persist connector self-description
+        F --[#blue]> B : persistence success/fail
+
+
+        note right of C: message of type ""MessageProcessed""
+        B --[#blue]> C : (optional) registration response
+
+    else on error
+        autonumber stop
+        note right of C: message of type ""Rejection""
+        B --[#red]> C : report failure
+    end
+end
+
+group Subsequent Requests/Queries
+    note right of C: *message of type ""BrokerQuery""\n*describes scope and query language\n*payload: query string (e.g., SPARQL)
+    C -[#blue]> B : query
+
+    B -[#blue]> K : check authorization
+    K --[#blue]> B : authorization result
+
+    alt on successfull authorization
+        B -[#blue]> F : issue query
+        F --[#blue]> B : query result
+
+
+        note right of C: *message of type ""Result""\n*correlated to query request
+        B --[#blue]> C : result
+
+    else on error
+        autonumber stop
+        note right of C: message of type ""Rejection""
+        B --[#red]> C : report failure
+    end
+end
+
+@enduml

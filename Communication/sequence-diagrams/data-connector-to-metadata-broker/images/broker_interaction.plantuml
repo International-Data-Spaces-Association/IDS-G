@@ -1,0 +1,51 @@
+@startuml
+
+hide footbox
+
+title Exemplary Broker Interaction
+
+participant "**Connector**" as C
+participant "**Broker**" as B
+participant "Internal Broker Storage" as IBS
+
+== Authorized Connection Established ==
+
+group UC1: fail on registration
+    note right of C: *X.509 certificate\n*Security Token\n*Authorization Token\n*Connector self-description
+    C -> B: 1. ConnectorAvailable
+	note right of B: *Evaluate X.509 certificate with CA public key\n*Evaluate Security Token with DAPS public key\n*[Evaluate Authorization [Token with Data Owner public key]]
+    note left of B: reason: Not Authorized
+    B --> C: 2. Rejection
+end
+
+group UC2: successful registration
+    C -> B: 3. ConnectorAvailable
+    B -> IBS: 4a. persist self description
+    note left of IBS: Local self-description\nidentifier and security profile
+    IBS --> B: 4b. done
+    B --> C: (optional) MessageProcessed
+end
+
+group UC3: Update Connector
+    C -> B: 5. ConnectorConfigurationChange
+    B -> IBS: 6a. update self description
+    IBS --> B: 6b. done
+    B --> C: (optional) MessageProcessed
+end
+
+group UC4: Temporarily Deactivate Connector
+    C -> B: 7. ConnectorTemporarilyUnavailable
+    B -> IBS: 8a. flag self description for ignore
+    IBS --> B: 8b. done
+    B --> C: (optional) MessageProcessed
+end
+
+group UC5: Unregister Connector Permanently
+    C -> B: 7. ConnectorUnavailable
+    B -> IBS: 8a. remove self description
+    IBS --> B: 8b. done
+    B --> C: (optional) MessageProcessed
+end
+
+@enduml
+

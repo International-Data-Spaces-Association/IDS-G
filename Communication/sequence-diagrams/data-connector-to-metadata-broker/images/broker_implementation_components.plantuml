@@ -1,0 +1,23 @@
+@startuml
+
+interface "HTTPS" as H
+
+package "Broker" {
+  [Controller]
+  [Keycloak\n(Identity/Access management)]
+  [Apache Fuseki\n(RDF store)]
+}
+
+node "Other IDS Components" {
+  [Connector (Data Provider)]
+}
+
+note right of H
+  *request access token
+  *publish messages, e.g. ""ConnectorAvailable""
+end note
+
+[Connector (Data Provider)] .. H : announce status
+H .. [Controller] : retrieve status
+
+@enduml

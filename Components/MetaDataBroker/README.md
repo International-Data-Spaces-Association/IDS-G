@@ -8,9 +8,9 @@ Shortcut: `IDS-MDB`
   - Scope of the Document<p>
   - Releated Documents <p>
   - Notational Conventions<p>
-- [General overview](./GeneralOverview.md)<p> 
+- [General overview](./GeneralOverview.md)<p>
 - [IDS Meta Data Broker Requirements](./IDSMetaDataBrokerRequirements)<p>
-   - [Role of an IDS Meta Data Broker](./IDSMetaDataBrokerRequirements/IDSMetaDataBrokerRequirements.md)<p>
+   - [Role of an IDS Meta Data Broker](./IDSMetaDataBrokerRequirements/RoleOfAnIDSMetaDataBroker.md)<p>
    - [Connector Requirements](./IDSMetaDataBrokerRequirements/ConnectorRequirements.md)<p>
    - [Functional Requirements](./IDSMetaDataBrokerRequirements/FunctionalRequirements.md)<p>
    - [Message Requirements](./IDSMetaDataBrokerRequirements/MessageRequirements.md)<p>
@@ -41,4 +41,3 @@ REST API description can be found
  [here](https://app.swaggerhub.com/apis/IDS_Association/IDSMetaDataBroker).
 
 ---
-
