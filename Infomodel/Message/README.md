@@ -21,15 +21,15 @@ Core `ids:Message` class with it's properties, which are equal for all messages.
 Correlated message. Usually needed, if a messages responds to a previous
 
 > TODO: MessageProcessedNotification >>> MessageProcessedNotification?
- message. A [Connector](../../Connector/) may, e.g., send a [MessageProcessedNotification](#idsmessageprocessednotificationmessage)` as
+ message. A [Connector](../../Components/Connector/README.md) may, e.g., send a [MessageProcessedNotification](#idsmessageprocessednotificationmessage)` as
  a response to an incoming message and therefore needs this property to
  refer to the incoming message.
 ### ids:securityToken
 The **mandantory** property `ìds: securityToken` contains (value) a token,
  representing a claim, that the sender supports a certain security profile.
-This token is called [Dynamic Attribute Token (DAT)](../../DAPS/README.md#dynamic-attribute-token-dat),
+This token is called [Dynamic Attribute Token (DAT)](../../Components/IdentityProvider/DAPS/README.md#dynamic-attribute-token-content),
  (see further explanations there), so it is an instance of `ids:DynamicAttributeToken`
- and will be provided by [Dynamic Attribute Provisioning Service (DAPS)](../../DAPS/README.md). 
+ and will be provided by [Dynamic Attribute Provisioning Service (DAPS)](../../Components/IdentityProvider/DAPS/README.md). 
 
 ---
 
