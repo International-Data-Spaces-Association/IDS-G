@@ -25,7 +25,7 @@ These attributes are embedded by the DAPS into a [Dynamic Attribute Token (DAT)]
  assigned later on.
 
 See also:
-- [Glossary "Dynamic Attribute Provisioning Service"](../../../Glossary/README.md#dynamic-attribute-provisioning-service)
+- [Glossary "Dynamic Attribute Provisioning Service"](https://github.com/International-Data-Spaces-Association/IDS-G/blob/main/glossary/README.md#dynamic-attribute-provisioning-service)
 - Shortcut: `DAPS`
 
 ---
