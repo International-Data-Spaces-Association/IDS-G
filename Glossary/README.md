@@ -176,7 +176,9 @@ Concept defining the rights and duties (“rules of the game”) for formal
  International Data Spaces; mission critical to the
  International Data Spaces, as a central supervisory authority is
  missing.
-
+ 
+ ### Graduation Scheme
+Structure that consists of rules, processes and evaluation criteria to assess the maturity level of an open source project.
 
 ## I
 
@@ -210,6 +212,27 @@ See also:
 
 ### IDSA
 - Glossary [International Data Spaces Association](#international-data-spaces-association).
+
+### IDS Graduation Scheme
+Set of rules, processes and evaluation criteria to assess the maturity level of a IDS-related open source project. See [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
+
+### IDS Graduated
+The projects that are in the third grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
+See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
+
+### IDS Incubating
+The projects that are in the second grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
+See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
+
+### IDS Sandbox
+The projects that are in the first grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
+See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
+
+### IDSA-TSC
+The IDSA Technical Steering Committee. 
+
+### IDSA-Working Groups
+The IDSA Working Groups.
 
 ### IDSCP
 - Glossary [IDS Communication Protocol](#ids-communication-protocol).
@@ -303,6 +326,7 @@ Stakeholder in the International Data Spaces, assuming one or more of
 - [IDS-G specification "ParIS"](../Components/IdentityProvider/ParIS/README.md)
 - Shortcut: `ParIS`
 
+
 ## S
 
 ### Security Profile
@@ -316,6 +340,12 @@ Defined set of a [Connector](#connector)’s security properties;
 [Data App](#data-app) used for integration of custom
  [Data Source](#data-source)s and legacy systems with a
  [Connector](#connector).
+ 
+ 
+## T
+
+### Technical Due Diligence
+see [Technical Due Diligence](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/due_diligence_reports/Due_Diligence_Project_Review_Template.md))
 
 ## U
 
