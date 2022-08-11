@@ -25,6 +25,10 @@ Intermediary managing a metadata repository that provides information
  International Data Spaces; multiple Broker Service Providers may be
  around at the same time, maintaining references to different,
  domain-specific subsets of [Data Endpoint](#data-endpoint)s.
+ 
+### Building Block
+Building blocks are fundamental components that can be implemented and combined in order to achieve functional data spaces. A building block encompasses at least the basic specifications, and evolves in maturity with more detailed specifications, with sample implementations or templates, and with the instructions, training, testing and support elements that are required to facilitate the delivery of the essential ingredients of data spaces.
+
 
 ## C
 
@@ -210,6 +214,9 @@ See also:
 - IDS-G specification [IDSCP](../connector-interaction/Communication/protocols/idscp2/README.md) (current V.2)
 - Shortcut: `IDSCP`
 
+### IDS Deployment Scenario
+IDS Deployment Scenario is any implementation made with IDS-compliant components that allows sovereign data sharing (as defined by IDSA), is built with the intention to resolve a problem by means of secure and sovereign data sharing and is adequately documented to enable others to follow the same path.
+
 ### IDSA
 - Glossary [International Data Spaces Association](#international-data-spaces-association).
 
@@ -227,6 +234,9 @@ See [projects page](https://github.com/International-Data-Spaces-Association/ids
 ### IDS Sandbox
 The projects that are in the first grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
 See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
+
+### IDS Portfolio of Building Blocks
+Is the catalog of building blocks that lists various components and frameworks that are developed according to IDS principles.
 
 ### IDSA-TSC
 The IDSA Technical Steering Committee. 
