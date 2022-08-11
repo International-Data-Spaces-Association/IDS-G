@@ -220,22 +220,22 @@ IDS Deployment Scenario is any implementation made with IDS-compliant components
 ### IDSA
 - Glossary [International Data Spaces Association](#international-data-spaces-association).
 
-### IDS Graduation Scheme
+### IDSA Graduation Scheme
 Set of rules, processes and evaluation criteria to assess the maturity level of a IDS-related open source project. See [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
 
-### IDS Graduated
+### IDSA Graduated
 The projects that are in the third grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
 See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
 
-### IDS Incubating
+### IDSA Incubating
 The projects that are in the second grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
 See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
 
-### IDS Sandbox
+### IDSA Sandbox
 The projects that are in the first grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
 See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
 
-### IDS Portfolio of Building Blocks
+### IDSA Portfolio of Building Blocks
 Is the catalog of building blocks that lists various components and frameworks that are developed according to IDS principles.
 
 ### IDSA-TSC
