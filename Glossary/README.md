@@ -80,7 +80,7 @@ Description of a [Connector](#connector) participating in the IDS for
 ## D
 
 ### DAPS
-- - IDS-G specification: [Dynamic Attribute Provisioning Service](../Components/IdentityProvider/DAPS/README.md)
+- IDS-G specification: [Dynamic Attribute Provisioning Service](../Components/IdentityProvider/DAPS/README.md)
 - Glossary: [Dynamic Attribute Provisioning Service](#dynamic-attribute-provisioning-service).
 
 ### DAT
@@ -319,6 +319,9 @@ In addition, the Reference Architecture Model comprises three
 ### Meta Data Broker
 - [IDS-G specification "Meta Data Broker"](../Component/MetaDataBroker/README.md)
 - Shortcut: `IDS-MDB`
+
+### Minimum Viable Data Space (MVDS)
+A minimum viable data space (MVDS) is a combination of components to initiate a data space with just enough features to be usable for secure and sovereign data exchange.
 
 ## P
 
