@@ -73,6 +73,9 @@ Description of a [Connector](#connector) participating in the IDS for
  the data offered or requested, about data communication interfaces,
  and about usage policies and contracts.
 
+### Curator
+A curator takes care of the maintenance of the metadata or data itself. This concerns the entire life cycle (i.e. data offer creation, update, deletion). 
+
 ## D
 
 ### DAPS
@@ -282,6 +285,9 @@ In addition, the Reference Architecture Model comprises three
 - Glossary: [JSON Web Token](#json-web-token)
 
 ## M
+
+### Maintainer
+A maintainer in context of connectors maintains the code and/or cares for the running connector itself (e.g., updates the connector). A typical representant in an organization is a system administrator.
 
 ### Meta Data Broker
 - [IDS-G specification "Meta Data Broker"](../Component/MetaDataBroker/README.md)
