@@ -1,17 +1,26 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+  
+=======
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [Q2/2022]
 
 ### Added
+- Clearing House Specification
 - Connector interaction, IDS-REST, IDSCP
+- New Label `open for discussion`
+- Usage Control terms, including contracts and examples
 
 ### Changed
-- none
-- 
+- DAPS: adding examples
+- DAPS: fixed typos and formatting
+- DAPS: aligned wth IDS Infomodel
+- Glossary: fixed typos, links and formatting
+- General: fixed tyos, broken links and formatting
+
 ### Removed
 - none
 
@@ -50,3 +59,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 - none
+

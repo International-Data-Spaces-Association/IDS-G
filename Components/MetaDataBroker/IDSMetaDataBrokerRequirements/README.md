@@ -8,7 +8,7 @@ of Functions and Correlated IDS Messages relevant for an IDS Meta Data Broker. T
 [The IDS Communication Guide](https://industrialdataspace.jiveon.com/docs/DOC-1817) with
 additional explanations.
   
-## [Role of an IDS Meta Data Broker](./IDSMetaDataBrokerRequirements.md)
+## [Role of an IDS Meta Data Broker](./RoleOfAnIDSMetaDataBroker.md)
 ## [Connector Requirements](./ConnectorRequirements.md)
 ## [Fuctional Requirements](./FunctionalRequirements.md)
 ## [Message Requirements](./MessageRequirements.md)

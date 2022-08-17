@@ -19,7 +19,7 @@ Maven repository for open libraries from Fraunhofer IAIS. In this case
 ---
 
 
-## [IDSCP, Fraunhofer AISEC](https://github.com/industrial-data-space/trusted-connector/tree/develop/ids-comm)
+## [IDSCP, Fraunhofer AISEC](https://github.com/International-Data-Spaces-Association/idscp2-jvm)
 [`IDS Communication Protocol`, IDS-G glossary](../Glossary/README.md#idscp), public Open Source code from Fraunhofer AISEC regarding the optional
  International Data Spaces Communication Procotcoll (IDSCP).
 - last click: 2020-01-16

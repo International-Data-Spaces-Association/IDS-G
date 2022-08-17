@@ -1,18 +1,15 @@
 # Dynamic Attribute Provisioning Service (DAPS)
 
 The infrastructure component "Dynamic Attribute Provisioning Service" (DAPS)
- in a given IDS ecosystem enables enrichment of identities of organisations
- and connectors with additional attributes.
+in a given IDS ecosystem enables enrichment of identities of organisations
+and connectors with additional attributes.
 
 DAPS can be understood (like the [Certificate Authority](../CA/README.md), too) as building block of the construct of an
- [IDS Identity Provider](../../glossary/README.md#identity-provider).
+[IDS Identity Provider](../../../Glossary/README.md#identity-provider).
 
-
-
-These attributes are embedded by the DAPS into a [Dynamic Attribute Token (DAT)]().
- The advantages of this technique of *dynamic attribute provisioning* instead
- of embedding them into [X.509 certificates](https://en.wikipedia.org/wiki/X.509)
- are:
+These attributes are embedded by the DAPS into a [Dynamic Attribute Token (DAT)](../../../Glossary/README.md#dynamic-attribute-token).
+The advantages of this technique of *dynamic attribute provisioning* instead
+of embedding them into [X.509 certificates](https://en.wikipedia.org/wiki/X.509) are:
 
 - Attribute revocation does not enforce certificate revocation and re-issuance.
  This is also true if new attributes are added.
@@ -24,197 +21,209 @@ These attributes are embedded by the DAPS into a [Dynamic Attribute Token (DAT)]
 - More complex scenarios can be created as soon as attributes are
  assigned later on.
 
-See also:
-- [Glossary "Dynamic Attribute Provisioning Service"](../../../Glossary/README.md#dynamic-attribute-provisioning-service)
-- Shortcut: `DAPS`
-
 ---
 
-## Unique Identifier
+## Server Metadata
 
-Each connector in the IDS needs a valid, outlasting and unique
- identifier, never be re-used for any other resource inside the IDS ecosystem.
+A compliant DAPS MUST offer Server Metadata according to [RFC 8414](https://datatracker.ietf.org/doc/rfc8414/).
 
-The architecture aims to be open to multiple [Certificate Authorities](../CA/README.md)
- (CAs) issuing certificates. This means, a truly unique identifier needs to consist of
-  the issuer of the certificate and the subject identifier. For an easy machine readable
-  identifier, two ´X.509v3´ extensions will be used:
+Connectors SHOULD use these values to determine the relevant OAuth configuration for the server from its issuer identifier.
 
-### Subject Key Identifier (SKI)
-### Authority Key Identifier (AKI)
+In particular, the following values are relevant to a connector:
 
-The concatenation of ´SKI´ and ´AKI´ provides a unique identifier valid - even if multiple
- CAs are able to issue valid certificates.
+* `issuer` MUST match the `iss` claim in any DAT.
+* `token_endpoint` is the endpoint to request a DAT.
+* `jwks_uri` is the endpoint to acquire the validation keys for a DAT.
 
-EXAMPLE (snippet from a X.509 certificate):
+### Example
 
-```
-...
-X509v3 extensions:
-    X509v3 Subject Key Identifier:
-        DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A
-    X509v3 Authority Key Identifier:
-        keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8
-...
-```
+Assuming a dataspace has a DAPS with an issuer identifier of `https://daps.example.org/some/path`,
+then the metadata would be located at `https://daps.example.org/.well-known/oauth-authorization-server/some/path`.
 
-... leads to a [connectors](../../Connector/README.md) `unique identifier`:
+Aquiring this document via an HTTP GET request results in a JSON formatted document like this:
 
-```
-DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A:keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8
+```json
+{
+    "issuer": "https://daps.example.org/some/path",
+    "token_endpoint": "https://daps.example.org/get/me/a/token",
+    "jwks_uri": "https://keys.example.org/jwks",
+    ...
+}
 ```
 
-In examples and for reasons of readability editors might use
+Note that the object may have several other members.
+Their meaning is defined by the corresponding OAuth specifications.
+It shall be noted here that unrecognized values MUST be ignored.
 
-```
-SKI:AKI
-```
+## Token Request
 
-See also:
-- [Glossary "Dynamic Attribute Token"](../../../Glossary/README.md#dynamic-attribute-token)
-- Shortcut: `DAT`
-- [X.509 certificates](https://en.wikipedia.org/wiki/X.509)
+To request a Dynamic Attribute Token,
+a connector must send an [OAuth2 Access Token Request with a Client Credentials Grant Type](https://datatracker.ietf.org/doc/html/rfc6749#section-4.4)
+to the corresponding DAPS Token Endpoint.
+As authentication mechanism, a [JWT-Bearer-Token type](https://datatracker.ietf.org/doc/html/rfc7523#section-2.2) [Client Assertion](https://datatracker.ietf.org/doc/html/rfc7521#section-4.2) is used.
+The OAuth client ID is the connector's ID.
 
----
+The scope determines the set of attributes to be requested from the DAPS.
+This version of IDS-G defines the scope `idsc:IDS_CONNECTOR_ATTRIBUTES_ALL`,
+which includes all IDS Attributes available to the DAPS.
 
+Future revisions of this document may define additional request parameters.
 
-## Request token that is handed in at DAPS side
+### Example
 
-|**Field name**|**mandantory**|**cardinality**|**content**
-|:---|:---|:---|:---|
-|**`@context`**  | yes   | 1 | The JSON-LD context containing the IDS classes, properties and instances. Must be "https://w3id.org/idsa/contexts/context.jsonld". |
-|**`@type`**     | yes   | 1 | In the context of the IDS, the request payload is an RDF instance and therefore must state that it has "@type" : "ids:DatRequestToken". |
-|**`sub`**       | yes   | 1 | Subject the requesting connector the token is created for. This is the connector requesting the DAT. The "sub" value must be the  combined entry of the SKI and AKI of the IDS X509 as presented in Sec. 4.2.1.  In this context, this is identical to "iss". |
-|**`exp`**       | yes   | 1 | Expiration date of the token. Can be chosen freely but should be limited to a short period of time (e.g., one minute). |
-|**`iat`**       | yes   | 1 | Timestamp the token has been issued. |
-|**`nbf`**       | yes   | 1 | "Valid not before": For practical reasons this should be identical to iat. If the system time is not in synch with the DAPS, the request token will be rejected (e.g., nbf is in the future). |
-|**`aud`**       | yes   | 1 | The audience of the token. This can limit the validity for certain connectors. |
-|**`iss`**       | yes   | 1 | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid connector. The "iss" value must be the combined entry of the SKI and AKI of the Connectors X509 certificate as presented in Sec. 4.2.1. |
-
-
-
-## Request call to get a token
-
-`client_assertion` is the base64 encoded request token, shown under
- ["Request token that is handed in at DAPS side"](#request-token-that-is-handed-in-at-daps-side).
-
-
-|**FormBody Attribute**|**content**
-|:---|:---|
-|**`grant_type`**  | OAuth based grant type. Always uses client_credentials grant. |
-|**`client_assertion_type`**  | See [JSON Web Token (JWT) Profile for OAuth 2.0 Client Authentication and Authorization Grants](https://tools.ietf.org/html/rfc7523). |
-|**`client_assertion`**  | The signed and base64 encoded request token. Paste the example to jwt.io to see the decoded JWT. The token is signed with the connectors private key belonging to the public key contained in the X.509 certificate. |
-
-
-### Example of a "request call to get a token"
+The following is a non-normative and abbreviated example of a DAT request.
+Line breaks are purely for readability purposes.
 
 ```http request
-POST /
+POST /token
 Host: https://daps.example.com
 Content-Type: application/x-www-form-urlencoded
-"grant_type=client_credentials
- &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
- &client_assertion=eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJkZW1vY29ubmVjdG9yMSIsInN1YiI6ImRlbW9jb25uZWN0b3IxIiwiZXhwIjoxNTQ4Nzg1Mzg2LCJuYmYiOjE1NDg3ODE3ODYsImlhdCI6MTU0ODc4MTc4NiwiYXVkIjoiaHR0cHM6Ly9hcGkubG9jYWxob3N0In0.JSQuMf-9Fd7DNna_-s-sR7eXgcSYNCau5WgurrGJTuCSLKqhZe3odXfunN2vRFgUhU21ADFlEq96mlbQDueBlMtaXrcHFPSpIUtvuIMIVqQcGYkDdSJr_VmDuAykCYpyTCkLa7a8DTV-N3sECp-AxUgmEzYIfh8jW0WS6ehgUzrnpH6t_h_GWXKkNSAg3ERakDc4NY02pBGmiN7bmtLZNt5b4LWALiiFiduC7JbIpx4awOU6skMApmzgLnZmmTG20JlJRg6hAqyHEz5Cd4rUgrt0twmpC0Us_CG23KdUF5fWI55dcO2qAVvhNQXpqz7IiPcF7-jgkrx4oukYNY6eHA"
- &scope=ids_connector_attributes"
 
+grant_type=client_credentials
+&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+&client_assertion=eyJhbGciOiJSUzI1NiJ9.eyJ[...]N0In0.JSQu[...]gkrx4oukYNY6eHA
+&scope=idsc:IDS_CONNECTOR_ATTRIBUTES_ALL
 ```
-
-> **!!!** REMARK: NO line breaks in front of '&', done for better readability only **!!!**
-
-See also:
-- [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD)
-- [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier)
 
 ---
 
+## Token Response
 
-## Dynamic Attribute Token Content
+The DAPS issues the requested DAT, or an error response, as per [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749#section-5).
+The Access Token ("the DAT") itself is a JWS adhering to [RFC 9068](https://datatracker.ietf.org/doc/html/rfc9068),
+which in turn contains [JSON-LD](https://www.w3.org/TR/json-ld11/) encoded data in addition to the standard claims, subject to the following additional constraints:
 
-The DAPS issues the requested DAT, if authentication succeeds, embedded in a JSON Object under the key _access_token_, e.g.
+|**Field name**|**additional constraints** |
+|:---|:---|
+|**@context**             | Must be `https://w3id.org/idsa/contexts/context.jsonld` |
+|**@type**                | Must be `ids:DatPayload` |
+|**securityProfile**      | Must be an instance of the [`ids:SecurityProfile` class](https://w3id.org/idsa/core/SecurityProfile) |
 
-```
+The DAT MUST be signed using a digital signature scheme.
+It SHOULD be limited to a short time period (Recommendation: 1 hour).
+The default resource indicator to be used in the DAT includes `idsc:IDS_CONNECTORS_ALL`, which SHOULD be accepted by all connectors.
+Future revisions of this document may allow for mechanisms to specify connectors to be listed in the `aud` claim such as through [RFC 8707](https://datatracker.ietf.org/doc/html/rfc8707).
+
+Additional claims may optionally be present. This specification defines the following:
+
+* **referringConnector**
+An optional URI of the subject.
+Is used to connect identifier of the connector with the self-description identifier as defined by the IDS Information Model.
+A receiving connector can use this information to request more information at a Broker or directly by dereferencing this URI.
+
+* **transportCertsSha256**
+Contains the public keys of the used transport certificates, hashed using SHA256.
+The identifying X509 certificate should not be used for the communication encryption.
+Therefore, the receiving party needs to connect the identity of a connector by relating its hostname (from the communication encryption layer) and the used private/public key pair,
+with its IDS identity claim of the DAT.
+The public transportation key must be one of the `transportCertsSha256` values.
+Otherwise, the receiving connector must expect that the requesting connector is using a false identity claim.
+In general, this claim holds an Array of Strings, but it may optionally hold a single String instead if the Array would have exactly one element.
+
+* **extendedGuarantee**
+In case a connector fulfills a certain security profile but deviates for a subset of attributes,
+it can inform the receiving connector about its actual security features.
+This can only happen if a connector reaches a higher level for a certain security attribute than the actual reached certification asks for.
+A deviation to lower levels is not possible, as this would directly invalidate the complete certification level.
+In general, this claim holds an Array of Strings, but it may optionally hold a single String instead if the Array would have exactly one element.
+
+
+## Example
+
+The following is an example of a sucessful response:
+
+```http response
+200 This is fine
+Content-Type: application/json
+
 {
-    "access_token": "<DAT>",
-    "scope": "ids_connector_attributes",
+    "access_token": "skdj54dkGjnb[...]lsl8723ijsdfuzticby_ch",
+    "scope": "idsc:IDS_CONNECTOR_ATTRIBUTES_ALL",
     "token_type": "bearer",
     "expires_in": "3600"
 }
 ```
 
-For details about this format, please refer to [RFC 6749, Section 5.1](https://datatracker.ietf.org/doc/html/rfc6749#section-5.1)
+The decoded DAT, including header and payload is shown below:
 
-The DAT itself is represented as an encoded JSON Web Token.
-Decoded it has these header fields:
-
-|**Field name**|**mandantory**|**cardinality**|**content**
-|:---|:---|:---|:---|
-|**`typ`**             | yes    | 1    | The token type. Must be "JWT". |
-|**`kid`**             | yes    | 1    | Key id used to sign that token. Must match the jwks.json entry found at daps-url/.well-known/jwks.json |
-|**`alg`**             | yes    | 1    | Algorithm used to sign the token.   |
-
-The DAT has these payload fields:
-
-|**Field name**|**mandantory**|**cardinality**|**content**
-|:---|:---|:---|:---|
-|**`@context`**             | yes    | 1    | The JSON-LD context containing the IDS classes, properties and instances. Must be "https://w3id.org/idsa/contexts/context.jsonld". |
-|**`@type`**                | yes    | 1    | In the context of the IDS, the request payload is an RDF instance and therefore must state that it has "@type" : "ids:DatPayload".
-|**`iss`**                  | yes    | 1    | According to RFC 7519 Sec. 4.1.1, the issuer is the component which created and signed the JWT. In the context of the IDS, this must be a valid DAPS. The "iss" value must be a valid URL for the DAPS such as "https://daps.aisec.fraunhofer.de".  |
-|**`sub`**                  | yes    |      | Subject the requesting connector the token is created for. This is the connector requesting the [DAT](#dynamic-attribute-token-dat). The `sub` value must be the  combined entry of the `SKI` and `AKI` of the IDS X509 as presented in Sec. 4.2.1.  In this context, this is identical to `iss`. |
-|**`exp`**                  | yes    | 1    | Expiration date of the token. Can be chosen freely but should be limited to a short period of time (e.g., one minute).  |
-|**`iat`**                  | yes    | 1    | Timestamp the token has been issued.  |
-|**`nbf`**                  | yes    | 1    | "Valid not before" (`nbf`): for practical reasons this should be identical to `iat`. If systems time is not aynchronized with the DAPS, the request token will be rejected (so, `nbf` is in the future).  |
-|**`aud`**                  | yes    | 1    | The audience of the token. This can limit the validity for certain connectors. |
-|**`scope`**                | yes    | 1..* | List of scopes. Currently, the scope is limited to "ids_connector_attributes" but can be used for scoping purposes in the future. |
-|**`securityProfile`**      | yes    | 1    | States that the requesting connector conforms to a certain security profile and has been certified to do so. The value must be an URI, in particular an instance of the ids:SecurityProfile class. |
-|**`referringConnector`**   | `opt`  | 0..1 | The URI of the subject, the connector represented by the DAT. Is used to connect identifier of the connector with the self-description identifier as defined by the IDS Information Model. A receiving connector can use this information to request more information at a Broker or directly by dereferencing this URI. |
-|**`transportCertsSha256`** | `opt`  | 0..* | Contains the public keys of the used transport certificates. The identifying X509 certificate should not be used for the communication encryption. Therefore, the receiving party needs to connect the identity of a connector by relating its hostname (from the communication encryption layer) and the used private/public key pair, with its IDS identity claim of the DAT. The public transportation key must be one of the "transportCertsSha256" values. Otherwise, the receiving connector must expect that the requesting connector is using a false identity claim. |
-|**`extendedGuarantee`**    | `opt`  | 0..* | In case a connector fulfills a certain security profile but deviates for a subset of attributes, it can inform the receiving connector about its actual security features. This can only happen if a connector reaches a higher level for a certain security attribute than the actual reached certification asks for. A deviation to lower levels is not possible, as this would directly invalidate the complete certification level. |
-
-
-## Dynamic Attribute Token (DAT)
-
-An example of a complete decoded DAT, including header and payload is shown below:
-
-```
+```json
 {
-    "typ": "JWT",
-    "kid": "default",
-    "alg": "HS256"
+    "typ": "jwt+at",
+    "kid": "somekid",
+    "alg": "RS256"
 }
 .
 {
+    "iss": "https://daps.aisec.fraunhofer.de/v3",
+    "sub": "DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A:keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8",
+    "nbf": 1516239022,
+    "iat": 1516239022,
+    "exp": 1516239032,
+    "aud": ["idsc:IDS_CONNECTORS_ALL"],
+    "scope": "idsc:IDS_CONNECTOR_ATTRIBUTES_ALL",
     "@context": "https://w3id.org/idsa/contexts/context.jsonld",
     "@type": "ids:DatPayload",  
-    "iss": "https://daps.aisec.fraunhofer.de",
-    "sub": "DD:CB:FD:0B:93:84:33:01:11:EB:5D:94:94:88:BE:78:7D:57:FC:4A:keyid:CB:8C:C7:B6:85:79:A8:23:A6:CB:15:AB:17:50:2F:E6:65:43:5D:E8",
     "referringConnector": "http://some-connector-uri.com",
     "securityProfile": "idsc:BASE_SECURITY_PROFILE",
     "extendedGuarantee": "idsc:USAGE_CONTROL_POLICY_ENFORCEMENT",
-    "transportCertsSha256": ["bacb879575730bb083f283fd5b67a8cb..." ],
-    "iat": 1516239022,
-    "exp": 1516239032,
-    "aud": "https://w3id.org/idsa/code/IDS_CONNECTORS_ALL",
-    "nbf": 1567703561,
-    "scope": "ids_connector_attributes"
+    "transportCertsSha256": "bacb879575730bb083f283fd5b67a8cb..."
 }
 .
-<signature>
+somesignature
+```
+
+---
+
+## Dynamic Claims Request
+
+A connector MAY request certain DAT claims to be issued with specified values
+according to [draft-spencer-oauth-claims-01](https://www.ietf.org/archive/id/draft-spencer-oauth-claims-01.txt).
+The resource sink for a DAT is `access_token`.
+It is at the sole discretion of the DAPS to decide whether or not to grant the request,
+and a DAT may be successfully issued even if the request is ignored.
+
+DAPS Implementations MUST take great care not to grant requests that would grant a connector additional rights or allow it to masquerade as another connector.
+In particular, all claims defined by [RFC 9068](https://datatracker.ietf.org/doc/html/rfc9068)
+and all claims that are JSON-LD specific MUST NOT be chosen by client requests.
+DAPS implementations are advised to explicitly white-list any requestable claims
+and to check requested values as appropriate.
+
+To allow clients to specify their own transport certificates,
+DAPS implementations should support specifying values for the **transportCertsSha256** claim.
+
+### Example
+
+A typical request might look like this:
+
+```http request
+POST /token
+Host: https://daps.example.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+&client_assertion=eyJhbGciOiJSUzI1NiJ9.eyJ[...]N0In0.JSQu[...]gkrx4oukYNY6eHA
+&scope=idsc:IDS_CONNECTOR_ATTRIBUTES_ALL
+&claims=<Claims Request>
+```
+
+where the Claims Request is an encoded JSON object like the following:
+
+```json
+{
+    "access_token": {
+        "transportCertsSha256": {
+            "value": ["ksjdhvs87h3w4fjhsf87hkjvs", "qz47djs87h3w4fjhsf87hg57d"]
+        }
+    }
+}
 ```
 
 See also:
-- [Info Model : idsc:USAGE_CONTROL_POLICY_ENFORCEMENT](https://github.com/International-Data-Spaces-Association/InformationModel/blob/develop/codes/SecurityGuarantee.ttl)
+- [Glossary "Dynamic Attribute Provisioning Service"](../../../Glossary/README.md#dynamic-attribute-provisioning-service)
 - [Glossary "Dynamic Attribute Token"](../../../Glossary/README.md#dynamic-attribute-token)
-- Shortcut: `DAT`
+- [Info Model : idsc:USAGE_CONTROL_POLICY_ENFORCEMENT](https://github.com/International-Data-Spaces-Association/InformationModel/blob/develop/codes/SecurityGuarantee.ttl)
+- [JSON-LD](https://en.wikipedia.org/wiki/JSON-LD)
+- [URI](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier)
+- Shortcuts: `DAT`, `DAPS`
 
----
-
-## Requests
-
-Collection of valid request templates can be found [here](./requests/README.md).
-
-## REST API description
-
-REST API description can be found
- [here](https://app.swaggerhub.com/apis/IDS_Association/DynamicAttributeProvisioningService).
-
----

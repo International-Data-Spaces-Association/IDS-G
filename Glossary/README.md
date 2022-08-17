@@ -13,6 +13,9 @@ Secure platform for distributing [Data App](#data-app)s; features
 Organization formally applying for being certified by the
  [Certification Body](#certification-body).
 
+### Authorization
+The process of verifying whether a requesting party is allowed to 
+access a resource or system.
 
 ## B
 
@@ -28,7 +31,7 @@ Intermediary managing a metadata repository that provides information
 ### Certificate Authority
 Trusted third-party entity issuing digital certificates
  (e.g., x509 certificates); may host services to validate certificates
- issued.
+ issued. (see [Identity Provider](../Components/IdentityProvider/README.md))
 
 ### Certification Body
 Governance body certifying components and entities seeking admission to
@@ -50,7 +53,7 @@ Intermediary providing clearing and settlement services for all
  financial and data exchange transactions within the
  International Data Spaces.
 
-- [IDS-G specification "Clearing House"](../core/ClearingHouse/README.md)
+- [IDS-G specification "Clearing House"](../Components/ClearingHouse/README.md)
 - Shortcut: `IDS-CH`
 
 ### Connector
@@ -58,7 +61,7 @@ Dedicated communication server for sending and receiving data in
  compliance with the general Connector specification; different types
  of Connectors can be distinguished (Base Connector vs.
  Trusted Connector, or Internal Connector vs. External Connector).
-- [IDS-G specification "Connector"](../core/Connector/README.md)
+- [IDS-G specification "Connector"](../Components/Connector/README.md)
 
 ### Connector-Self-description
 Description of a [Connector](#connector) participating in the IDS for
@@ -149,8 +152,8 @@ Issues Dynamic Attribute Tokens ([DAT](#dynamic-attribute-token)s) to
 - Shortcut: `DAPS`
 
 ### Dynamic Attribute Token
-Contains signed dynamic attributes for [Participant](#participant)s and
- [Connector](#connector)s.
+A JSON Web Token containing signed dynamic attributes for [Participant](#participant)s
+and [Connector](#connector)s.
  - IDS-G specification: [Dynamic Attribute Token](../Components/IdentityProvider/DAPS#dynamic-attribute-token-dat)
 - Shortcut: `DAT`
 
@@ -182,6 +185,8 @@ Intermediary offering services to create, maintain, manage and validate
  identity information of and for [Participant](#participant)s in the
  International Data Spaces.
 
+### Identity Verification
+The process of verifying the validity of a supplied identity proof.
 
 ### IDS
 - See [International Data Spaces](#international-data-spaces).
@@ -195,11 +200,12 @@ Set of vocabularies and related schema information for the semantic
  vocabularies to express domain-specific aspects.
 
 See also:
-- GitHub [repository)](https://github.com/International-Data-Spaces-Association/InformationModel)
-- IDS-G specification [Information Model](..//InfoModel/README.md)
+- GitHub [repository](https://github.com/International-Data-Spaces-Association/InformationModel)
+- IDS-G specification [Information Model](../Infomodel/README.md)
 - Shortcut: `IDS-IM`
 
 ### IDS Communication Protocol
+- IDS-G specification [IDSCP](../connector-interaction/Communication/protocols/idscp2/README.md) (current V.2)
 - Shortcut: `IDSCP`
 
 ### IDSA
@@ -207,6 +213,10 @@ See also:
 
 ### IDSCP
 - Glossary [IDS Communication Protocol](#ids-communication-protocol).
+
+### Information Model
+- [Information Model](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Infomodel)
+The data model of the IDS. It defines all classes, attributes and entities known to the actors in the IDS.
 
 ### International Data Spaces
 Distributed network of [Data Endpoint](#data-endpoint)s (i.e.,
@@ -269,13 +279,19 @@ In addition, the Reference Architecture Model comprises three
 - Shortcut: `JWT`
 
 ### JWT
-- Glossary: [JSON Weg Token](#json-web-token)
+- Glossary: [JSON Web Token](#json-web-token)
+
+## M
+
+### Meta Data Broker
+- [IDS-G specification "Meta Data Broker"](../Component/MetaDataBroker/README.md)
+- Shortcut: `IDS-MDB`
 
 ## P
 
 ### ParIS
 - Glossary [Participant Information Service](#participant-information-service)
-- IDS-G [specification "ParIS"](../core/ParIS/README.md)
+- IDS-G [specification "ParIS"](../Components/IdentityProvider/ParIS/README.md)
 
 ### Participant
 Stakeholder in the International Data Spaces, assuming one or more of
@@ -284,7 +300,7 @@ Stakeholder in the International Data Spaces, assuming one or more of
 
 ### Participant Information Service
 
-- [IDS-G specification "ParIS"](../core/ParIS/README.md)
+- [IDS-G specification "ParIS"](../Components/IdentityProvider/ParIS/README.md)
 - Shortcut: `ParIS`
 
 ## S
@@ -324,4 +340,3 @@ Server providing maintenance facilities for editing, browsing and
  external third-party vocabularies ensuring seamless availability
  and resolution.
 
----

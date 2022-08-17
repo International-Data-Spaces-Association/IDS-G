@@ -36,6 +36,7 @@ There are two types of labels: one describes the content of the issue and should
 developer that creates the issue. The other one, starting with `status`, will be added from the
 developer that takes on the issue. New issues should be initially marked with `status:open`.
 *  Basic labels: `bug`, `enhancement`, `suggestion`, `documentation` `outdated`, `question`, `discussion`
+*  `open for discussion`: issue is addressed but further contribution is requested by everyone
 *  `status:closed`: issue is closed (after successful approval by issuer and QA)
 *  `status:duplicate`: issue is a duplicate of another linked issue and therefore discontinued
 *  `status:in-progress`: issue has been assigned and is currently being worked on

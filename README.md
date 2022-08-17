@@ -6,6 +6,7 @@
 Please raise an issue and create a pull request.
 
 
+
 ## Structure of the Repository
 
 - [Overview of the IDS Architecture](./Overview/README.md)
@@ -32,17 +33,17 @@ different components are provided via IDS-G. Specification for the follwing comp
 
 |Component	| Version |	location	| Approved |	Status |
 |-----------|---------|-----------|----------|----------|    
-| [Certificate Authority](/Components/IdentityProvider/CA/README.md)	  | n/a	  | IDS-G	| no         |	Work in Progress|
+| [Certificate Authority](/Components/IdentityProvider/CA/README.md)	  | n/a	  | IDS-G-pre	| no         |	Work in Progress|
 | [Dynamic Attribute Provisioning Service DAPS](/Components/IdentityProvider/DAPS/README.md)  |	V1.0	  | IDS-G	 |  :heavy_check_mark: yes	|	stable |
 | [Participant Information Service ParIS](/Components/IdentityProvider/ParIS/README.md)	                  | V1.0	    | IDS-G-pre	  | no      | under review	|
 | [Meta Data Broker](/Components/MetaDataBroker/README.md)        |	V1.0	| IDS-G	|  :heavy_check_mark: yes |	stable |
 | [Clearing House](/Components/ClearingHouse/README.md)          |	V1.0 |	IDSA Homepage |  :heavy_check_mark: yes | [work in progress towards new version](https://github.com/International-Data-Spaces-Association/IDS-G-pre/pull/26) |
-| [App Store](/Components/AppStore/README.md)	              |	n/a	| IDS-G | no |	Work in Progress |
+| [App Store](/Components/AppStore/README.md)	              |	n/a	| IDS-G-pre | no |	Work in Progress |
 | [Connector and Broker Criteria Catalogue](https://industrialdataspace.jiveon.com/docs/DOC-3823) |	V2.1.2	| IDSA jive, available on demand |  :heavy_check_mark:	yes | Continuous improvement by IDSA WG Certification  |
 | [Connector REST interaction](/Components/Connector)	|V1.0 |	IDS-G	|  :heavy_check_mark: yes |	stable |	
-| [Connector IDSCP2 interaction](/Components/Connector) |	V1.0 |	IDS-G	| no |	under internal review |	
-| [Connector Multipart Interaction](/Components/Connector)	| V1.0 |	IDS-G |	no |	work in progress |	
-| [Connector Communication](/Components/Connector) |	V1.0 |	IDS-G |	no |	work in progress |	
+| [Connector IDSCP V.2 interaction](/Components/Connector) |	V2.0 |	IDS-G	| :heavy_check_mark: yes |	approved |	
+| [Connector Multipart Interaction](/Components/Connector)	| V1.0 |	IDS-G | :heavy_check_mark:	yes |	approved |	
+| [Connector Communication](/Components/Connector) |	V1.0 |	IDS-G | :heavy_check_mark:	yes |	approved |	
 | [Operation Enviroment Criteria Catalogue](https://industrialdataspace.jiveon.com/docs/DOC-2711)	| V1.0 | IDSA jive, available on demand |  :heavy_check_mark:	yes | Continuous improvement by IDSA WG Certification  |
 | [Informationmodel](https://github.com/International-Data-Spaces-Association/InformationModel) |	V4.0.0	|github	|  :heavy_check_mark: yes |	[ongoing development](https://github.com/International-Data-Spaces-Association/InformationModel/issues) |	
 
@@ -56,7 +57,7 @@ IDSA jive and IDS-G-pre is accessible to IDSA members only.
 - [Repositories](./Overview/relevants/repositories/README.md)
 - [Glossary](./Glossary/README.md)
 - [Shortcuts](./Glossary/shortcuts/README.md)
-- [References](.Overview/references/README.md)
+- [References](./Overview/references/README.md)
 - [Handbook](./Handbook/README.md)
 
 ---
