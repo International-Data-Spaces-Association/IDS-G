@@ -76,6 +76,7 @@ Content-Type: application/json
 Content-Length: 409
 
 {
+  "@context" : "https://w3id.org/idsa/contexts/context.jsonld",
   "@type" : "ids:DescriptionResponseMessage",
   "issued" : {
       "@value" : "2019-12-21T13:11:14.596+02:00",
@@ -264,24 +265,25 @@ Content-Type: application/json; charset=utf-8
 Content-Disposition: form-data; name="header"
 
 {
-"@type" : "ids:ConnectorUnavailableMessage",
-"@id" : "http://industrialdataspace.org/connectorUnavailableMessage/1a421b8c-3407-44a8-aeb9-253f145c869a",
-"issued" : {
-  "@value" : "2019-10-25T15:35:34.589+02:00",
-  "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
-},
-"modelVersion" : "4.1.0",
-"ids:issuerConnector" : {
-  "@id" : "https://test.connector.de/"
-},
-"securityToken" : {
-  "@type" : "ids:DynamicAttributeToken",
-  "@id" : "http://industrialdataspace.org/token/e43c08e1-157b-4207-94a8-754e53f48839",
-  "ids:tokenFormat" : {
-    "@id" : "idsc:JWT"
-  },
-  "tokenValue" : "eyJhbGciOiJSUzI1NiIsInR5cCI..."
-}
+    "@context" : "https://w3id.org/idsa/contexts/context.jsonld",
+    "@type" : "ids:ConnectorUnavailableMessage",
+    "@id" : "http://industrialdataspace.org/connectorUnavailableMessage/1a421b8c-3407-44a8-aeb9-253f145c869a",
+    "issued" : {
+      "@value" : "2019-10-25T15:35:34.589+02:00",
+      "@type" : "http://www.w3.org/2001/XMLSchema#dateTimeStamp"
+    },
+    "modelVersion" : "4.1.0",
+    "ids:issuerConnector" : {
+      "@id" : "https://test.connector.de/"
+    },
+    "securityToken" : {
+      "@type" : "ids:DynamicAttributeToken",
+      "@id" : "http://industrialdataspace.org/token/e43c08e1-157b-4207-94a8-754e53f48839",
+      "ids:tokenFormat" : {
+        "@id" : "idsc:JWT"
+      },
+      "tokenValue" : "eyJhbGciOiJSUzI1NiIsInR5cCI..."
+    }
 }
 --msgpart--
 ```
