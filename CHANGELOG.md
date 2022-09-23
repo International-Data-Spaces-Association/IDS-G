@@ -6,6 +6,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2022-09 
+
+### Changed
+- fixed missing mandatory elements in multipart message
+- Fixed wrong references to IDS-G-pre and RAM in CONTRIBUTING.md
+
+
 ## [Q2/2022]
 
 ### Added
