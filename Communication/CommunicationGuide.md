@@ -47,7 +47,9 @@ The foundation package contains elements that commonly used. This includes stand
 
 The common information model that is used in every other package. This shall include a base model containing the entities of a data space and their relation.
 
-**Insert entity model after update.**
+![Entities and relationships in data spaces](./images/Communicatoin-Guide_Dataspace_entities.png)
+
+(find the source file of the image above [here](./images/CommunicatoinGuide_Dataspace_entities.drawio))
 
 The realization bases on DCAT for the Data Products and ODRL for Contract Policies.
 
