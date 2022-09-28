@@ -26,8 +26,7 @@ Joint understanding of the terms `in-band` and `out-of-band`, as well as the `co
 - `out-of-band`: for a selected subset of communication, a different, dedicated band is selected
 - **example:** main process is using HTTP, user identity verification subprocess uses SMTP (email)
 
-
-#### control plane/data plane: ####
+#### control plane/data plane ####
 
 - **origins:** in a networking device…
 - the `control plane` is optimized for customizability and security. it controls the data plane.
@@ -43,7 +42,6 @@ The foundation package contains elements that commonly used. This includes stand
 ### Foundational standards ###
 
 [The Foundational Standards list.](./FoundationalStandards/README.md)
-
 
 ### Information Model ###
 
@@ -83,7 +81,6 @@ messages and data types:
 protocols: state machines for message flows and interaction patterns:
 API binding:
 
-
 ### Data Transfer ###
 
 part of the data plane. How data is exchanged with focus on communication and not on how the data plane is built.
@@ -104,9 +101,10 @@ messages and data types:
 protocols: state machines for message flows and interaction patterns:
 API binding:
 
-
 ## Audit logging ##
+
 currently out of scope
 
 ## Vocabularies ##
+
 currently out of scope
