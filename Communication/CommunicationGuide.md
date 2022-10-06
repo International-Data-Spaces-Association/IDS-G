@@ -93,9 +93,68 @@ API binding:
 
 ## Catalog (Publish and query meta-data) ##
 
-messages and data types:
-protocols: state machines for message flows and interaction patterns:
-API binding:
+The catalog in the IDS is a collection of Self-Descriptions, either of IDS Connectors or IDS Resources published by such IDS Connectors. The Self-Descriptions are the first-class-citizen in the catalogs, therefore all messages have the Self-Descriptions as their target, instead of the catalogs containing them.
+
+### Messages and Datatypes
+
+The messages, expected content, and the error behaviour are described in the [Functions and Correlated Messages](../Components/MetaDataBroker/FunctionsAndCorrelatedMessages/) section of the Metadata Broker.
+
+### Interaction Sequences
+<!--state machines for message flows and interaction patterns:-->
+Creating and manipulating catalog entries follows different state transitions depending wether Connector or Resource self-descriptions are concerned.
+
+#### Register and Update a Connector Self-Description
+
+An IDS Connector self-description is either unknown to a catalog (`initial state`), registered (`ConnectorRegistered`), temporarily inactive (`ConnectorInactive`), or deleted from the catalog (`end state`) as shown in Fig. C1. An inactive self-description is intended for Connectors, which are currently not reachable but intend to become active again in the dataspace. A Connector which self-description has been deleted before (aka. has reached the `end state`) must never come back with the same URI identifier. This is to prevent *false-flag operations* where evil players claim the identity of removed Connectors.
+
+![catalog-connector-interaction](./images/catalog-connector-interaction.png)
+
+___Figure C1: State transitions of Connector self-descriptions in a catalog.___
+
+
+#### Retrieve a Connector Self-Description
+
+Fig. C2 shows the diagram how to request a Connector self-description entry from a catalog. The DescriptionRequestMessage contains a reference to the target Connector self-discription identifier, defining which catalog entry shall be returned. There is no intermediate state so the operation is either successful or fails, for instance, due to a non-existing entry or an incorrectly formatted message.
+
+![catalog-request-connector-interaction](./images/catalog-request-connector-interaction.png)
+
+___Figure C2: Requesting a Connector self-description has no further states apart of the standard success or error cases.___
+
+
+#### Register and Update a Resource Self-Description
+
+An IDS Resource is either unknown to a catalog (`initial state`), registered (`ResourceRegistered`), temporarily inactive (`ResourceInactive`), or deleted from the catalog (`end state`) as shown in Fig. C3. It may be automatically created if a Connector self-description is added or extended (ConnectorUpdateMessage) and its self-description also contains Resource entries. A Resource self-description becomes inactive - and active again - if its parent Connector catalog entry becomes inactive or active. Similarily, a Resource self-description gets deleted automatically if the containing Connector gets deleted through a ConnectorUnavailableMessage.
+
+![catalog-resource-interaction](./images/catalog-resource-interaction.png)
+
+___Figure C3: State transitions of Connector self-descriptions in a catalog.___
+
+#### Rerieve a Resource Self-Description
+
+Fig. C4 shows the diagram how to request a Resource entry from a catalog, similar to the operation for a Connector self-description. The DescriptionRequestMessage contains a reference to the target Resource self-discription identifier, defining which catalog entry shall be returned. There is no intermediate state so the operation is either successful or fails, for instance, due to a non-existing entry or an incorrectly formatted message.
+
+![catalog-request-resource-interaction](./images/catalog-request-resource-interaction.png)
+
+___Figure C4: Requesting a Resource self-description has no further states apart of the standard success or error cases.___
+
+
+#### Query a Catalog
+
+Fig. C5 shows the diagram how to send a formulated query a catalog. Different to the retrieval of Connector or Resource self-description entries, the return format is not predefined but depends on the query. The QueryMessage contains formulated query string in a standardized query language, for instance, SPARQL or the upcoming GQL. There is no intermediate state so the operation is either successful or fails, for instance, if the query language is not supported by the catalog hoster or the query itself contains syntax errors.
+
+![catalog-query-interaction](./images/catalog-query-interaction.png)
+
+___Figure C5: Sending a catalog query has no further states apart of the standard success or error cases.___
+
+
+
+### API Bindings
+
+The API Operations of catalogs in the different protocol bindings are explained in the respective protocol sections:
+* [IDS REST](./protocols/ids-rest/README.md#complex-operations-and-workflows)
+* [IDS Multipart](./protocols/multipart/README.md#41-metadata-broker-communication)
+* [idscp2](./protocols/idscp2/ApplicationLayer/README.md)
+
 
 ## Registration ##
 
