@@ -48,15 +48,62 @@ The `CatalogRequestMessage` may have a `filter` property which contains an imple
 The catalog service may require an authorization token. Details for including that token can be found in the relevant catalog binding specification. Similarly, pagination may
 be defined in the relevant catalog binding specification.
 
-## 3 Technical Considerations
+## 3 DCAT Vocabulary Mapping
 
-### 3.1 Queries and Filter Expressions
+This section describes how the IDS Information Model maps to DCAT resources.
+
+### 3.1 Asset Entry
+
+An `Asset Entry` is a [DCAT Dataset](https://www.w3.org/TR/vocab-dcat-3/#Class:Dataset) with the following attributes:
+
+#### 3.1.1 dcat:haPolicy
+
+An asset entry Dataset may have 0..N `hasPolicy` attributes that contain an ODRL `Offer` defining the usage control policy associated with the asset. Offers must NOT contain any
+target attributes. The target of an offer is the asset associated with the containing asset entry. If an entry is has no associated policies (hasPolicy does not contain any offer
+entries), the asset is does not have any usage control policy.
+
+### 3.2 Distributions
+
+An asset may contain 0..N [DCAT Distributions](https://www.w3.org/TR/vocab-dcat-3/#Class:Distribution). Each distribution must have at least one `DataService` which specifies where
+the distribution is obtained. Specifically, a `DataService` specifies the endpoint for initiating a `ContractNegotiation` and `AssetTransfer`.
+
+### 3.3 DataService
+
+A DataService may specify an IDS service endpoint such as a `Connector`.
+
+#### 3.3.1 ids:dataServiceType
+
+If the DataService refers to an IDS service endpoint, it must include the property `ids:dataServiceType`:
+
+| Category   | Description                                                                |
+|------------|----------------------------------------------------------------------------|
+| Definition | Specifies the IDS service type                                             |
+| Domain     | [dcat:DataService](https://www.w3.org/TR/vocab-dcat-2/#Class:Data_Service) |
+| Type       | xsd:string                                                                 |
+| Note       | The value of this field is left intentionally open for future extension.   |
+
+The following table lists well-know IDS endpoint types:
+
+| Value         | Description          |
+|---------------|----------------------|
+| ids:connector | A Connector endpoint |
+|               |                      |
+
+
+#### 3.3.2 dcat:servesDataset
+
+Note that the property `dcat:servesDataset` should be omitted from the `DataService` since `DataSets` are included as top-level entries. Clients are not required to process the
+contents of `dcat:servesDataset`.
+
+## 4 Technical Considerations
+
+### 4.1 Queries and Filter Expressions
 
 A _**catalog service**_ may support catalog queries or filter expressions as an implementation-specific feature. However, it is expected that query capabilities will be implemented
 by the consumer against the results of a `CatalogRequestMessage,` as the latter is an RDF vocabulary. Client-side querying can be scaled by periodically crawling provider catalog
 services, caching the results, and executing queries against the locally-stored catalogs.
 
-### 3.2 Replication Protocol
+### 4.2 Replication Protocol
 
 The catalog protocol is designed to be used by federated services without the need for a replication protocol. Each consumer is responsible for issuing requests
 to 1..N catalog services, and managing the results. It follows that a specific replication protocol is not needed, or more precisely, each consumer replicates data from catalog
@@ -64,19 +111,19 @@ services by issuing `CatalogRequestMessages`.
 
 The discovery protocol adopted by a particular dataspace defines how a consumer discovers catalog services.
 
-### 3.3 Security
+### 4.3 Security
 
 It is expected (although not required) that catalog services implement access control. A catalog as well as individual catalog _datasets_ may be restricted to trusted parties.
 The catalog service may require consumers to include a security token along with a `CatalogRequestMessage.` The specifics of how this is done can be found in the relevant
 catalog binding specification. In addition, this specification does not define the contents of the security token. It is expected different security mechanisms may be used such
 as [OAuth2 2.1](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-v2-1-06) or [did:web](https://w3c-ccg.github.io/did-method-web/).
 
-### 3.4 Catalog Brokers
+### 4.4 Catalog Brokers
 
 A dataspace may include _**catalog brokers**_. A catalog broker is a consumer that has trusted access to 1..N upstream catalog services and advertises their respective catalogs as
 a single catalog service. The broker is expected to honor upstream access control requirements.
 
-## 4 DCAT and ODRL Profiles
+## 5 DCAT and ODRL Profiles
 
 The catalog is a DCAT catalog with the following restrictions:
 
