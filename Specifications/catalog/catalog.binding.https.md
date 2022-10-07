@@ -1,21 +1,21 @@
 # Catalog HTTPS Binding
 
-## Introduction
+## 1 Introduction
 
 This specification defines a RESTful API over HTTPS for the [Catalog Protocol].
 
 The OpenAPI definitions for this specification can be accessed [here](TBD).
 
-## Path Bindings
+## 2 Path Bindings
 
-### Prerequisites
+### 2.1 Prerequisites
 
 1. The `<base>` notation indicates the base URL for a catalog service endpoint. For example, if the base catalog URL is `api.example.com`, the URL `https://<base>/catalog/request`
    will map to `https//api.example.com/catalog/request`.
 
 2. All request and response messages must use the `application/json` media type.
 
-### 1. CatalogErrorMessage
+### 2.2 CatalogErrorMessage
 
 In the event of a request error, the catalog service must return an appropriate HTTP code and a [CatalogErrorMessage](./catalog.protocol.md#) in the response body.
 
@@ -24,9 +24,9 @@ In the event of a request error, the catalog service must return an appropriate 
 | code    | string        | An optional implementation-specific error code.             |
 | reasons | Array[object] | An optional array of implementation-specific error objects. |
 
-### 2. The `catalog` endpoint
+### 2.3 The `catalog/request` endpoint
 
-#### 2.1 POST
+#### 2.3.1 POST
 
 The [CatalogRequestMessage](catalog.protocol.md#1-catalogrequestmessage) corresponds to `POST https://<base>/catalog/request`:
 
@@ -50,23 +50,23 @@ The `Authorization` header is optional if the catalog service does not require a
 The `filter` property is optional. If present, the `filter` property can contain an implementation-specific filter expression or query to be executed as part of the catalog
 request.
 
-#### 2.1.1 OK (200) Response
+#### 2.3.2 OK (200) Response
 
 If the request is successful, the catalog service must return a response body containing a [CatalogMessage](./message/catalog.message.json) which is a profiled DCAT Catalog type
 described by the [Catalog Protocol Specification](catalog.protocol.md).
 
-## Technical Considerations
+## 3 Technical Considerations
 
-### Authorization
+### 3.1 Authorization
 
 A catalog service may require authorization. If the catalog service requires authorization, requests must include an HTTP `Authorization` header with a token. The contents of  
 the token are undefined by may be an OAUTH2, Web DID, or other access token type.
 
-### Versioning
+### 3.2 Versioning
 
 - Versioning will be done via URLs. TBD.
 
-### Pagination
+### 3.3 Pagination
 
 A catalog service may paginate the results of a `CatalogRequestMessage`. Pagination data is specified using [Web Linking](https://datatracker.ietf.org/doc/html/rfc5988)
 and the HTTP `Link` header. The `Link` header will contain URLs for navigating to previous and subsequent results. The following request sequence demonstrates pagination:
@@ -106,14 +106,14 @@ Link: <https://provider.com/catalog?page=2&per_page=100>; rel="previous"
 }
 ```
 
-### Compression
+### 3.4 Compression
 
 Catalog services MAY compress responses to a catalog request by setting the `Content-Encoding` header to `gzip` as described in
 the [HTTP 1.1 Specification](https://www.rfc-editor.org/rfc/rfc9110.html#name-gzip-coding).
 
-## Notes
+## 4 Notes
 
-### Asynchronous Interactions
+### 4.1 Asynchronous Interactions
 
 We may want to specify optional support for asynchronous callbacks for the catalog response. This would require addling a `callbackAddress` property and an `@id` to the request:
 

@@ -2,7 +2,7 @@
 
 The information model defines the core concepts, entities, and relationships that underpin a `Dataspace`.
 
-## 1. Terminology
+## 1 Terminology
 
 ### Dataspace
 
@@ -72,7 +72,7 @@ A set of interactions between a provider `Connector` and consumer `Connector` th
 
 A set of interactions between a provider `Connector` and consumer `Connector` that give access to an `Asset` under the terms of an `Agreement`.
 
-## 2. Dataspace Information Model
+## 2 Dataspace Information Model
 
 The following sections outline the Dataspace Information Model, which form the foundation of this specification.
 
