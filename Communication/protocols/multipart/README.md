@@ -377,7 +377,7 @@ The default interaction protocol for the IDS Clearing House is HTTPS. Any IDS Cl
 
 
 #### 4.2.2 Creating a Processes
-The IDS Clearing House structures its logs into processes and requires that all messages are logged under a process id. Processes are meant to represent agreed upon data exchanges that include the storage of the contract agreement and all messages that document the data exchange. Processes can be created by any IDS connector with a valid DAT, who becomes the owner of the process. Additional owners can be defined in the parameters of the request. Only owners of the process may read or write log entries for the process.
+The IDS Clearing House structures its logs into processes and requires that all messages are logged under a process id. Processes are meant to represent agreed upon data exchanges that include the storage of the contract agreement and all messages that document the data exchange. Processes can be created by any IDS connector with a valid DAT, who becomes the owner of the process. Additional owners can be defined in the parameters of the request. Only owners of the process may read or write log entries for the process. The Clearing House expects a [RequestMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl) in the header part of the multipart message.
 
 |Request method | Description |
 |---|---|
@@ -387,18 +387,20 @@ The IDS Clearing House structures its logs into processes and requires that all 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |pid|path|string|true|The unique identifier of the process that will be used for logging all information connected to the process|
+|header-part|body|json-ld|true| The header part of the multi-part message must contain a [RequestMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
 |owners|body|json|false|A list of owners that may log and access data in the given pid|
 
 #### Response Codes
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Created|[MessageProcessedNotificationMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Error|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Created|[MessageProcessedNotificationMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Error|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
 
 #### 4.2.3 Logging messages
-The information that should be logged in the Clearing House (*logData*) is sent in the payload of a [LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure). The log entry stored in the Clearing House consists of the payload and meta-data from the [LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure) and is stored under the given process *pid*. Returns a signed receipt of the logged data in form of a JSON Web Token (JWT) as payload of the response.
+The information that should be logged in the Clearing House (*logData*) is sent in the payload of a [LogMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl). The log entry stored in the Clearing House consists of the payload and meta-data from the [LogMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl) and is stored under the given process *pid*. Returns a signed receipt of the logged data in form of a JSON Web Token (JWT) as payload of the response.
 
 |Request method | Description |
 |---|---|
@@ -408,15 +410,17 @@ The information that should be logged in the Clearing House (*logData*) is sent 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |pid|path|string|true|Process id under which the message should be logged.|
-|logData|body|[LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|true|[LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure) with information that should be logged in the payload|
+|header-part|body|json-ld|true| The header part of the multi-part message must contain a [LogMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|*logData*|body|String|true| The payload part of the multi-part message contains the information that should be logged in the Clearing House|
 
 #### Response Codes
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Created|[MessageProcessedNotificationMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Error|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
+|201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Created|[MessageProcessedNotificationMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Error|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
 
 #### Example Http Multipart Request
 ```http
@@ -471,8 +475,8 @@ Content-Type: application/json
 --X-TEST-REQUEST-BOUNDARY--
 ```
 
-#### 4.2.4 Query all messages of a process
-Retrieves all log entries that are stored under the given *pid* in the Clearing House. The Clearing House answers the request with a [ResultMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure) that contains as the payload all log entries found. Each log entry is returned as a [LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure), i.e., the payload of the [ResultMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure) contains a `json` array of [LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure).
+#### 4.2.4 Query multiple messages of a process
+Retrieves multiple log entries that are stored under the given *pid* in the Clearing House. Pagination is enforced, so retrieving all log entries might require multiple requests. When querying the Clearing House the query may contain the requested *page* of data, the *size* of the requested page, and the sorting *order* of the results. The Clearing House answers the request with a [ResultMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl) that contains in the payload the log entries found, as well as the pagination information *page*, *size* and *order* that were used in the request. Each log entry is returned as a [LogMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl), i.e., the payload of the [ResultMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl) contains a `json` array of [LogMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl).
 
 |Request method | Description |
 |---|---|
@@ -482,15 +486,19 @@ Retrieves all log entries that are stored under the given *pid* in the Clearing 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |pid|path|string|true|Process id under which the log entry is stored|
-|query|body|[QueryMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|true|[QueryMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
+|page|query|uint|false|Requested result page number of log entries|
+|size|query|uint|false|Expected size of result page (defaults to 100)|
+|sort|query|string|false|Sorting order of the results. Allowed either "asc" or "desc". Defaults to "desc"|
+|header-part|body|json-ld|true| The header part of the multi-part message must contain a [QueryMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
 
 #### Response Codes
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful operation|[ResultMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure) containing a `json` array of [LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Error|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful operation|[ResultMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl) containing a `json` array of [LogMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Error|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
 
 The following example illustrates an answer of the Clearing House to a multipart request with a QueryMessage:
 ```http
@@ -554,8 +562,13 @@ content-transfer-encoding: 8bit
 content-disposition: form-data; name="payload"
 content-type: application/json
 content-transfer-encoding: 8bit
-[
-  {
+{
+  "date_from": "2022-09-13 00:00:00",
+  "date_to": "2022-09-27 15:40:02",
+  "page": 2,
+  "size": 5,
+  "order": "asc",
+  "documents": [{
     "@context": {
       "idsc": "https://w3id.org/idsa/code/",
       "ids": "https://w3id.org/idsa/core/"
@@ -582,13 +595,12 @@ content-transfer-encoding: 8bit
     "ids:senderAgent": "http://example.org",
     "payload": "\"YXNhZnNzd2V3c2Vyd2VmcndlZnJ3ZWZydw==\"",
     "payload_type": "\"text/plain\""
-  }
-]
+}]}
 --336749cd-8331-46b4-b75d-d9d2ae80e3ac--
 ```
 
 #### 4.2.5 Query a single message of a process
-Retrieves the log entry that is stored under the given *id* and the given process *pid* in the Clearing House. The Clearing House answers the request with a [ResultMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure) that contains as the payload the log entry found. The log entry is returned as a [LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure), i.e., the payload of the [ResultMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure) contains a [LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure).
+Retrieves the log entry that is stored under the given *id* and the given process *pid* in the Clearing House. The Clearing House answers the request with a [ResultMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl) that contains as the payload the log entry found. The log entry is returned as a [LogMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl), i.e., the payload of the [ResultMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl) contains a [LogMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl).
 
 |Request method | Description |
 |---|---|
@@ -599,12 +611,13 @@ Retrieves the log entry that is stored under the given *id* and the given proces
 |---|---|---|---|---|
 |pid|path|string|true|Process id under which the log entry is stored|
 |id|path|string|true|Id of the log entry|
-|query|body|[QueryMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|true|[QueryMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
+|header-part|body|json-ld|true| The header part of the multi-part message must contain a [QueryMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
 
 #### Response Codes
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful operation|[ResultMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure) containing a `json` array of [LogMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
-|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Error|[RejectionMessage](https://github.com/International-Data-Spaces-Association/IDS-G-pre/tree/connector-interaction/Communication/Message-Structure)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful operation|[ResultMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl) containing a `json` array of [LogMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
+|500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Error|[RejectionMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|

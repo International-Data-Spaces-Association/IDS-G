@@ -8,7 +8,7 @@
 | [2]  | Connector to Dynamic Attribute Provisioning Service (DAPS) |  |
 | [3]  | Connector to Participant Information Service (ParIS) |  |
 | [4]  | Connector to [Metadata Broker](./sequence-diagrams/data-connector-to-metadata-broker) | [Multipart](./protocols/multipart) |
-| [5]  | [Connector to Clearing House](./sequence-diagrams/data-connector-to-clearing-house) | [Multipart](./protocols/multipart) |
+| [5]  | [Connector to Clearing House](./sequence-diagrams/data-connector-to-clearing-house) | [Multipart](./protocols/multipart), [IDSCP2](./protocols/idscp2/ApplicationLayer)|
 | [6]  | Connector to App Store |  |
 | [7]  | Connector to Vocabulary Provider |  |
 | [8]  | ParIS to DAPS |  |
