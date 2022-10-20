@@ -1,0 +1,13 @@
+{
+  "@context": {
+    "ids": "https://idsa.org/",
+    "odrl": "https://www.w3.org/TR/odrl-model"
+  },
+  "@type": "ids:ContractAgreementVerificationMessage",
+  "negotiationId": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
+  "ids:consumerSignature": {
+    "timestamp": 121212,
+    "hash": "....",
+    "signature": ""
+  }
+}

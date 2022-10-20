@@ -1,0 +1,9 @@
+{
+  "@context": {
+    "ids": "https://idsa.org/"
+  },
+  "@id": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
+  "@type": "ids:ContractNegotiation",
+  "state": "OFFER_REQUESTED",
+  "checksum": "..."
+}

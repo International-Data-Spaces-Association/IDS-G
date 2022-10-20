@@ -1,0 +1,20 @@
+{
+  "@context": {
+    "ids": "https://idsa.org/",
+    "odrl": "https://www.w3.org/TR/odrl-model"
+  },
+  "@type": "ids:ContractAgreementMessage",
+  "negotiationId": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
+  "odrl:agreement": {
+    "@type": "odrl:Agreement",
+    "uid": "e8dc8655-44c2-46ef-b701-4cffdc2faa44",
+    "ids:providerSignature": {
+      "timestamp": 121212,
+      "hash": "...",
+      "signature": "..."
+    }
+  },
+  "checksum": "..."
+}
+
+

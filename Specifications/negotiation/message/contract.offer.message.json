@@ -1,0 +1,14 @@
+{
+  "@context": {
+    "ids": "https://idsa.org/",
+    "odrl": "https://www.w3.org/TR/odrl-model"
+  },
+  "@type": "ids:ContractOfferMessage",
+  "ids:negotiationId": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
+  "offer": {
+    "@type": "odrl:Offer",
+    "uid": "...",
+    "target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88"
+  },
+  "checksum": "..."
+}
