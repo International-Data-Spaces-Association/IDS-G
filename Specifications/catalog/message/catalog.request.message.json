@@ -1,0 +1,7 @@
+{
+  "@context": {
+    "ids": "https://idsa.org/"
+  },
+  "@type": "ids:CatalogRequestMessage",
+  "ids:filter": {}
+}
