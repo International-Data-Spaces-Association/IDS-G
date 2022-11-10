@@ -35,6 +35,31 @@ Joint understanding of the terms `in-band` and `out-of-band`, as well as the `co
 - `control plane`: controls what happens on the data plane
 - `data plane`: agnostic of control logic, only used for payload transfers
 
+#### General remarks on transactions and synchronized states ###
+
+**We should explain briefly on the requirements of state management and how we deal witt it in the remainder of the document.**
+
+### Structure of the document ###
+
+The remainder of the document is structures as follows:
+
+- The foundation package contains the reusable structures and definitions:
+  - the basic strucutre of elements and their relationship (information model)
+  - standards that are used in the document
+  - a definition of digital identities and their interactions
+  - a definition of policies
+  - Trust Frameworks as a foundation to establish trust in a data space
+- Data Sharing
+  - Contract negotiation sequence
+  - Data Transfer
+- Catalog
+- Registration to a data space
+- Audit Logging and observability (currently out of scope)
+- Use of vocabularies (currently out of scope)
+
+
+![structure of IDS Communication Specification](./images/Structure_Commuication.png)
+
 ## Foundation ##
 
 The foundation package contains elements that commonly used. This includes standards that are used as foundation for the Communication Guide.
@@ -57,9 +82,7 @@ The realization bases on DCAT for the Data Products and ODRL for Contract Polici
 
 ### Identities ###
 
-messages and data types:
-protocols: state machines for message flows and interaction patterns:
-API binding:
+[This section](./Identities/README.md)
 
 ### Trust Frameworks ###
 
