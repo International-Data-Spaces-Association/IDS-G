@@ -5,6 +5,12 @@
   "@id": "urn:uuid:dcbf434c-eacf-4582-9a02-f8dd50120fd3",
   "@type": "ids:ContractRequestMessage",
   "dataSet": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88",
-  "offer": "urn:uuid:2828282:3dd1add8-4d2d-569e-d634-8394a8836a88",
+  "ids:negotiationId": "urn:uuid:dcbf434c-eacf-4582-9a02-f8dd50120fd3",
+  "offerId": "urn:uuid:2828282:3dd1add8-4d2d-569e-d634-8394a8836a88",
+  "offer": {
+    "@type": "odrl:Offer",
+    "uid": "...",
+    "target": "urn:uuid:3dd1add8-4d2d-569e-d634-8394a8836a88"
+  },
   "callbackAddress": "https://......"
 }

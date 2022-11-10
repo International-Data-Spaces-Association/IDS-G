@@ -1,9 +1,0 @@
-{
-  "@context": {
-    "ids": "https://idsa.org/"
-  },
-  "@type": "ids:ContractOfferEventMessage",
-  "negotiationId": "e8dc8655-44c2-46ef-b701-4cffdc2faa44",
-  "checksum": "...",
-  "eventType": "accept"
-}

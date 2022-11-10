@@ -2,7 +2,8 @@
   "@context": {
     "ids": "https://idsa.org/"
   },
-  "@type": "ids:ContractAgreementEventMessage",
+  "@type": "ids:ContractNegotiationEventMessage",
   "negotiationId": "urn:uuid:a343fcbf-99fc-4ce8-8e9b-148c97605aab",
-  "eventType": "finalize"
+  "eventType": "accepted | finalized",
+  "checksum": "..."
 }
