@@ -2,9 +2,42 @@
 
 ## Introduction ##
 
+This section is non normative.
+
 Interoperability is a major goal of the IDS. Therefore, the interoperability between IDS Connectors and other components is of high importance. The IDS Communication Guide shall provide the required data structure and the interaction sequences to be realized for interoperability and to be used for interoperability testing.
 
 The Communication Guide is organized into a modular and composable structure.
+
+### Aims of the Communication Guide ###
+
+tbd
+
+### Conformance ###
+
+tbd
+
+### Structure of the document ###
+
+The remainder of the document is structures as follows:
+
+- Terms and Definitions
+- The foundation package contains the reusable structures and definitions:
+  - the basic strucutre of elements and their relationship (information model)
+  - standards that are used in the document
+  - a definition of digital identities and their interactions
+  - a definition of policies
+  - Trust Frameworks as a foundation to establish trust in a data space
+- Data Sharing
+  - Contract negotiation sequence
+  - Data Transfer
+- Catalog
+- Registration to a data space
+- Audit Logging and observability (currently out of scope)
+- Use of vocabularies (currently out of scope)
+
+![structure of IDS Communication Specification](./images/Structure_Commuication.png)
+
+The [Bibliography](./notes/bibliography.md) contains links to relevant standards referenced by the above documents.
 
 ## Terms and Definitions ##
 
@@ -40,28 +73,6 @@ Joint understanding of the terms `in-band` and `out-of-band`, as well as the `co
 #### General remarks on transactions and synchronized states ###
 
 **We should explain briefly on the requirements of state management and how we deal witt it in the remainder of the document.**
-
-### Structure of the document ###
-
-The remainder of the document is structures as follows:
-
-- The foundation package contains the reusable structures and definitions:
-  - the basic strucutre of elements and their relationship (information model)
-  - standards that are used in the document
-  - a definition of digital identities and their interactions
-  - a definition of policies
-  - Trust Frameworks as a foundation to establish trust in a data space
-- Data Sharing
-  - Contract negotiation sequence
-  - Data Transfer
-- Catalog
-- Registration to a data space
-- Audit Logging and observability (currently out of scope)
-- Use of vocabularies (currently out of scope)
-
-![structure of IDS Communication Specification](./images/Structure_Commuication.png)
-
-The [Bibliography](./notes/bibliography.md) contains links to relevant standards referenced by the above documents.
 
 ## Foundation ##
 

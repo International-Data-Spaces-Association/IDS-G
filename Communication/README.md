@@ -1,4 +1,4 @@
-# Overview
+# Overview #
 
 ![sequence overview](./images/sequences_overview.png)
 
@@ -19,7 +19,7 @@
 
 Since all IDS components are, at their core, a Connector, the connection of these to the DAPS (sequence 8-12) is designed in the same way as that of the Connector to the DAPS.
 
-## General Component Interaction
+## General Component Interaction ##
 
 In general, each communication between two components includes the following building blocks:
   
