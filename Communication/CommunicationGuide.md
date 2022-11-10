@@ -74,6 +74,8 @@ Joint understanding of the terms `in-band` and `out-of-band`, as well as the `co
 
 **We should explain briefly on the requirements of state management and how we deal witt it in the remainder of the document.**
 
+- Good practice is correlation ID and go to TERMINATED state in case of error
+
 ## Foundation ##
 
 The foundation package contains elements that commonly used. This includes standards that are used as foundation for the Communication Guide.
