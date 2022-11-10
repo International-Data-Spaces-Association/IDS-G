@@ -8,6 +8,8 @@ The Communication Guide is organized into a modular and composable structure.
 
 ## Terms and Definitions ##
 
+Most important terms and definition are in the [Glossary](../Glossary/README.md)
+
 ### Control Plane vs. Data Plane and in-band vs. out of band ###
 
 Joint understanding of the terms `in-band` and `out-of-band`, as well as the `control plane` and `data plane`:
@@ -57,11 +59,10 @@ The remainder of the document is structures as follows:
 - Audit Logging and observability (currently out of scope)
 - Use of vocabularies (currently out of scope)
 
-
 ![structure of IDS Communication Specification](./images/Structure_Commuication.png)
 
-
 The [Bibliography](./notes/bibliography.md) contains links to relevant standards referenced by the above documents.
+
 ## Foundation ##
 
 The foundation package contains elements that commonly used. This includes standards that are used as foundation for the Communication Guide.
@@ -76,41 +77,47 @@ The [Information Model document](./model/information.model.md) defines the core 
 
 [The IDS-Information Model is the declarative model --> the Binding of the model above to rdf](./Infomodel/README.md)
 
+The general message structure is described [here](./Message-Structure/README.md).
+
+And the message types are listed [here](./Message-Types/README.md).
+
+And messages are part of the [IDS Infomodel](./Infomodel/Message/README.md).
+
 ### Identities ###
 
 [This section](./Identities/README.md)
 
+While the API binding is [here](../Components/IdentityProvider/README.md).
+
 ### Trust Frameworks ###
 
-messages and data types:
-protocols: state machines for message flows and interaction patterns:
-API binding:
+[This section](./TrustFrameworks/README.md)
 
 ### Policies (authorization and Policy Description) ###
 
-messages and data types:
-protocols: state machines for message flows and interaction patterns:
-API binding:
+Policies in this context are the IDS Usage Contracts that are defined [here](../UsageControl/Contract/README.md)
 
-## Data Sharing (Conector) ##
+## Data Sharing (Connector) ##
+
+Data Sharing and the interaction between connectors focus on Contract Negotiation and Data Transfer
 
 ### Contract Negotiation ###
 
-part of the control plane
-
-messages and data types:
-protocols: state machines for message flows and interaction patterns:
-API binding:
+[This section](./ContractNegotiation/README.md)
 
 ### Data Transfer ###
 
 part of the data plane. How data is exchanged with focus on communication and not on how the data plane is built.
 
-messages and data types:
-protocols: state machines for message flows and interaction patterns:
-API binding:
+Bindings for the data exchange are described in the [protocols section](./protocols/README.md).
+
+- [IDS-REST](./protocols/ids-rest/README.md)
+- [Multipart](./protocols/multipart/README.md)
+- [IDSCP V2](./protocols/idscp2/README.md)
 
 ## Catalog (Publish and query meta-data) ##
+
+**This section mixes old and new please review**
 
 The catalog in the IDS is a collection of Self-Descriptions, either of IDS Connectors or IDS Resources published by such IDS Connectors. The Self-Descriptions are the first-class-citizen in the catalogs, therefore all messages have the Self-Descriptions as their target, instead of the catalogs containing them.
 
@@ -181,9 +188,7 @@ The API Operations of catalogs in the different protocol bindings are explained 
 
 ## Registration ##
 
-messages and data types:
-protocols: state machines for message flows and interaction patterns:
-API binding:
+[This section](./Registration/README.md)
 
 ## Audit logging ##
 
