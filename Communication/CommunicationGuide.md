@@ -60,6 +60,8 @@ The remainder of the document is structures as follows:
 
 ![structure of IDS Communication Specification](./images/Structure_Commuication.png)
 
+
+The [Bibliography](./notes/bibliography.md) contains links to relevant standards referenced by the above documents.
 ## Foundation ##
 
 The foundation package contains elements that commonly used. This includes standards that are used as foundation for the Communication Guide.
@@ -70,15 +72,9 @@ The foundation package contains elements that commonly used. This includes stand
 
 ### Information Model ###
 
-The common information model that is used in every other package. This shall include a base model containing the entities of a data space and their relation.
+The [Information Model document](./model/information.model.md) defines the core concepts, entities, and relationships that underpin a `Dataspace`.
 
-![Entities and relationships in data spaces](./images/Communicatoin-Guide_Dataspace_entities.png)
-
-(find the source file of the image above [here](./images/CommunicatoinGuide_Dataspace_entities.drawio))
-
-The realization bases on DCAT for the Data Products and ODRL for Contract Policies.
-
-[The IDS-Information Model is here.](./Infomodel/README.md)
+[The IDS-Information Model is the declarative model --> the Binding of the model above to rdf](./Infomodel/README.md)
 
 ### Identities ###
 
@@ -117,6 +113,10 @@ API binding:
 ## Catalog (Publish and query meta-data) ##
 
 The catalog in the IDS is a collection of Self-Descriptions, either of IDS Connectors or IDS Resources published by such IDS Connectors. The Self-Descriptions are the first-class-citizen in the catalogs, therefore all messages have the Self-Descriptions as their target, instead of the catalogs containing them.
+
+The [Catalog Protocol document](./catalog/catalog.protocol.md) defines a how a `Catalog` is requested from a catalog service by a consumer using an abstract message exchange format.
+
+The [Catalog Binding document](./catalog/catalog.binding.https.md) defines a RESTful API over HTTPS for the `Catalog Protocol`.
 
 ### Messages and Datatypes
 
