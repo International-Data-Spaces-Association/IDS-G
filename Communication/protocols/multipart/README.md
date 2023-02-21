@@ -489,6 +489,8 @@ Retrieves multiple log entries that are stored under the given *pid* in the Clea
 |page|query|uint|false|Requested result page number of log entries|
 |size|query|uint|false|Expected size of result page (defaults to 100)|
 |sort|query|string|false|Sorting order of the results. Allowed either "asc" or "desc". Defaults to "desc"|
+|date_to|query|string|false|Only results before given date. Date format: YYYY-MM-DD|
+|date_from|query|string|false|Only results after given date. Date format: YYYY-MM-DD|
 |header-part|body|json-ld|true| The header part of the multi-part message must contain a [QueryMessage](https://github.com/International-Data-Spaces-Association/InformationModel/blob/v4.1.0/taxonomies/Message.ttl)|
 
 #### Response Codes

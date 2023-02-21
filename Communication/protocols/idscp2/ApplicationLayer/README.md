@@ -78,6 +78,8 @@ The Clearing House expects a [QueryMessage](https://github.com/International-Dat
 |ch-ids-page|string|false|The requested result page. Defaults to 1|
 |ch-ids-size|string|false|The size of the requested result page. Defaults to 100|
 |ch-ids-sort|string|false|The order of the requested results. Defaults to "desc"|
+|ch-ids-date_to|string|false|Only results before given date. Date format: YYYY-MM-DD|
+|ch-ids-date_from|string|false|Only results after given date. Date format: YYYY-MM-DD|
 |Content-Type|string|true|The Clearing House expects the content type "application/json"|
 
 #### Expected Response
