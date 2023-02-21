@@ -21,6 +21,28 @@ Briefly and clearly describe the purpose of your contribution in the correspondi
 The pre-defined [labels](#labels) improve the understanding of your intentions and help to follow
 the scope of your changes.
 
+### Structure:
+
+*This is for suggesting a change in an overall Structure. This can be a question that needs to be discussed, adding something to the repository, setting up a working group, etc.*
+### Code:
+
+*This can mean any change, addition or removal to a piece of code, it also includes Bug Reports.*
+
+### Documentation:
+
+*This means that there is Information we already have that needs to be recorded in the way that is described. It may include meeting times, proccesses we have established, already discussed definitions / clarifications, tested use cases, failures, etc.*
+
+### QuickFix:
+
+*As the name indicated, this is for issues that are quick and easy to fix, e.g. grammar / spelling mistakes, a broken picture, etc.*
+
+Briefly and clearly describe the purpose of your contribution in the corresponding issue.
+The pre-defined [labels](#labels) improve the understanding of your intentions and help to follow
+the scope of your changes.
+
+  ![Issue flow.png](https://github.com/International-Data-Spaces-Association/IDS-G/blob/issue-templates/resources/Issue%20flow.png)
+
+
 **Bug Report**: As mentioned above, bug reports should be submitted as an issue. To give others
 the chance to reproduce the error in order to find a solution as quickly as possible, the report
 should at least include the following information:
@@ -45,6 +67,9 @@ developer that takes on the issue. New issues should be initially marked with `s
 *  `status:out-of-scope`: issue is considered out of the project's scope and therefore not further considered
 *  `status:resolved`: issue has been implemented and tested by a developer
 *  `status:wont-fix`: issue is in scope but considered impossible or too expensive to deal with
+*  `Topic:Structure`: We need to add something to our overall structure / knowledge
+*  `Topic:Code`: This is how we implement a feature
+*  `Topic:Documentation`: We need to record this information
 
 ## Branches
 
