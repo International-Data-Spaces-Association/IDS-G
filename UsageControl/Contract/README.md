@@ -17,916 +17,185 @@ Here are a list of 21 Policy Classes:
  
 This policy restricts the usage of the data to a specific Data Consumer, regardless of how many connectors they have and without any further usage restriction.
 
-```
-{    
- "@context": {
- 	"ids":"https://w3id.org/idsa/core/",
- 	"idsc" : "https://w3id.org/idsa/code/"
- },    
- "@type": "ids:ContractAgreement",    
- "@id": "https://w3id.org/idsa/autogen/contract/complex-policy-access",    
- "profile": "http://example.com/ids-profile",    
- "ids:provider": "http://example.com/party/my-party",    
- "ids:consumer": "http://example.com/ids/party/consumer-party",    
- "ids:permission": [{    
- 	"ids:target": {
- 		"@id":"http://example.com/ids/data/d1234"
- 	},    
- 	"ids:action": [{
- 		"@id":"idsc:USE"
-      	}]
-  }] 
-} 
-```
+[Example for Policy Class 1: Restrict consumer - IDS](Policies/pc1-ids-restrict-consumer-example.json)
+
+[Example for Policy Class 1: Restrict consumer - ODRL](Policies/pc1-odrl-restrict-consumer-example.json)
 
  2. IDS Connector
  
 The Connector-restricted Data Usage policy restricts the usage of the data to a specific IDS connector of a specific Data Consumer assuming that the Data Consumer owns one or more IDS Connector(s).
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:CONNECTOR"},  
-	"ids:operator": { "@id": "idsc:IN"},  
-	"ids:rightOperand": [{ 
-		"@value": "?connector1URI", 
-		"@type": "xsd:anyURI"
-	},{ 
-		"@value": "?connector2URI", 
-		"@type": "xsd:anyURI"
-	}], 
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/connector", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-			"@value":"https://consumer.org/pip/ep/connector", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 2: Restrict connector - IDS](Policies/pc2-ids-restrict-connector-example.json)
 
-3. Security Level
+[Example for Policy Class 2: Restrict connector - ODRL](Policies/pc2-odrl-restrict-connector-example.json)
 
-The Security Level-restricted Data Usage policy restricts the usage of the data to a Specific IDS Connector when it is certified for a specified security level (i.e. *idsc:BASE_SECURITY_PROFILE*, *idsc:TRUST_SECURITY_PROFILE* and *idsc:TRUST_PLUS_SECURITY_PROFILE*).
-
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:SECURITY_LEVEL"},  
-	"ids:operator": { "@id": "idsc:EQUALS"},  
-	"ids:rightOperand": { 
-		"@value": "idsc:TRUST_PLUS_SECURITY_PROFILE", 
-		"@type": "xsd:string"
-	}, 
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/security", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/security", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
-
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:SECURITY_LEVEL"},  
-	"ids:operator": { "@id": "idsc:IN"},  
-	"ids:rightOperand": [{ 
-		"@value": "idsc:TRUST_PLUS_SECURITY_PROFILE", 
-		"@type": "xsd:string"
-	},{ 
-		"@value": "idsc:TRUST_SECURITY_PROFILE", 
-		"@type": "xsd:string"
-	}], 
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/security", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-			"@value":"https://consumer.org/pip/ep/security", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
-
-4. Application inside a Connector
+3. Application inside a Connector
 
 The Application-restricted Data Usage policy restricts the usage of the data to a specific application inside an IDS connector.
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:APPLICATION"},  
-	"ids:operator": { "@id": "idsc:SAME_AS"},  
-	"ids:rightOperand": { 
-		"@value": "http://example.com/ids/application/smart-app", 
-		"@type": "xsd:anyURI"
-	}, 
-	"ids:pipEndpoint":{
-	"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/application", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/application", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 3: Restrict application - IDS](Policies/pc3-ids-restrict-application-example.json)
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:APPLICATION"},  
-	"ids:operator": { "@id": "idsc:IN"},  
-	"ids:rightOperand": [{ 
-		"@value": "http://example.com/ids/application/smart-app1", 
-		"@type": "xsd:anyURI"
-	},{ 
-		"@value": "http://example.com/ids/application/smart-app2", 
-		"@type": "xsd:anyURI"
-	}], 
-	"ids:pipEndpoint":{
-	"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/application", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/application", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 3: Restrict application - ODRL](Policies/pc3-odrl-restrict-application-example.json)
 
-
-5. User Role
+4. User Role
 
 This policy restricts the usage of the data to a specific users (e.g. users with specific roles or users who are members of a specific organization, etc.). 
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:ROLE"},  
-	"ids:operator": { "@id": "idsc:EQUALS"},  
-	"ids:rightOperand": { 
-		"@value": "?userRole", 
-		"@type": "xsd:string"
-	}, 
-	"ids:pipEndpoint":{
-	"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/role", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/role", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 4: Restrict user (role) - IDS](Policies/pc4-ids-restrict-user-role-example.json)
 
-6. Time Interval
+[Example for Policy Class 4: Restrict user (role) - ODRL](Policies/pc4-odrl-restrict-user-role-example.json)
 
-The time interval-restricted Data Usage policy restricts the usage of the data to a specific time interval.
+[Example (2) for Policy Class 4: Restrict user (role) - ODRL](pc4-odrl-restrict-user-role-example2.json)
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:DATE_TIME"},  
-	"ids:operator": { "@id": "idsc:TEMPORAL_EQUALS"},  
-	"ids:rightOperand": { 
-		"@type": "ids:Interval", 
-		"ids:begin": {
-			"@type": "ids:Instant",
-			"dateTime": {
-				"@value": "2021-07-01T08:00:00Z",
-				"@type": "xsd:dateTimeStamp"
-			}
-		}, 
-		"ids:end": {
-			"@type": "ids:Instant",
-			"dateTime": {
-				"@value": "2021-09-30T08:00:00Z",
-				"@type": "xsd:dateTimeStamp"
-			}
-		}
-	},
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/dt", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/dt ", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
-
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:DATE_TIME"},  
-	"ids:operator": { "@id": "idsc:BEFORE"},  
-	"ids:rightOperand": { 
-		"@type": "ids:Instant", 
-		"ids:dateTime": {
-			"@value": "2021-07-31T08:00",
-			"@type": "xsd:dateTimeStamp"
-		}
-	},	
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/dt", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/dt ", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
-
-7. Duration
-
-The Duration-restricted Data Usage policy restricts the usage of the data to a specific period.
-
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:ELAPSED_TIME"},  
-	"ids:operator": { "@id": "idsc:SHORTER_EQ"},  
-	"ids:rightOperand": { 
-		"@type": "ids:durationEntity", 
-		"ids:begin": {
-			"@value": "2021-07-01T08:00:00Z",
-			"@type": "xsd:dateTimeStamp"
-		}, 
-		"ids:hasDuration": {
-			"@value": "P3M",
-			"@type": "xsd:duration"
-		} 
-	},	
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/dt", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/dt ", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
-
-8. Location
+5. Location of usage
 
 The Location-restricted Data Usage policy restricts the usage of the data to a specific location. It may be expressed as names of areas or set of geographic points.
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:ABSOLUTE_SPATIAL_POSITION"},  
-	"ids:operator": { "@id": "idsc:SAME_AS"},  
-	"ids:rightOperand": { 
-		"@value": "http://ontologi.es/place/DE", 
-		"@type": "xsd:anyURI"
-	}, 
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/location", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/location ", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 5: Restrict location of usage - IDS](Policies/pc5-ids-restrict-location-of-usage-example.json)
 
-```
-"ids:constraint": [{
-	"@type": "ids:Constraint",
-	"ids:leftOperand": { "@id": "idsc:ABSOLUTE_SPATIAL_POSITION" },
-	"ids:operator": { "@id": "idsc:INSIDE" },
-	"ids:rightOperand": [{
-		"@type": "ids:GeoPoint",
-		"ids:latitude": {
-			"@value": "?lat",
-			"@type": "xsd:float"
-		},
-		"ids:longitude": {
-			"@value": "?lng",
-			"@type": "xsd:float"
-		}
-	}],
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/location", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/location ", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 5: Restrict location of usage - ODRL](Policies/pc5-odrl-restrict-location-of-usage-example.json)
 
+[Example (2) for Policy Class 5: Restrict location of usage - ODRL](pc5-odrl-restrict-location-of-usage-example2.json)
 
-```
-"ids:constraint": [{
-	"@type": "ids:Constraint",
-	"ids:leftOperand": { "@id": "idsc:ABSOLUTE_SPATIAL_POSITION" },
-	"ids:operator": { "@id": "?spatialOperator" },
-	"ids:rightOperand": {
-		"@type": "ids:BoundingPolygon",
-		[{
-			"@type": "ids:GeoPoint",
-			"ids:latitude": {
-				"@value": "?lat",
-				"@type": "xsd:float"
-			},
-			"ids:longitude": {
-				"@value": "?lng",
-				"@type": "xsd:float"
-			}
-		},{
-			"@type": "ids:GeoPoint",
-			"ids:latitude": {
-				"@value": "?lat",
-				"@type": "xsd:float"
-			},
-			"ids:longitude": {
-				"@value": "?lng",
-				"@type": "xsd:float"
-			}
-		},{
-			"@type": "ids:GeoPoint",
-			"ids:latitude": {
-				"@value": "?lat",
-				"@type": "xsd:float"
-			},
-			"ids:longitude": {
-				"@value": "?lng",
-				"@type": "xsd:float"
-			}
-		}]
-	},
-, 
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/location", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/location ", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
-
-9. Purpose
+6. Purpose
 
 The Purpose-restricted Data Usage policy restricts the usage of the data to specific purposes such as "marketing", "research", "Defect Analysis".
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:PURPOSE"},  
-	"ids:operator": { "@id": "idsc:SAME_AS"},  
-	"ids:rightOperand": { 
-		"@value": "http://example.com/ids/purpose/marketing", 
-		"@type": "xsd:anyURI"
-	}, 
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/purpose", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/purpose", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 6: Restrict purpose - IDS](Policies/pc6-ids-restrict-purpose-example.json)
 
-10. Event
+[Example for Policy Class 6: Restrict purpose - ODRL](Policies/pc6-odrl-restrict-purpose-example.json)
+
+[Example (2) for Policy Class 6: Restrict purpose - ODRL](pc6-odrl-restrict-purpose-example2.json)
+
+[Example (3) for Policy Class 6: Restrict purpose - ODRL](pc6-odrl-restrict-purpose-example3.json)
+
+7. Event
 
 The Event-restricted Data Usage policy restricts the usage of the data to specific events such as "Hannover Messe 2018" .
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:EVENT"},  
-	"ids:operator": { "@id": "idsc:SAME_AS"},  
-	"ids:rightOperand": { 
-		"@value": "http://example.com/ids/event/exhibition", 
-		"@type": "xsd:anyURI"
-	}, 
-	"ids:pipEndpoint":{
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/event", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/event", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 7: Restrict event - IDS](Policies/pc7-ids-restrict-event-example.json)
 
-11. Data Sale Contract
+[Example for Policy Class 7: Restrict event - ODRL](Policies/pc7-odrl-restrict-event-example.json)
 
-In this policy it is assumed that the payment has been done once.
+8. Security Level
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:PAY_AMOUNT"},  
-	"ids:operator": { "@id": "idsc:EQ"},  
-	"ids:rightOperand": { 
-		"@value": "?fee", 
-		"@type": "http://www.w3.org/2001/XMLSchema#double"
-	},
-	"ids:contract": "http://dbpedia.org/page/Sale",
-	"ids:unit": "http://dbpedia.org/resource/Euro",	
-	"ids:pipEndpoint":{
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/payment", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://provider.org/pip/ep/payment", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+The Security Level-restricted Data Usage policy restricts the usage of the data to a Specific IDS Connector when it is certified for a specified security level (i.e. *idsc:BASE_SECURITY_PROFILE*, *idsc:TRUST_SECURITY_PROFILE* and *idsc:TRUST_PLUS_SECURITY_PROFILE*).
 
-12. Data Rental Contract
+[Example for Policy Class 8: Restrict security level - IDS](Policies/pc8-ids-restrict-security-level-example.json)
 
-In this policy it is assumed that the payment shall happen frequently (e.g. monthly)
+[Example for Policy Class 8: Restrict security level - ODRL](Policies/pc8-odrl-restrict-security-level-example.json)
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:PAY_AMOUNT"},  
-	"ids:operator": { "@id": "idsc:EQ"},  
-	"ids:rightOperand": { 
-		"@value": "?fee", 
-		"@type": "http://www.w3.org/2001/XMLSchema#double"
-	},
-	"ids:contract": "http://dbpedia.org/page/Rent",
-	"ids:unit": "http://dbpedia.org/resource/Euro",	
-	"ids:frequency": {"@id":"idsc:ANNUAL" },
-	"ids:pipEndpoint":{
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/payment", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://provider.org/pip/ep/payment", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+9. Time Interval
 
-13. Artifact State
+The time interval-restricted Data Usage policy restricts the usage of the data to a specific time interval.
 
-The Artifact state-restricted Data Usage policy restricts that the data is used (or distributed) when it is encrypted, anonymized, combined, etc.
+[Example for Policy Class 9: Restrict time interval - IDS](Policies/pc9-ids-restrict-time-interval-example.json)
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:ARTIFACT_STATE"},  
-	"ids:operator": { "@id": "idsc:EQUALS"},  
-	"ids:rightOperand": { 
-		"@value": "idsc:ENCRYPTED",
-		"@type": "xsd:string"
-	}, 
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/artifact", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/artifact", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 9: Restrict time interval - ODRL](Policies/pc9-odrl-restrict-time-interval-example.json)
 
-14. State
+10. Duration
 
-The State-restricted Data Usage policy restricts the usage of the data to specific environment state. For example, the data only can be used in an application when the firewall is activated.
+The Duration-restricted Data Usage policy restricts the usage of the data to a specific period.
 
-```
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:STATE"},  
-	"ids:operator": { "@id": "idsc:EQUALS"},  
-	"ids:rightOperand": { 
-		"@value": "?state",
-		"@type": "xsd:string"
-	}, 
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/state", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/state", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}]
-```
+[Example for Policy Class 10: Restrict duration - IDS](Policies/pc10-ids-restrict-duration-offer-example.json)
 
-15. Number of usage
+[Example for Policy Class 10: Restrict duration - ODRL](Policies/pc10-odrl-restrict-duration-offer-example.json)
 
-This policy may be specified as “the Data Consumer is allowed to use my data not more than *n* times”
+11. Number of usage
 
-```
-"ids:action": [{
-	"@id":"idsc:USE"
-}],
-"ids:constraint": [{    
-	"@type":"ids:Constraint",  
-	"ids:leftOperand": { "@id": "idsc:COUNT"},  
-	"ids:operator": { "@id": "idsc:LTEQ"},  
-	"ids:rightOperand": { 
-		"@value": "30",
-		"@type": "xsd:decimal"
-	}, 
-	"ids:pipEndpoint":{
-		"@type":"ids:PIP",
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/pip/id/count", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-		     "@value":"https://consumer.org/pip/ep/count", 
-			"@type":"xsd:anyURI"
-		} 
-	} 
-}],
-"ids:postDuty": [{    
-	"@type":"ids:Duty",  
-	"ids:action": [{
-		"@id":"idsc:INCREMENT_COUNTER", 
-		"ids:pxpEndpoint":{
-			"@type":"ids:PXP",
-			"ids:interfaceDescription":{
-				"@value":"https://example.com/ids/PXP/id/increment_counter", 
-				"@type":"xsd:anyURI"
-			}, 
-				"ids:endpointURI":{
-				"@value":"https://consumer.org/ep/increment_counter", 
-				"@type":"xsd:anyURI"
-			} 
-		}
-	}]
-}]
-```
+This policy may be specified as “the Data Consumer is allowed to use my data not more than *n* times”.
 
-**Execute one or more actions before data usage:**
+[Example for Policy Class 11: Restrict number of usage - IDS](Policies/pc11-ids-restrict-number-of-usage-example.json)
 
-16. Modify Data in Rest
+[Example for Policy Class 11: Restrict number of usage - ODRL](Policies/pc11-odrl-restrict-number-of-usage-example.json)
 
-This policy demands to modify the data fields of a repository inside a connector.
-```
-{    
- "@context": {
- 	"ids":"https://w3id.org/idsa/core/",
- 	"idsc" : "https://w3id.org/idsa/code/"
- },    
- "@type": "ids:ContractAgreement",    
- "@id": "https://w3id.org/idsa/autogen/contract/complex-policy-access",    
- "profile": "http://example.com/ids-profile",    
- "ids:provider": "http://example.com/party/my-party",    
- "ids:consumer": "http://example.com/ids/party/consumer-party",    
- "ids:obligation": [{    
- 	"ids:target": {
- 		"@id":"http://example.com/ids/data/d1234"
- 	},    
- 	"ids:action": [{
- 		"@id":"idsc:ANONYMIZE"
-	}],
-	"ids:pxpEndpoint":{
-		"@type":"ids:PXP", 
-		"ids:interfaceDescription":{
-			"@value":"https://example.com/ids/PXP/id/anonymize", 
-			"@type":"xsd:anyURI"
-		}, 
-		"ids:endpointURI":{
-			"@value":"https://consumer.org/PXP/ep/anonymize", 
-			"@type":"xsd:anyURI"
-		} 
-	}
-  }] 
-}
-```
-
-17. Modify Data in Transit
-
-This policy demands to intercept the data flow and modify the data in transit.
-
-```
-"ids:action": [{
-	"@id":"idsc:USE"
-}], 
-"ids:preDuty": [{    
-	"@type":"ids:Duty",  
-	"ids:action": [{
-		"@id":"idsc:REPLACE",     
-		"ids:refinement": [{    
-			"@type":"ids:Constraint",  
-			"ids:leftOperand": { "@id":"idsc:REPLACE_WITH"},  
-			"ids:operator": { "@id": "idsc:DEFINES_AS"},  
-			"ids:rightOperand": {
-				"@value": "xxxx", 
-				"@type": "xsd:string"}
-		},{    
-			"@type":"ids:Constraint",  
-			"ids:leftOperand":{"@id":"idsc:JSON_PATH"},  
-			"ids:operator": { "@id": "idsc:DEFINES_AS"},  
-			"ids:rightOperand": {
-				"@value":"$.name",
-				"@type": "xsd:string"}
-		}] , 
-		"ids:pxpEndpoint":{
-			"@type":"ids:PXP",
-			"ids:interfaceDescription":{
-				"@value":"https://example.com/ids/PXP/id/replace", 
-				"@type":"xsd:anyURI"
-			}, 
-			"ids:endpointURI":{
-				"@value":"https://consumer.org/ep/replace", 
-				"@type":"xsd:anyURI"
-			} 
-		}
-	}]
-}]
-```
-
-18. Pass a Policy to the Third-party
-
-This policy demands to pass a policy to a third-party before distributing the data to them.
-
-```
-"ids:permission": [{   
-	"ids:target": {
-		"@id":"http://example.com/ids-data/production-plan"
-	}, 
-	"ids:action": [{
-		"@id":"idsc:DISTRIBUTE"
-	}], 
-	"ids:preDuty": [{    
-		"@type":"ids:Duty",  
-		"ids:action": [{
-			"@id":"idsc:NEXT_POLICY",     
-			"ids:refinement": [{    
-				"@type":"ids:Constraint",  
-				"ids:leftOperand": { "@id":"idsc:TARGET_POLICY"},  
-				"ids:operator": { "@id": "idsc:DEFINES_AS"},  
-				"ids:rightOperand": {
-					"@value": "?policyURI", 
-					"@type": "xsd:anyURI"}
-			}],
-			"ids:pxpEndpoint":{
-				"@type":"ids:PXP",
-				"ids:interfaceDescription":{
-					"@value":"https://example.com/ids/PXP/id/attachPolicy", 
-					"@type":"xsd:anyURI"
-				}, 
-				"ids:endpointURI":{
-					"@value":"https://consumer.org/ep/attachPolicy", 
-					"@type":"xsd:anyURI"
-				} 
-			}
-		}]
-	}]
-}]
-```
-
-**Execute one or more actions after data usage:**
-
-19. Log Data Usage Information
-
-This policy demands to log the Data Usage information either locally or on the Clearing House.
-
-```
-"ids:action": [{
-	"@id":"idsc:USE"
-}], 
-"ids:postDuty": [{    
-	"@type":"ids:Duty",  
-	"ids:action": [{
-		"@id":"idsc:LOG",     
-		"ids:refinement": [{    
-			"@type":"ids:Constraint",  
-			"ids:leftOperand": { "@id":"idsc:LOG_LEVEL"},  
-			"ids:operator": { "@id": "idsc:DEFINES_AS"},  
-			"ids:rightOperand": {
-				"@value": "idsc:ON_ALLOW", 
-				"@type": "xsd:string"}
-		},{    
-			"@type":"ids:Constraint",  
-			"ids:leftOperand":{"@id":"idsc:SYSTEM_DEVICE"},  
-			"ids:operator": { "@id": "idsc:DEFINES_AS"},  
-			"ids:rightOperand": {
-				"@value":"http://example.com/ids/system/local-log-server",
-				"@type": "xsd:anyURI"}
-		}] ,
-		"ids:pxpEndpoint":{
-			"@type":"ids:PXP",
-			"ids:interfaceDescription":{
-				"@value":"https://example.com/ids/PXP/id/log", 
-				"@type":"xsd:anyURI"
-			}, 
-			"ids:endpointURI":{
-				"@value":"https://provider.org/ep/log", 
-				"@type":"xsd:anyURI"
-			} 
-		}
-	}]
-}]
-```
-
-Note: A Policy Enforcement Point (PEP) intercepts the data flow and waits for an authorization decision from the Policy Decision Point (PDP). A Policy Execution Point (PXP) which is responsible to log the information could return a boolean value to the PDP and eventually influence the PEP. In a case that the Clearing House is not available, the PXP cannot execute the duty action and therefore it would return a False value to the PDP. Eventually, the PEP can block the data flow after receiving a usage deny from the PDP. A policy would specify such a case slightly different than what is shown above.
-
-20. Inform a participant about the Data Usage
-
-This policy demands to inform a participant (e.g. person, organization), or even the Clearing House about the Data Usage. For example, inform a party via Email or a notification system.
-
-```
-"ids:action": [{
-	"@id":"idsc:USE"
-}], 
-"ids:postDuty": [{    
-	"@type":"ids:Duty",  
-	"ids:action": [{
-		"@id":"idsc:NOTIFY",     
-		"ids:refinement": [{    
-			"@type":"ids:Constraint",  
-			"ids:leftOperand": { "@id":"idsc:NOTIFICATION_LEVEL"},  
-			"ids:operator": { "@id": "idsc:DEFINES_AS"},  
-			"ids:rightOperand": {
-				"@value": "idsc:ON_ALLOW", 
-				"@type": "xsd:string"}
-		},{    
-			"@type":"ids:Constraint",  
-			"ids:leftOperand":{"@id":"idsc:RECIPIENT"},  
-			"ids:operator": { "@id": "idsc:DEFINES_AS"},  
-			"ids:rightOperand": {
-				"@value":"http://example.com/ids/party/my-party",
-				"@type": "xsd:anyURI"}
-		}] , 
-		"ids:pxpEndpoint":{
-			"@type":"ids:PXP",
-			"ids:interfaceDescription":{
-				"@value":"https://example.com/ids/PXP/id/notify", 
-				"@type":"xsd:anyURI"
-			}, 
-			"ids:endpointURI":{
-				"@value":"https://provider.org/ep/notify", 
-				"@type":"xsd:anyURI"
-			} 
-		}
-	}]
-}]
-```
-
-21. Delete Data
+12. Delete Data
 
 This policy demands to delete data either immediately after it is used, or after a delay period or before a defined deadline.
 
-```
-"ids:action": [{
-	"@id":"idsc:USE"
-}], 
-"ids:postDuty": [{    
-	"@type":"ids:Duty",  
-	"ids:action": [{
-		"@id":"idsc:DELETE",     
-		"ids:refinement": [{    
-			"@type":"ids:Constraint",  
-			"ids:leftOperand": { "@id": "idsc:DELAY"},  
-			"ids:operator": { "@id": "idsc:DURATION_EQ"},  
-			"ids:rightOperand": { 
-				"@type": "ids:durationEntity", 
-				"ids:hasDuration": {
-					"@value": "P6M",
-					"@type": "xsd:duration"
-				} 
-			}, 
-			"ids:pipEndpoint":{
-				"ids:interfaceDescription":{
-					"@value":"https://example.com/ids/PIP/id/delay", 
-					"@type":"xsd:anyURI"
-				}, 
-				"ids:endpointURI":{
-					"@value":"https://consumer.org/ep/delay", 
-					"@type":"xsd:anyURI"
-				} 
-			} 
-		}] , 
-		"ids:pxpEndpoint":{
-			"@type":"ids:PXP",
-			"ids:interfaceDescription":{
-				"@value":"https://example.com/ids/PXP/id/delete", 
-				"@type":"xsd:anyURI"
-			}, 
-			"ids:endpointURI":{
-				"@value":"https://consumer.org/ep/delete", 
-				"@type":"xsd:anyURI"
-			} 
-		}
-	}]
-}]
-```
+[Example for Policy Class 12: Delete data - IDS](Policies/pc12-ids-delete-data-example.json)
 
-```
-"ids:action": [{
-	"@id":"idsc:USE"
-}], 
-"ids:postDuty": [{    
-	"@type":"ids:Duty",  
-	"ids:action": [{
-		"@id":"idsc:DELETE",     
-		"ids:refinement": [{    
-			"@type":"ids:Constraint",  
-			"ids:leftOperand": { "@id": "idsc:DATE_TIME"},  
-			"ids:operator": { "@id": "idsc:BEFORE"},  
-			"ids:rightOperand": { 
-				"@type": "ids:Instant", 
-				"ids:dateTime": {
-					"@value": "2022-10-09T15:03"
-					"@type": "xsd:dateTimeStamp",
-				} 
-			}, 
-			"ids:pipEndpoint":{
-				"ids:interfaceDescription":{
-					"@value":"https://example.com/ids/PIP/id/date_time", 
-					"@type":"xsd:anyURI"
-				}, 
-				"ids:endpointURI":{
-					"@value":"https://consumer.org/ep/date_time", 
-					"@type":"xsd:anyURI"
-				} 
-			} 
-		}] , 
-		"ids:pxpEndpoint":{
-			"@type":"ids:PXP",
-			"ids:interfaceDescription":{
-				"@value":"https://example.com/ids/PXP/id/delete", 
-				"@type":"xsd:anyURI"
-			}, 
-			"ids:endpointURI":{
-				"@value":"https://consumer.org/ep/delete", 
-				"@type":"xsd:anyURI"
-			} 
-		}
-	}]
-}]
-```
+[Example for Policy Class 12: Delete data - ODRL](Policies/pc12-odrl-delete-data-example.json)
+
+[Example (2) for Policy Class 12: Delete data - ODRL](Policies/pc12-odrl-delete-data-example2.json)
+
+13. Modify Data in Transit
+
+This policy demands to intercept the data flow and modify the data in transit.
+
+[Example for Policy Class 13: Modify data in transit - IDS](Policies/pc13-ids-modify-in-transit-example.json)
+
+[Example for Policy Class 13: Modify data in transit - ODRL](Policies/pc13-odrl-modify-in-transit-example.json)
+
+14. Modify Data in Rest
+
+This policy demands to modify the data fields of a repository inside a connector.
+
+[Example for Policy Class 14: Modify data in rest - IDS](Policies/pc14-ids-modify-in-rest-example.json)
+
+[Example for Policy Class 14: Modify data in rest - ODRL](Policies/pc14-odrl-modify-in-rest-example.json)
+
+15. Log Data Usage Information
+
+This policy demands to log the Data Usage information either locally or on the Clearing House.
+
+[Example for Policy Class 15: Log usage information - IDS](Policies/pc15-ids-log-usage-information-example.json)
+
+[Example for Policy Class 15: Log usage information - ODRL](Policies/pc15-odrl-log-usage-information-example.json)
+
+Note: A Policy Enforcement Point (PEP) intercepts the data flow and waits for an authorization decision from the Policy Decision Point (PDP). A Policy Execution Point (PXP) which is responsible to log the information could return a boolean value to the PDP and eventually influence the PEP. In a case that the Clearing House is not available, the PXP cannot execute the duty action and therefore it would return a False value to the PDP. Eventually, the PEP can block the data flow after receiving a usage deny from the PDP. A policy would specify such a case slightly different than what is shown above.
+
+16. Inform a participant about the Data Usage
+
+This policy demands to inform a participant (e.g. person, organization), or even the Clearing House about the Data Usage. For example, inform a party via Email or a notification system.
+
+[Example for Policy Class 16: Notify participant - IDS](Policies/pc16-ids-notify-party-example.json)
+
+[Example for Policy Class 16: Notify participant - ODRL](Policies/pc16-odrl-notify-party-example.json)
+
+17. Pass a Policy to the Third-party
+
+This policy demands to pass a policy to a third-party before distributing the data to them.
+
+[Example for Policy Class 17: Next policy - IDS](Policies/pc17-ids-distribute-next-policy-example.json)
+
+[Example for Policy Class 17: Next policy - ODRL](Policies/pc17-odrl-distribute-next-policy-example.json)
+
+18. Artifact State
+
+The Artifact state-restricted Data Usage policy restricts that the data is used (or distributed) when it is encrypted, anonymized, combined, etc.
+
+[Example for Policy Class 18: Restrict artifact state - IDS](Policies/pc18-ids-restrict-artifact-state-example.json)
+
+[Example for Policy Class 18: Restrict artifact state - ODRL](Policies/pc18-odrl-restrict-artifact-state-example.json)
+
+19. Data Sale Contract
+
+In this policy it is assumed that the payment has been done once.
+
+[Example for Policy Class 18: Payment for sale - IDS](Policies/pc19-ids-restrict-payment-sale-example.json)
+
+[Example for Policy Class 18: Payment for sale - ODRL](Policies/pc19-odrl-restrict-payment-sale-example.json)
+
+[Example(2) for Policy Class 18: Payment for sale - ODRL](Policies/pc19-odrl-restrict-payment-sale-example2.json)
+
+20. Data Rental Contract
+
+In this policy it is assumed that the payment shall happen frequently (e.g. monthly)
+
+[Example for Policy Class 19: Payment for rent - IDS](Policies/pc20-ids-restrict-payment-rent-example.json)
+
+[Example for Policy Class 19: Payment for rent - ODRL](Policies/pc20-odrl-restrict-payment-rent-example.json)
+
+[Example(2) for Policy Class 19: Payment for rent - ODRL](Policies/pc20-odrl-restrict-payment-rent-example2.json)
+
+21. State
+
+The State-restricted Data Usage policy restricts the usage of the data to specific environment state. For example, the data only can be used in an application when the firewall is activated.
+
+[Example for Policy Class 21: Restrict state - IDS](Policies/pc21-ids-restrict-state-example.json)
+
+[Example for Policy Class 21: Restrict state - ODRL](Policies/pc21-odrl-restrict-state-example.json)
 
 **Usage Control Policy**
 It is an identified policy that is a combination of one or more instances of the policy classes.
