@@ -148,7 +148,7 @@ There might be a case that a *RightOperandReference* is used in the policy, inst
 
 In such a case, UC app needs to resolve the URI a retrieve the actual allowed purposes first before enforcing the policy. The image below shows that the UC app can call a certified service called IDS Resolve URI PIP to take care of this issue.
 
-![image](media/UC-2B-purpose-pip.drawio.png)
+![image](../media/UC-2B-purpose-pip.drawio.png)
 
 The IDS Resolve URI PIP can be located inside or outside of the Connector. For the sake of security, the IDS Purpose PIP (as part of the Data App) shall not communicate with outside of the Connector to exchange information. Therefore, the IDS Purpose PIP only communicates with the UC app. 
 
@@ -252,7 +252,7 @@ A location information can be represented in various ways; Geonames, Geopoints, 
 
 In order to refer to a location by Geonames, we could use several standards such as [ISO 3166-1](https://www.iso.org/standard/72482.html), [ISO 3166-2](https://www.iso.org/standard/72483.html), [Geonames](https://www.geonames.org/) and [DBpedia](https://www.dbpedia.org/). 
 
-![image](media/UC-2B-Location-PIP.drawio.png)
+![image](../media/UC-2B-Location-PIP.drawio.png)
 
 The local IDS Location PIP is located in the Core. It has the responsibility to provide the IP of the Connector. It may resolve the Location URI or the Geographic points from the IP itself and compute whether the location of the Connector is *part of* the permitted location (given by the policy) or not. In order to shift the evaluation overload from the Core to outside of the Connector and also, to provide this service globally in the dataspace (i.e., available for all Usage Control frameworks), we recommend to use a certified IDS Global Location PIP that receives the IP of the Connector, retrieves the locations and computes the *part of* function. Using this Global PIP, its Interface Description can be known to the Data Provider in advance.
 
