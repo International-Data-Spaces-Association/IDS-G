@@ -1,0 +1,31 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/inform-about-usage-information/42",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "This policy demands to inform a participant (e.g. person, organization), or even the Clearing House about the Data Usage. For example, inform a party via Email or a notification system.",
+    "dc:issued": "2022-05-19T12:00",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "use",
+        "duty": [{
+           "action": [{
+              "rdf:value": { "@id": "inform" },
+              "refinement": [{
+                 "leftOperand": "idsc:NOTIFICATION_LEVEL",
+                 "operator": "eq",
+                 "rightOperand": { "@value": "idsc:ON_ALLOW", "@type": "xsd:string" }
+              }]
+           }],
+           "informedParty": "http://example.com/ids/party/123"
+        }]
+    }]
+}

@@ -1,0 +1,35 @@
+{    
+ "@context": {
+ 	"ids":"https://w3id.org/idsa/core/",
+ 	"idsc" : "https://w3id.org/idsa/code/"
+ },    
+ "@type": "ids:ContractOffer",    
+ "@id": "http://example.com/policy/restrict-data-consumer/12",    
+ "profile": "http://example.com/ids-profile",    
+ "ids:provider": "http://example.com/party/my-party",    
+ "ids:permission": [{    
+ 	"ids:target": {
+ 		"@id":"http://example.com/ids/data/d1234"
+ 	},    
+ 	"ids:action": [{
+ 		"@id":"idsc:USE"
+   	}],
+	"ids:constraint": [{    
+		"@type":"ids:Constraint",  
+		"ids:leftOperand": { "@id": "idsc:ELAPSED_TIME"},  
+		"ids:operator": { "@id": "idsc:SHORTER_EQ"},  
+		"ids:rightOperand": [{ "@type": "xsd:duration", "@value": "P2Y3M"}],	
+		"ids:pipEndpoint":{
+			"@type":"ids:PIP",
+			"ids:interfaceDescription":{
+				"@value":"https://example.com/ids/pip/id/dt", 
+				"@type":"xsd:anyURI"
+			}, 
+			"ids:endpointURI":{
+				 "@value":"https://consumer.org/pip/ep/dt ", 
+				"@type":"xsd:anyURI"
+			} 
+		} 
+	}]
+  }] 
+}

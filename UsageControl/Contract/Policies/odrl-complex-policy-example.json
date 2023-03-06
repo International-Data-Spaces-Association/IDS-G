@@ -1,0 +1,64 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-connector/312",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "The Connector-restricted Data Usage policy restricts the usage of the data to a specific IDS connector of a specific Data Consumer assuming that the Data Consumer owns one or more IDS Connector(s).",
+    "dc:issued": "2022-05-19T12:00",
+    "ids:provider": "http://example.com/ids/party/123",
+    "ids:consumer": "http://example.com/ids/party/456",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": [ "derive", "display" ],
+        "constraint": [{
+           "leftOperand": "idsc:CONNECTOR",
+           "operator": "isAnyOf",
+           "rightOperand":  [
+              { "@value": "?connector1URI", "@type": "xsd:anyURI" },
+              { "@value": "?connector2URI", "@type": "xsd:anyURI" }
+           ]
+       },{
+           "leftOperand": "idsc:SECURITY_LEVEL",
+           "operator": "isPartOf",
+           "rightOperand":  [
+              { "@value": "idsc:TRUST_PLUS_SECURITY_PROFILE", "@type": "xsd:string" },
+              { "@value": "idsc:TRUST_SECURITY_PROFILE", "@type": "xsd:string" }
+           ]
+       },{
+           "leftOperand": "dateTime",
+           "operator": "gteq",
+           "rightOperand": { "@value": "2022-06-01T08:00Z", "@type": "xsd:dateTimeStamp" }
+       },{
+           "leftOperand": "dateTime",
+           "operator": "lteq",
+           "rightOperand": { "@value": "2022-10-01T08:00Z", "@type": "xsd:dateTimeStamp" }
+       }],
+       "duty": [{
+           "action": [{
+              "rdf:value": { "@id": "idsc:REPLACE" },
+              "refinement": [{
+                 "leftOperand": "idsc:REPLACE_WITH",
+                 "operator": "eq",
+                 "rightOperand": { "@value": "xxxx", "@type": "xsd:string" }
+              },{
+                 "leftOperand": "idsc:JSON_PATH",
+                 "operator": "eq",
+                 "rightOperand": { "@value": "$.name", "@type": "xsd:string" }
+              }]
+           }],
+           "constraint": [{
+               "leftOperand": "event",
+               "operator": "lt",
+               "rightOperand": { "@id": "odrl:policyUsage" }
+           }]
+        }]
+    }]
+}

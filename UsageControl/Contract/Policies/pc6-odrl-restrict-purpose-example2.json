@@ -1,0 +1,29 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-by-purpose/12",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "The Purpose-restricted Data Usage policy restricts the usage of the data to specific purposes such as marketing, research, Defect Analysis, etc.",
+    "dc:issued": "2022-05-19T12:00",
+    "ids:provider": "http://example.com/ids/party/123",
+    "ids:consumer": "http://example.com/ids/party/456",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": [ "read", "use" ],
+        "constraint": [{
+           "leftOperand": "purpose",
+           "operator": "isPartOf",
+           "rightOperand": [{ "@value": "Educational Use", "@type": "xsd:string" },
+                            { "@value": "Risk Management", "@type": "xsd:string" },
+                            { "@value": "Defect Analysis", "@type": "xsd:string" }]
+       }]
+    }]
+}

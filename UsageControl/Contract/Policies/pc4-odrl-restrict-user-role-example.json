@@ -1,0 +1,68 @@
+{
+   "@type": "vcard:Individual",
+   "@id": "http://example.com/person/sara",
+   "vcard:fn": "Sara",
+   "vcard:hasEmail": "sara@example.com",
+   "odrl:partOf": "http://example.com/ids/party/4565",
+   "vcard:hasRole": "Team leader"
+}
+
+{
+   "@type": "vcard:Individual",
+   "@id": "http://example.com/person/murphy",
+   "vcard:fn": "Murphy",
+   "vcard:hasEmail": "murphy@example.com",
+   "odrl:partOf": "http://example.com/ids/party/4565",
+   "vcard:hasRole": "Backend Developer"
+}
+
+{
+   "@type": "vcard:Individual",
+   "@id": "http://example.com/person/John",
+   "vcard:fn": "John",
+   "vcard:hasEmail": "john@example.com",
+   "odrl:partOf": "http://example.com/ids/party/4565",
+   "vcard:hasRole": "UI Designer"
+}
+
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-users/12",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "This policy restricts the usage of the data to a specific users (e.g. users with specific roles or users who are members of a specific organization, etc.).",
+    "dc:issued": "2022-05-19T12:00",
+    "ids:provider": "http://example.com/ids/party/1234",
+    "ids:consumer": "http://example.com/ids/party/4565",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": {
+           "@type": [ "Party", "vcard:Individual" ],
+           "uid": "http://example.com/ids/party/1234",
+        },
+        "assignee": {
+           "@type": [ "PartyCollection", "vcard:Group" ],
+           "source": "http://example.com/ids/party/4565",
+           "refinement": [{
+              "leftOperand": "vcard:hasRole",
+              "operator": "isPartOf",
+              "rightOperand": [
+                 { "@value": "Team leader", "@type": "xsd:string" },
+                 { "@value": "Backend Developer", "@type": "xsd:string" }
+              ],
+              "ids:pipEndpoint": [{
+                 "@type":"ids:PIP",
+                 "ids:interfaceDescription":{ "@value":"?interfaceURI", "@type":"xsd:anyURI" }, 
+                 "ids:endpointURI":{ "@value":"?endPointURI", "@type":"xsd:anyURI" } 
+              }]
+           }]
+        },
+        "action": [ "execute", "display" ]
+    }]
+}

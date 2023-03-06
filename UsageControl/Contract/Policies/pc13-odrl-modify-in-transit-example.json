@@ -1,0 +1,39 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/modify-in-transit/42",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "This policy demands to intercept the data flow and modify the data in transit.",
+    "dc:issued": "2022-05-19T12:00",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "use",
+        "duty": [{
+           "action": [{
+              "rdf:value": { "@id": "idsc:REPLACE" },
+              "refinement": [{
+                 "leftOperand": "idsc:REPLACE_WITH",
+                 "operator": "eq",
+                 "rightOperand": { "@value": "xxxx", "@type": "xsd:string" }
+              },{
+                 "leftOperand": "idsc:JSON_PATH",
+                 "operator": "eq",
+                 "rightOperand": { "@value": "$.name", "@type": "xsd:string" }
+              }]
+           }],
+           "constraint": [{
+               "leftOperand": "event",
+               "operator": "lt",
+               "rightOperand": { "@id": "odrl:policyUsage" }
+           }]
+        }]
+    }]
+}

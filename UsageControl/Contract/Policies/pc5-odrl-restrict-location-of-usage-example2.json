@@ -1,0 +1,27 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-location/12",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "The Location-restricted Data Usage policy restricts the usage of the data to a specific location. It may be expressed as names of areas or set of geographic points.",
+    "dc:issued": "2022-05-19T12:00",
+    "ids:provider": "http://example.com/ids/party/123",
+    "ids:consumer": "http://example.com/ids/party/456",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "use",
+        "constraint": [{
+           "leftOperand": "spatial",
+           "operator": "eq",
+           "rightOperandReference": { "@value": "?referenceToAllowedLocations", "@type": "xsd:anyURI" }
+       }]
+    }]
+}

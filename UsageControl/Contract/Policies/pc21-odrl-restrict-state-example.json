@@ -1,0 +1,32 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-on-state/312",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "The State-restricted Data Usage policy restricts the usage of the data to specific environment state (e.g. emergency).",
+    "dc:issued": "2022-05-19T12:00",
+    "ids:provider": "http://example.com/ids/party/123",
+    "ids:consumer": "http://example.com/ids/party/456",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "use",
+        "constraint": [{
+           "leftOperand": "idsc:state",
+           "operator": "eq",
+           "rightOperand":  [{ "@value": "emergency", "@type": "xsd:string" }],
+           "ids:pipEndpoint": [{
+              "@type":"ids:PIP",
+              "ids:interfaceDescription":{ "@value":"?interfaceURI", "@type":"xsd:anyURI" }, 
+              "ids:endpointURI":{ "@value":"?endPointURI", "@type":"xsd:anyURI" } 
+           }]
+       }]
+    }]
+}

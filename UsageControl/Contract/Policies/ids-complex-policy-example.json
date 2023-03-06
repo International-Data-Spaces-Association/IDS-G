@@ -1,0 +1,210 @@
+ {    
+   "@context": {
+      "ids":"https://w3id.org/idsa/core/",
+      "idsc" : "https://w3id.org/idsa/code/"
+   },    
+  "@type": "ids:ContractAgreement",    
+  "@id": "https://w3id.org/idsa/autogen/contract/complex-policy-access",    
+  "profile": "http://example.com/ids-profile",    
+  "ids:provider": "http://example.com/ids/party/my-party",    
+  "ids:consumer": "http://example.com/ids/party/consumer-party",    
+  "ids:permission": [{    
+      "ids:target": {
+          "@id":"http://example.com/ids/data/1234"
+       },    
+      "ids:action": [{
+        "@id":"idsc:USE"
+      }],     
+      "ids:constraint": [{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:CONNECTOR"},  
+        "ids:operator": { "@id": "idsc:IN"}, 
+		"ids:rightOperand": [
+			{"@value": "http://example.com/ids/connector/12", "@type": "xsd:anyURI"}, 
+			{"@value": "http://example.com/ids/connector/34", "@type": "xsd:anyURI"}, 
+			{"@value": "http://example.com/ids/connector/56", "@type": "xsd:anyURI"}], 
+        "ids:pipEndpoint":{
+          "@type":"ids:PIP", 
+          "ids:interfaceDescription":{
+            "@value":"https://example.com/ids/pip/id/connector", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/pip/ep/connector", 
+            "@type":"anyURI"
+          } 
+        } 
+      },{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "https://w3id.org/idsa/core/purpose"},  
+        "ids:operator": { "@id": "idsc:SAME_AS"}, 
+		"ids:rightOperand": [{"@value": "http://example.com/ids/purpose/Marketing", "@type": "xsd:anyURI"}], 
+        "ids:pipEndpoint":{
+          "@type":"ids:PIP", 
+          "ids:interfaceDescription":{
+            "@value":"https://example.com/ids/PIP/id/purpose", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/ep/purpose", 
+            "@type":"anyURI"
+          } 
+        } 
+      } ,{    
+        "@type":"ids:Constraint",  
+        "ids:leftOperand": { "@id": "idsc:COUNT"},  
+        "ids:operator": { "@id": "idsc:LTEQ"}, 
+		"ids:rightOperand": [{"@value": "10", "@type": "xsd:decimal"}], 
+        "ids:pipEndpoint":{
+          "@type":"ids:PIP", 
+          "ids:interfaceDescription":{
+            "@value":"https://example.com/ids/PIP/id/count", 
+            "@type":"anyURI"
+          }, 
+          "ids:endpointURI":{
+            "@value":"https://consumer.org/ep/count", 
+            "@type":"anyURI"
+          } 
+        } 
+      }],    
+	"ids:preDuty": [{    
+		"@type":"ids:Duty",  
+		"ids:action": [{
+			"@id":"idsc:REPLACE",     
+			"ids:refinement": [{    
+				"@type":"ids:Constraint",  
+				"ids:leftOperand": { "@id": "idsc:REPLACE_WITH"},  
+				"ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+				"ids:rightOperand": [{"@value": "xxxx", "@type": "xsd:string"}] 
+			},{    
+				"@type":"ids:Constraint",  
+				"ids:leftOperand": { "@id": "idsc:JSON_PATH"},  
+				"ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+				"ids:rightOperand": [{"@value": "$.name", "@type": "xsd:string"}] 
+			}] , 
+			"ids:pxpEndpoint":{
+				"@type":"ids:PXP", 
+				"ids:interfaceDescription":{
+					"@value":"https://example.com/ids/PXP/id/replace", 
+					"@type":"anyURI"
+				}, 
+				"ids:endpointURI":{
+					"@value":"https://consumer.org/ep/replace", 
+					"@type":"anyURI"
+				} 
+			}
+		}]
+	}], 
+	"ids:postDuty": [{    
+		"@type":"ids:Duty",  
+		"ids:action": [{
+			"@id":"idsc:DELETE",     
+			"ids:refinement": [{    
+				"ids:leftOperand": { "@id": "idsc:DATE_TIME"},  
+				"ids:operator": { "@id": "idsc:BEFORE"},  
+				"ids:rightOperand": [{ "@type": "xsd:datetimeStamp", "@value": "2023-04-30T11:43:00Z" }], 
+				"ids:pipEndpoint":{
+					"@type":"ids:PIP", 
+					"ids:interfaceDescription":{
+						"@value":"https://example.com/ids/PIP/id/date_time", 
+						"@type":"anyURI"
+					}, 
+					"ids:endpointURI":{
+						"@value":"https://consumer.org/ep/date_time", 
+						"@type":"anyURI"
+					} 
+				} 
+			}] , 
+			"ids:pxpEndpoint":{
+				"@type":"ids:PXP", 
+				"ids:interfaceDescription":{
+					"@value":"https://example.com/ids/PXP/id/delete", 
+					"@type":"anyURI"
+				}, 
+				"ids:endpointURI":{
+					"@value":"https://consumer.org/ep/delete", 
+					"@type":"anyURI"
+				} 
+			}
+		}]
+	},{    
+		"@type":"ids:Duty",  
+		"ids:action": [{
+			"@id":"idsc:INCREMENT_COUNTER", 
+			"ids:pxpEndpoint":{
+				"@type":"ids:PXP", 
+				"ids:interfaceDescription":{
+					"@value":"https://example.com/ids/PXP/id/increment_counter", 
+					"@type":"anyURI"
+				}, 
+				"ids:endpointURI":{
+					"@value":"https://consumer.org/ep/increment_counter", 
+					"@type":"anyURI"
+				} 
+			}
+		}]
+	},{    
+		"@type":"ids:Duty",  
+		"ids:action": [{
+			"@id":"idsc:LOG",     
+			"ids:refinement": [{    
+				"@type":"ids:Constraint",  
+				"ids:leftOperand": { "@id": "idsc:LOG_LEVEL"},  
+				"ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+				"ids:rightOperand": [{"@value": "idsc:ON_ALLOW", "@type": "xsd:string"}]
+			},{    
+				"@type":"ids:Constraint",  
+				"ids:leftOperand": { "@id": "idsc:SYSTEM_DEVICE"},  
+				"ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+				"ids:rightOperand": [{"@value": "http://example.com/ids/system/logserver", "@type": "xsd:anyURI"}]
+			}], 
+			"ids:pxpEndpoint":{
+				"@type":"ids:PXP", 
+				"ids:interfaceDescription":{
+					"@value":"https://example.com/ids/PXP/id/log", 
+					"@type":"anyURI"
+				}, 
+				"ids:endpointURI":{
+					"@value":"https://consumer.org/ep/log", 
+					"@type":"anyURI"
+				} 
+			}
+		}]
+	},{    
+		"@type":"ids:Duty",  
+		"ids:action": [{
+			"@id":"idsc:NOTIFY",     
+			"ids:refinement": [{    
+				"@type":"ids:Constraint",  
+				"ids:leftOperand": { "@id": "idsc:NOTIFICATION_LEVEL"},  
+				"ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+				"ids:rightOperand": [{"@value": "idsc:ON_ALLOW", "@type": "xsd:string"}] 
+			},{    
+				"@type":"ids:Constraint",  
+				"ids:leftOperand": { "@id": "idsc:RECIPIENT"},  
+				"ids:operator": { "@id": "idsc:DEFINES_AS"}, 
+				"ids:rightOperand": [{"@value": "http://example.com/ids/party/data-owner-party", "@type": "xsd:anyURI"}] 
+			}] , 
+			"ids:pxpEndpoint":{
+				"@type":"ids:PXP", 
+				"ids:interfaceDescription":{
+					"@value":"https://example.com/ids/PXP/interfaceDescription/notify", 
+					"@type":"anyURI"
+				}, 
+				"ids:endpointURI":{
+					"@value":"https://consumer.org/PXPendpoint/notify", 
+					"@type":"anyURI"
+				} 
+			}
+		}]
+	}]  
+  }],
+  "ids:prohibition": [{    
+      "ids:target": {
+          "@id":"http://example.com/ids/data/1234"
+       },    
+      "ids:action": [{
+        "@id":"idsc:DISTRIBUTE"
+      }] 
+  }] 
+} 

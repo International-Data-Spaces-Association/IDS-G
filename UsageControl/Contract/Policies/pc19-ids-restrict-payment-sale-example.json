@@ -1,0 +1,39 @@
+{    
+ "@context": {
+ 	"ids":"https://w3id.org/idsa/core/",
+ 	"idsc" : "https://w3id.org/idsa/code/"
+ },    
+ "@type": "ids:ContractOffer",    
+ "@id": "http://example.com/policy/restrict-data-consumer/12",    
+ "profile": "http://example.com/ids-profile",    
+ "ids:provider": "http://example.com/party/my-party",    
+ "ids:permission": [{    
+ 	"ids:target": {
+ 		"@id":"http://example.com/ids/data/d1234"
+ 	},    
+ 	"ids:action": [{
+ 		"@id":"idsc:USE"
+   	}],
+	"ids:constraint": [{    
+		"@type":"ids:Constraint",  
+		"ids:leftOperand": { "@id": "idsc:PAY_AMOUNT"},  
+		"ids:operator": { "@id": "idsc:EQ"},  
+		"ids:rightOperand": { 
+			"@value": "500.00", 
+			"@type": "http://www.w3.org/2001/XMLSchema#double"
+		},
+		"ids:contract": "http://dbpedia.org/page/Sale",
+		"ids:unit": "http://dbpedia.org/resource/Euro",	
+		"ids:pipEndpoint":{
+			"ids:interfaceDescription":{
+				"@value":"https://example.com/ids/pip/id/payment", 
+				"@type":"xsd:anyURI"
+			}, 
+			"ids:endpointURI":{
+				 "@value":"https://provider.org/pip/ep/payment", 
+				"@type":"xsd:anyURI"
+			} 
+		} 
+	}]
+  }] 
+}

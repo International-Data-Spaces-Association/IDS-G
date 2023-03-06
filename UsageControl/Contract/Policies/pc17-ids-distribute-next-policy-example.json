@@ -1,0 +1,44 @@
+{    
+	"@context": {
+	"ids":"https://w3id.org/idsa/core/",
+	"idsc" : "https://w3id.org/idsa/code/"
+	},    
+	"@type": "ids:ContractAgreement",    
+	"@id": "http://example.com/policy/restrict-data-consumer/12",    
+	"profile": "http://example.com/ids-profile",    
+	"ids:provider": "http://example.com/party/my-party",    
+	"ids:consumer": "http://example.com/ids/party/consumer-party",    
+	"ids:permission": [{   
+		"ids:target": {
+			"@id":"http://example.com/ids-data/production-plan"
+		}, 
+		"ids:action": [{
+			"@id":"idsc:DISTRIBUTE"
+		}], 
+		"ids:preDuty": [{    
+			"@type":"ids:Duty",  
+			"ids:action": [{
+				"@id":"idsc:NEXT_POLICY",     
+				"ids:refinement": [{    
+					"@type":"ids:Constraint",  
+					"ids:leftOperand": { "@id":"idsc:TARGET_POLICY"},  
+					"ids:operator": { "@id": "idsc:DEFINES_AS"},  
+					"ids:rightOperand": {
+						"@value": "http://example.com/policy/modify-in-transit/42", 
+						"@type": "xsd:anyURI"}
+				}],
+				"ids:pxpEndpoint":{
+					"@type":"ids:PXP",
+					"ids:interfaceDescription":{
+						"@value":"https://example.com/ids/PXP/id/attachPolicy", 
+						"@type":"xsd:anyURI"
+					}, 
+					"ids:endpointURI":{
+						"@value":"https://consumer.org/ep/attachPolicy", 
+						"@type":"xsd:anyURI"
+					} 
+				}
+			}]
+		}]
+	}]
+}

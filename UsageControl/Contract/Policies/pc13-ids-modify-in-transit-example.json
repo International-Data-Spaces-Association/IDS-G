@@ -1,0 +1,48 @@
+{    
+	"@context": {
+	"ids":"https://w3id.org/idsa/core/",
+	"idsc" : "https://w3id.org/idsa/code/"
+	},    
+	"@type": "ids:ContractAgreement",    
+	"@id": "http://example.com/policy/restrict-data-consumer/12",    
+	"profile": "http://example.com/ids-profile",    
+	"ids:provider": "http://example.com/party/my-party",    
+	"ids:consumer": "http://example.com/ids/party/consumer-party",    
+	"ids:permission": [{    
+	"ids:action": [{
+		"@id":"idsc:USE"
+	}], 
+	"ids:preDuty": [{    
+		"@type":"ids:Duty",  
+		"ids:action": [{
+			"@id":"idsc:REPLACE",     
+			"ids:refinement": [{    
+				"@type":"ids:Constraint",  
+				"ids:leftOperand": { "@id":"idsc:REPLACE_WITH"},  
+				"ids:operator": { "@id": "idsc:DEFINES_AS"},  
+				"ids:rightOperand": {
+					"@value": "xxxx", 
+					"@type": "xsd:string"}
+			},{    
+				"@type":"ids:Constraint",  
+				"ids:leftOperand":{"@id":"idsc:JSON_PATH"},  
+				"ids:operator": { "@id": "idsc:DEFINES_AS"},  
+				"ids:rightOperand": {
+					"@value":"$.name",
+					"@type": "xsd:string"}
+			}] , 
+			"ids:pxpEndpoint":{
+				"@type":"ids:PXP",
+				"ids:interfaceDescription":{
+					"@value":"https://example.com/ids/PXP/id/replace", 
+					"@type":"xsd:anyURI"
+				}, 
+				"ids:endpointURI":{
+					"@value":"https://consumer.org/ep/replace", 
+					"@type":"xsd:anyURI"
+				} 
+			}
+		}]
+	}]
+  }] 
+} 

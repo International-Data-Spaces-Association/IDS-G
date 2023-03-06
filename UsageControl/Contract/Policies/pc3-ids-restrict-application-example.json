@@ -1,0 +1,42 @@
+{    
+ "@context": {
+ 	"ids":"https://w3id.org/idsa/core/",
+ 	"idsc" : "https://w3id.org/idsa/code/"
+ },    
+ "@type": "ids:ContractAgreement",    
+ "@id": "http://example.com/policy/restrict-data-consumer/12",    
+ "profile": "http://example.com/ids-profile",    
+ "ids:provider": "http://example.com/party/my-party",    
+ "ids:consumer": "http://example.com/ids/party/consumer-party",    
+ "ids:permission": [{    
+ 	"ids:target": {
+ 		"@id":"http://example.com/ids/data/d1234"
+ 	},    
+ 	"ids:action": [{
+ 		"@id":"idsc:USE"
+   	}],
+	"ids:constraint": [{    
+		"@type":"ids:Constraint",  
+		"ids:leftOperand": { "@id": "idsc:APPLICATION"},  
+		"ids:operator": { "@id": "idsc:IN"},  
+		"ids:rightOperand": [{ 
+			"@value": "http://example.com/ids/application/smart-app1", 
+			"@type": "xsd:anyURI"
+		},{ 
+			"@value": "http://example.com/ids/application/smart-app2", 
+			"@type": "xsd:anyURI"
+		}], 
+		"ids:pipEndpoint":{
+		"@type":"ids:PIP",
+			"ids:interfaceDescription":{
+				"@value":"https://example.com/ids/pip/id/application", 
+				"@type":"xsd:anyURI"
+			}, 
+			"ids:endpointURI":{
+				 "@value":"https://consumer.org/pip/ep/application", 
+				"@type":"xsd:anyURI"
+			} 
+		} 
+	}]
+  }] 
+} 

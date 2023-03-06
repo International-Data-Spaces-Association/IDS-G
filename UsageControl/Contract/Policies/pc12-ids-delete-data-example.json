@@ -1,0 +1,36 @@
+{    
+	"@context": {
+	"ids":"https://w3id.org/idsa/core/",
+	"idsc" : "https://w3id.org/idsa/code/"
+	},    
+	"@type": "ids:ContractAgreement",    
+	"@id": "http://example.com/policy/restrict-data-consumer/12",    
+	"profile": "http://example.com/ids-profile",    
+	"ids:provider": "http://example.com/party/my-party",    
+	"ids:consumer": "http://example.com/ids/party/consumer-party",    
+	"ids:permission": [{   
+		"ids:target": {
+			"@id":"http://example.com/ids-data/production-plan"
+		}, 
+		"ids:action": [{
+			"@id":"idsc:USE"
+		}], 
+		"ids:postDuty": [{    
+			"@type":"ids:Duty",  
+			"ids:action": [{
+				"@id":"idsc:DELETE",      
+				"ids:pxpEndpoint":{
+					"@type":"ids:PXP",
+					"ids:interfaceDescription":{
+						"@value":"https://example.com/ids/PXP/id/delete", 
+						"@type":"xsd:anyURI"
+					}, 
+					"ids:endpointURI":{
+						"@value":"https://consumer.org/ep/delete", 
+						"@type":"xsd:anyURI"
+					} 
+				}
+			}]
+		}]
+	}]
+} 
