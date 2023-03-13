@@ -19,11 +19,11 @@
         "constraint": [{
            "leftOperand": "dateTime",
            "operator": "gteq",
-           "rightOperand": { "@value": "2022-06-01T08:00Z", "@type": "xsd:dateTimeStamp" }
+           "rightOperand": { "@value": "2022-06-01T08:00:00Z", "@type": "xsd:dateTimeStamp" }
        },{
            "leftOperand": "dateTime",
            "operator": "lteq",
-           "rightOperand": { "@value": "2022-10-01T08:00Z", "@type": "xsd:dateTimeStamp" }
+           "rightOperand": { "@value": "2022-10-01T08:00:00Z", "@type": "xsd:dateTimeStamp" }
        }]
     }]
 }
