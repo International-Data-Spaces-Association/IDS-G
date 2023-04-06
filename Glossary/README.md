@@ -208,6 +208,13 @@ See also:
 - IDS-G specification [IDSCP](../connector-interaction/Communication/protocols/idscp2/README.md) (current V.2)
 - Shortcut: `IDSCP`
 
+### IDS Deployment Scenarios
+An implementation made with IDS-compliant components that allows sovereign data sharing (as defined by IDSA), which is built with a clear purpose to solve a problem and is adequately documented to enable others to follow the same path.
+[Repository](https://github.com/International-Data-Spaces-Association/IDS-Deployment-Scenarios)
+
+### IDS Testbeds
+Deployments of the IDS Reference Test Bed (with or without modifications), made by third-party organizations that are interested in experimenting with IDS-based solutions. Listed on [IDS Reference Test Bed](https://github.com/International-Data-Spaces-Association/IDS-testbed#deployment-scenarios-based-on-ids-testbed) repository.
+
 ### IDSA
 - Glossary [International Data Spaces Association](#international-data-spaces-association).
 
@@ -226,7 +233,7 @@ Distributed network of [Data Endpoint](#data-endpoint)s (i.e.,
 - Shortcut: `IDS`
 
 ### International Data Spaces Association
-Association for the developement and maintenace of the [IDS-RAM](#ids-reference-architecture-model) and associated standards, see [Executive Summary](https://www.internationaldataspaces.org/publications/sharing-data-while-keeping-data-ownership-the-potential-of-ids-for-the-data-economy/) and [IDSA Homepage](https://www.internationaldataspaces.org).
+Association for the development and maintenance of the [IDS-RAM](#ids-reference-architecture-model) and associated standards, see [Executive Summary](https://www.internationaldataspaces.org/publications/sharing-data-while-keeping-data-ownership-the-potential-of-ids-for-the-data-economy/) and [IDSA Homepage](https://www.internationaldataspaces.org).
 - Shortcut: `IDSA`
 
 ### IDS Reference Architecture Model
@@ -286,6 +293,11 @@ In addition, the Reference Architecture Model comprises three
 ### Meta Data Broker
 - [IDS-G specification "Meta Data Broker"](../Component/MetaDataBroker/README.md)
 - Shortcut: `IDS-MDB`
+
+
+### Minimum Viable Data Space (MVDS)
+A combination of components that enable the creation of a Dataspace with just enough features to be usable for secure and sovereign data exchange, as specified by the IDSA. [Explained on IDS Reference Testbed repository](https://github.com/International-Data-Spaces-Association/IDS-testbed/blob/master/minimum-viable-data-space/MVDS.md)
+
 
 ## P
 
