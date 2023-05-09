@@ -19,10 +19,8 @@
         "assignee": "http://example.com/ids/party/456",
         "action": "distribute",
         "duty": [{
-           "action": [{
-              "rdf:value": { "@id": "nextPolicy" }
-           }],
-           "target": "http://example.com/policy/modify-in-transit/42",
+           "action": "nextPolicy",
+           "hasPolicy": "http://example.com/policy/modify-in-transit/42",
            "ids:pxpEndpoint": [{
               "@type":"ids:PXP",
               "ids:interfaceDescription":{ "@value":"?interfaceURI", "@type":"xsd:anyURI" }, 
