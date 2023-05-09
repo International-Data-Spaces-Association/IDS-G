@@ -16,7 +16,7 @@
    	}],
 	"ids:constraint": [{    
 		"@type":"ids:Constraint",  
-		"ids:leftOperand": { "@id": "idsc:PAY_AMOUNT"},  
+		"ids:leftOperand": { "@id": "idsc:PAYMENT"},  
 		"ids:operator": { "@id": "idsc:EQ"},  
 		"ids:rightOperand": { 
 			"@value": "?fee", 
