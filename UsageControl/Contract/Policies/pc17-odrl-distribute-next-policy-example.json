@@ -21,11 +21,6 @@
         "duty": [{
            "action": "nextPolicy",
            "hasPolicy": "http://example.com/policy/modify-in-transit/42",
-           "ids:pxpEndpoint": [{
-              "@type":"ids:PXP",
-              "ids:interfaceDescription":{ "@value":"?interfaceURI", "@type":"xsd:anyURI" }, 
-              "ids:endpointURI":{ "@value":"?endPointURI", "@type":"xsd:anyURI" } 
-           }]
         }]
     }]
 }
