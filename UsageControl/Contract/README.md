@@ -1,12 +1,13 @@
 # IDS Usage Control Contract
 ## Usage Control Terms in IDS Contracts
-An IDS Contract is *implicitly* divided to two main sections: the contract specific metadata and the *IDS Usage Control Policy* of the contract.
+An IDS Contract, also reffered to as IDS Policy, is *implicitly* divided to two main sections: the contract specific metadata and the *Usage Control Rules* of the contract.
 
-![uc_terms](https://user-images.githubusercontent.com/69632955/123940369-66a14200-d999-11eb-94ee-195c0ba21f1c.png)
+![image](./media/Policy_Specification_IDS_Contract.png)
 
-The *IDS Usage Control Policy* is the key motive of organizational and technical Usage Control enforcement and contains several Data Usage Control statements (e.g., permissions, prohibitions and obligations) called *IDS Rules* and is specified in the *IDS Usage Control Language* which is the IDS technology independent language.
+The *IDS Usage Control Rules* are the key motive of organizational and technical Usage Control enforcement and address several Data Usage Control statements (e.g., permissions, prohibitions and obligations). An *IDS Contract* is specified in the *IDS Usage Control Language* which is the IDS technology independent language based on ODRL Policy Language.
 ## Usage Policy Specification
-![big-pic4](https://user-images.githubusercontent.com/69632955/123969279-5cdb0700-d9b8-11eb-9f62-42a394da7b29.png)
+
+![image](./media/Policy_Specification_Big_Picture.png)
 
 ### Policy Classes
 A Policy Class is an atomic policy template which refers to a specific restriction on Data Usage.
@@ -213,3 +214,10 @@ More information: [Data Sovereignty: Updated Position Paper on Data Usage Contro
 ### Policy Transformation
 The technically enforceable rules shall be transformed to a technology dependent policy to facilitate the Usage Control enforcement of data sovereignty.
 In order to support the Data Usage Control technologies, the policy transformation service is additionally added to the IDS Policy Editor. Currently, it supports the transformation to enforceable policies for the MY DATA Control Technologies. The support for other technologies and further extension will follow.
+
+## Authors
+
+| Name | Organization | Github |
+|:---|:---|:---|
+| Arghavan Hosseinzadeh          | Fraunhofer IESE | [Arghavan Hosseinzadeh](https://github.com/hosseinzadeha) |
+| Robin Brandstädter             | Fraunhofer IESE | [Robin Brandstädter](https://github.com/Brandstaedter) |
