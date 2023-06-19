@@ -1,12 +1,12 @@
 # Identities
 
-Connector identities according to this specification are typically represented by some sort of token.
-This token contains statements about properties of the connector ("claims"), like its membership in one or more data spaces.
+Connector identities according to this specification are comprised of a base identity, typically represented by an X.509 certificate, and some sort of token, typically an OAuth 2.0 JSON Web Token (JWT), see [RFC 9068](https://www.rfc-editor.org/rfc/rfc9068.html), with a short lifetime.
+This token contains statements about properties of the connector ("claims"), like its membership in one or more data spaces, and its Trust Level as well as its Assurance Level.
 In order to establish trust via these tokens, two requirements have to be met:
 
 - Security-relevant claims within the token, or the entire token as a whole, MUST be signed by one or more trusted entities.
-- There MUST exist a sound mechanism that enables a connector to proof ownership over the tokens or claims issued for this particular connector.
-Specifically, any connector implementing a corresponding validation mechanism MUST be capable of identifying and rejecting tokens that have not been issued for the respective peer connector(s).
+- There MUST exist a sound mechanism that enables connectors to proof ownership over the tokens or claims issued for a particular connector to peer connectors it is directly communicating with, as described below.
+Specifically, any connector MUST also implement the corresponding validation mechanism in order to be capable of identifying and rejecting tokens that have not been issued for the connector(s) it assumes to be communicating with.
 
 ## Mandatory Claims
 
@@ -22,8 +22,8 @@ For a comprehensive list, see https://international-data-spaces-association.gith
 
 ## X.509/OAuth2-Token-based Identities
 Identities of this kind are established via X.509 certificates and corresponding private keys.
-The tokens used to provide identity information to other peers are regular OAuth2 JSON Web Tokens (JWTs).
-In the IDS context, the OAuth2 server issuing such tokens is called a "Dynamic Attribute Provisioning Server", or DAPS for short.
+The tokens used to provide identity information to other peers are regular OAuth 2.0 JWTs (see [RFC 9068](https://www.rfc-editor.org/rfc/rfc9068.html)).
+In the IDS context, the OAuth 2.0 server (see [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html)) issuing such tokens is called a "Dynamic Attribute Provisioning Server", or DAPS for short.
 
 ### Format and Signature
 The format of Dynamic Attribute Tokens (DATs) and the interaction between DAPS and connector are described in the [DAPS Specification](../../Components/IdentityProvider/DAPS/README.md).
