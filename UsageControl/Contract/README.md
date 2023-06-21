@@ -182,22 +182,46 @@ In this policy it is assumed that the payment has been done once.
 
 20. Data Rental Contract
 
-In this policy it is assumed that the payment shall happen frequently (e.g. monthly)
+    In this policy it is assumed that the payment shall happen frequently (e.g. monthly)
 
-[Example for Policy Class 19: Payment for rent - IDS](Policies/pc20-ids-restrict-payment-rent-example.json)
+    [Example for Policy Class 19: Payment for rent - IDS](Policies/pc20-ids-restrict-payment-rent-example.json)
 
-[Example for Policy Class 19: Payment for rent - ODRL](Policies/pc20-odrl-restrict-payment-rent-example.json)
+    [Example for Policy Class 19: Payment for rent - ODRL](Policies/pc20-odrl-restrict-payment-rent-example.json)
 
-[Example(2) for Policy Class 19: Payment for rent - ODRL](Policies/pc20-odrl-restrict-payment-rent-example2.json)
+    [Example(2) for Policy Class 19: Payment for rent - ODRL](Policies/pc20-odrl-restrict-payment-rent-example2.json)
 
 21. State
+    The State-restricted Data Usage policy restricts the usage of the data to specific environment state. For example, the data only can be used in an application when the firewall is activated.
 
-The State-restricted Data Usage policy restricts the usage of the data to specific environment state. For example, the data only can be used in an application when the firewall is activated.
+    [Example for Policy Class 21: Restrict state - IDS](Policies/pc21-ids-restrict-state-example.json)
 
-[Example for Policy Class 21: Restrict state - IDS](Policies/pc21-ids-restrict-state-example.json)
+    [Example for Policy Class 21: Restrict state - ODRL](Policies/pc21-odrl-restrict-state-example.json)
 
-[Example for Policy Class 21: Restrict state - ODRL](Policies/pc21-odrl-restrict-state-example.json)
+22. Location of the Participant
 
+    This policy class restricts the data usage to location of the Participant.
+
+    [Example for Policy Class 22: Location of the Participant - ODRL](Policies/pc22-odrl-restrict-location-of-participant-example.json)
+    
+23. User’s consent
+
+    This policy class restricts the data usage to obtain user’s consent.
+    
+    [Example for Policy Class 23: Obtain consent - ODRL](Policies/pc23-odrl-obtain-consent-example.json)
+    
+24. Data Classification
+    
+    This policy class restricts the data usage to the data classification.
+
+    [Example for Policy Class 24: Data Classification - ODRL](Policies/pc24-odrl-restrict-data-classification-example.json)
+
+25. Data Anonymization
+
+    This policy class demands to anonymize data before the data is used. Particularly, apply Privacy Enhancing Technologies (PETs).
+
+    [Example for Policy Class 25: Data Anonymization - ODRL](Policies/pc25-odrl-anonymize-with-mpc.json)
+    
+    
 **Usage Control Policy**
 It is an identified policy that is a combination of one or more instances of the policy classes.
 Example: "The Data Consumer X shall use my data not later than 30th of December 2022 and only for defect analysis purpose."
