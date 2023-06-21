@@ -4,7 +4,7 @@
    "dc:title": "treatment plan",
    "dc:fileFormat": "application/json",
    "odrl:partOf": "http://example.com/ids/data/789",
-   "skos:concept": ["idsc:health", "idsc:confidential"]
+   "skos:concept": ["health", "confidential"]
 }
 
 {
@@ -18,7 +18,7 @@
     "uid": "http://example.com/policy/restrict-artifact-state/42",
     "profile": "http://www.w3.org/ns/odrl/2/core",
     "dc:creator": "Data Provider 123",
-    "dc:description": "The Artifact state-restricted Data Usage policy restricts that the data is used (or distributed) when it is encrypted, anonymized, combined, etc.",
+    "dc:description": "This policy restrict the data usage to specific data classifications.",
     "dc:issued": "2022-05-19T12:00",
     "permission": [{
         "assigner": "http://example.com/ids/party/123",
@@ -31,9 +31,9 @@
               "leftOperand": "skos:concept",
               "operator": "isNoneOf",
               "rightOperand": [
-                 { "@value": "idsc:health", "@type": "xsd:string" },
-                 { "@value": "idsc:confidential", "@type": "xsd:string" },
-                 { "@value": "idsc:automotive", "@type": "xsd:string" }
+                 { "@value": "health", "@type": "xsd:string" },
+                 { "@value": "confidential", "@type": "xsd:string" },
+                 { "@value": "automotive", "@type": "xsd:string" }
               ]
            }]
         }
@@ -49,9 +49,9 @@
               "leftOperand": "skos:concept",
               "operator": "isPartOf",
               "rightOperand": [
-                 { "@value": "idsc:health", "@type": "xsd:string" },
-                 { "@value": "idsc:confidential", "@type": "xsd:string" },
-                 { "@value": "idsc:automotive", "@type": "xsd:string" }
+                 { "@value": "health", "@type": "xsd:string" },
+                 { "@value": "confidential", "@type": "xsd:string" },
+                 { "@value": "automotive", "@type": "xsd:string" }
               ]
            }]
         }

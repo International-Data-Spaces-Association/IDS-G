@@ -62,7 +62,7 @@
            "action": [{
               "rdf:value": { "@id": "odrl:obtainConsent" }
             }],
-            "consentingParty": ["http://example.com/person/sara","http://example.com/ids/party/john"]
+            "consentingParty": ["http://example.com/person/sara","http://example.com/ids/party/john"],
             "constraint": [{
                 "leftOperand": "event",
                 "operator": "lt",
