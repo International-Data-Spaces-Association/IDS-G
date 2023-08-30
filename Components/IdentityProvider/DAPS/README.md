@@ -7,6 +7,8 @@ and connectors with additional attributes.
 DAPS can be understood (like the [Certificate Authority](../CA/README.md), too) as building block of the construct of an
 [IDS Identity Provider](../../../Glossary/README.md#identity-provider).
 
+Since the DAPS trust building service, its X.509 certificate (used for TLS connections) must be signed by the same CA that issues connector identities (e.g., a central IDS CA).
+
 These attributes are embedded by the DAPS into a [Dynamic Attribute Token (DAT)](../../../Glossary/README.md#dynamic-attribute-token).
 The advantages of this technique of *dynamic attribute provisioning* instead
 of embedding them into [X.509 certificates](https://en.wikipedia.org/wiki/X.509) are:
