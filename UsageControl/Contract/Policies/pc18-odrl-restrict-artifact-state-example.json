@@ -1,0 +1,47 @@
+{
+   "@type": "dc:Dataset",
+   "@id": "http://example.com/asset:111.json",
+   "dc:title": "production plan",
+   "dc:fileFormat": "application/json",
+   "odrl:partOf": "http://example.com/ids/data/789",
+   "ids:artifact-state": ["idsc:encrypted", "idsc:combined", "idsc:anonymized"]
+}
+
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-artifact-state/42",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "The Artifact state-restricted Data Usage policy restricts that the data is used (or distributed) when it is encrypted, anonymized, combined, etc.",
+    "dc:issued": "2022-05-19T12:00",
+    "ids:provider": "http://example.com/ids/party/123",
+    "ids:consumer": "http://example.com/ids/party/456",
+    "permission": [{
+        "target": {
+           "@type": "AssetCollection",
+           "source":  "http://example.com/ids/data/789",
+           "refinement": [{
+              "leftOperand": "ids:artifact_state",
+              "operator": "isAllOf",
+              "rightOperand": [
+                 { "@value": "idsc:encrypted", "@type": "xsd:string" },
+                 { "@value": "idsc:anonymized", "@type": "xsd:string" }
+              ],
+              "ids:pipEndpoint": [{
+                 "@type":"ids:PIP",
+                 "ids:interfaceDescription":{ "@value":"?interfaceURI", "@type":"xsd:anyURI" }, 
+                 "ids:endpointURI":{ "@value":"?endPointURI", "@type":"xsd:anyURI" } 
+              }]
+           }]
+        },
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "distribute"
+    }]
+}

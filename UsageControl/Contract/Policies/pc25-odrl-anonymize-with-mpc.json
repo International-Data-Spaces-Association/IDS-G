@@ -1,0 +1,105 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/anonymize-before-read/1",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "This policy demands to intercept the data flow and apply the anonymization method (here mpc) on the data in transit.",
+    "dc:issued": "2022-05-19T12:00",
+    "permission": [{
+        "target": "http://example.com/ids/data/workinghours",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "idsc:READ",
+        "duty": [{
+           "action": [{
+              "rdf:value": { "@id": "idsc:MPC" },
+                "refinement": [{
+                 "leftOperand": "idsc:MPC_FUNCTION",
+                 "operator": "eq",
+                 "rightOperand": { "@value": "SUM", "@type": "xsd:string" }
+              }]
+           }],
+           "constraint": [{
+               "leftOperand": "event",
+               "operator": "lt",
+               "rightOperand": { "@id": "odrl:policyUsage" }
+           }]
+        }]
+    }]
+}
+
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/anonymize-before-read/2",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "This policy demands to intercept the data flow and apply the anonymization method (here mpc) on the data in transit.",
+    "dc:issued": "2022-05-19T12:00",
+    "permission": [{
+        "target": "http://example.com/ids/data/workinghours",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": [{
+              "rdf:value": { "@id": "idsc:READ" },
+                "refinement": [{
+                 "leftOperand": "idsc:QUERY",
+                 "operator": "eq",
+                 "rightOperand": { "@value": "SUM", "@type": "xsd:string" }
+              }]
+           }],
+        "duty": [{
+           "action": "idsc:MPC",
+           "constraint": [{
+               "leftOperand": "event",
+               "operator": "lt",
+               "rightOperand": { "@id": "odrl:policyUsage" }
+           }]
+        }]
+    }]
+}
+
+
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/anonymize-before-read/3",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "This policy demands to intercept the data flow and apply the anonymization method (here mpc) on the data in transit.",
+    "dc:issued": "2022-05-19T12:00",
+    "permission": [{
+        "target": "http://example.com/ids/data/workinghours",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "idsc:READ",
+        "duty": [{
+           "action": "idsc:MPC",
+           "constraint": [{
+               "leftOperand": "event",
+               "operator": "lt",
+               "rightOperand": { "@id": "odrl:policyUsage" }
+           }]
+        }]
+    }]
+}
+ 
+
+
+

@@ -1,0 +1,32 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-on-count-usage/42",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "This policy may be specified as: the Data Consumer is allowed to use my data not more than n times",
+    "dc:issued": "2022-05-19T12:00",
+    "ids:provider": "http://example.com/ids/party/123",
+    "ids:consumer": "http://example.com/ids/party/456",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "use",
+        "constraint": [{
+           "leftOperand": "count",
+           "operator": "lteq",
+           "rightOperand": { "@value": "10", "@type": "xsd:integer" },
+           "ids:pipEndpoint": [{
+              "@type":"ids:PIP",
+              "ids:interfaceDescription":{ "@value":"?interfaceURI", "@type":"xsd:anyURI" }, 
+              "ids:endpointURI":{ "@value":"?endPointURI", "@type":"xsd:anyURI" } 
+           }]
+       }]
+    }]
+}

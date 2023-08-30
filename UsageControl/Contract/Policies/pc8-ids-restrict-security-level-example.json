@@ -1,0 +1,42 @@
+{    
+ "@context": {
+ 	"ids":"https://w3id.org/idsa/core/",
+ 	"idsc" : "https://w3id.org/idsa/code/"
+ },    
+ "@type": "ids:ContractAgreement",    
+ "@id": "http://example.com/policy/restrict-data-consumer/12",    
+ "profile": "http://example.com/ids-profile",    
+ "ids:provider": "http://example.com/party/my-party",    
+ "ids:consumer": "http://example.com/ids/party/consumer-party",    
+ "ids:permission": [{    
+ 	"ids:target": {
+ 		"@id":"http://example.com/ids/data/d1234"
+ 	},    
+ 	"ids:action": [{
+ 		"@id":"idsc:USE"
+   	}],
+	"ids:constraint": [{    
+		"@type":"ids:Constraint",  
+		"ids:leftOperand": { "@id": "idsc:SECURITY_LEVEL"},  
+		"ids:operator": { "@id": "idsc:IN"},  
+		"ids:rightOperand": [{ 
+			"@value": "idsc:TRUST_PLUS_SECURITY_PROFILE", 
+			"@type": "xsd:string"
+		},{ 
+			"@value": "idsc:TRUST_SECURITY_PROFILE", 
+			"@type": "xsd:string"
+		}], 
+		"ids:pipEndpoint":{
+			"@type":"ids:PIP",
+			"ids:interfaceDescription":{
+				"@value":"https://example.com/ids/pip/id/security", 
+				"@type":"xsd:anyURI"
+			}, 
+			"ids:endpointURI":{
+				"@value":"https://consumer.org/pip/ep/security", 
+				"@type":"xsd:anyURI"
+			} 
+		} 
+	}]
+  }] 
+}

@@ -1,0 +1,32 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-on-event/12",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "The Event-restricted Data Usage policy restricts the usage of the data to specific events such as Hannover Messe 2022.",
+    "dc:issued": "2022-05-19T12:00",
+    "ids:provider": "http://example.com/ids/party/123",
+    "ids:consumer": "http://example.com/ids/party/456",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": [ "read", "use" ],
+        "constraint": [{
+           "leftOperand": "event",
+           "operator": "eq",
+           "rightOperand": { "@value": "Hannover Messe 2022", "@type": "xsd:string" },
+           "ids:pipEndpoint": [{
+              "@type":"ids:PIP",
+              "ids:interfaceDescription":{ "@value":"?interfaceURI", "@type":"xsd:anyURI" }, 
+              "ids:endpointURI":{ "@value":"?endPointURI", "@type":"xsd:anyURI" } 
+           }]
+       }]
+    }]
+}

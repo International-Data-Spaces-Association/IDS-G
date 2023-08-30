@@ -1,0 +1,73 @@
+{
+   "@type": "vcard:Individual",
+   "@id": "http://example.com/person/sara",
+   "vcard:fn": "Sara",
+   "vcard:hasEmail": "sara@example.com"
+}
+
+{
+   "@type": "dc:Dataset",
+   "@id": "http://example.com/asset:sara-data.json",
+   "dc:title": "Sara's health data",
+   "dc:fileFormat": "application/json",
+   "odrl:partOf": "http://example.com/ids/data/health-data-collection1"
+}
+
+{
+   "@type": "vcard:Individual",
+   "@id": "http://example.com/ids/party/john",
+   "vcard:fn": "John",
+   "vcard:hasEmail": "john@example.com"
+}
+
+{
+   "@type": "dc:Dataset",
+   "@id": "http://example.com/asset:john-data.json",
+   "dc:title": "John's health data",
+   "dc:fileFormat": "application/json",
+   "odrl:partOf": "http://example.com/ids/data/health-data-collection1"
+}
+
+{
+   "@type": "vcard:Organization",
+   "@id": "http://example.com/organization/org1",
+   "vcard:fn": "org 1",
+   "vcard:hasEmail": "org1@example.com",
+   "odrl:partOf": "http://example.com/ids/party/dataprovider1",
+   "vcard:hasCountryName": "Germany",
+   "vcard:hasGeo": "http://ontologi.es/place/DE"
+}
+
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/obtain-consent/12",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "this policy restricts the usage of the data to obtaining consent from the Data Provider/Owner.",
+    "dc:issued": "2022-05-25T12:00",
+    "ids:provider": "http://example.com/ids/party/dataprovider1",
+    "ids:consumer": "http://example.com/ids/party/456",
+    "permission": [{
+        "target": "http://example.com/ids/data/health-data-collection1",
+        "assigner": "http://example.com/ids/party/dataprovider1",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "use",
+        "duty": [{
+           "action": [{
+              "rdf:value": { "@id": "odrl:obtainConsent" }
+            }],
+            "consentingParty": ["http://example.com/person/sara","http://example.com/ids/party/john"],
+            "constraint": [{
+                "leftOperand": "event",
+                "operator": "lt",
+                "rightOperand": { "@id": "odrl:policyUsage" }
+            }]
+        }]
+    }]
+}

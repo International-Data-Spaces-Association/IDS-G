@@ -1,0 +1,29 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-time-interval/12",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "The time interval-restricted Data Usage policy restricts the usage of the data to a specific time interval.",
+    "dc:issued": "2022-05-19T12:00",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "use",
+        "constraint": [{
+           "leftOperand": "dateTime",
+           "operator": "gteq",
+           "rightOperand": { "@value": "2022-06-01T08:00:00Z", "@type": "xsd:dateTimeStamp" }
+       },{
+           "leftOperand": "dateTime",
+           "operator": "lteq",
+           "rightOperand": { "@value": "2022-10-01T08:00:00Z", "@type": "xsd:dateTimeStamp" }
+       }]
+    }]
+}

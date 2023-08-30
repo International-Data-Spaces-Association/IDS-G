@@ -1,0 +1,48 @@
+{
+   "@type": "vcard:Organization",
+   "@id": "http://example.com/organization/org1",
+   "vcard:fn": "org 1",
+   "vcard:hasEmail": "org1@example.com",
+   "odrl:partOf": "http://example.com/ids/party/456456",
+   "vcard:hasCountryName": "Germany",
+   "vcard:hasGeo": "http://ontologi.es/place/DE"
+}
+
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/restrict-participants-by-location/12",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "This policy restricts the usage of the data to the location of the Data Consumer party.",
+    "dc:issued": "2022-05-19T12:00",
+    "ids:provider": "http://example.com/ids/party/123123",
+    "ids:consumer": "http://example.com/ids/party/456456",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": {
+           "@type": [ "PartyCollection", "vcard:Organization" ],
+           "uid": "http://example.com/ids/party/123123",
+        },
+        "assignee": {
+           "@type": [ "PartyCollection", "vcard:Group" ],
+           "source": "http://example.com/ids/party/456456",
+           "refinement": [{
+              "leftOperand": "vcard:hasGeo",
+              "operator": "eq",
+              "rightOperand": [{ "@value": "http://ontologi.es/place/DE", "@type": "xsd:anyURI" }],
+              "ids:pipEndpoint": [{
+                 "@type":"ids:PIP",
+                 "ids:interfaceDescription":{ "@value":"?interfaceURI", "@type":"xsd:anyURI" }, 
+                 "ids:endpointURI":{ "@value":"?endPointURI", "@type":"xsd:anyURI" } 
+              }]
+           }]
+        },
+        "action": "use"
+    }]
+}

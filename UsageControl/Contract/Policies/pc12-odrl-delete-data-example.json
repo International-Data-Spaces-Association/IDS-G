@@ -1,0 +1,25 @@
+{
+    "@context": [
+        "http://www.w3.org/ns/odrl.jsonld",
+        { "dc": "http://purl.org/dc/terms/",
+        "ids":"https://w3id.org/idsa/core/",
+        "idsc" : "https://w3id.org/idsa/code/" }
+    ],
+    "@type": "Agreement",
+    "uid": "http://example.com/policy/delete-data/42",
+    "profile": "http://www.w3.org/ns/odrl/2/core",
+    "dc:creator": "Data Provider 123",
+    "dc:description": "This policy demands to delete data either immediately after it is used, or after a delay period or before a defined deadline.",
+    "dc:issued": "2022-05-19T12:00",
+    "permission": [{
+        "target": "http://example.com/ids/data/789",
+        "assigner": "http://example.com/ids/party/123",
+        "assignee": "http://example.com/ids/party/456",
+        "action": "print",
+        "duty": [{
+           "action": [{
+              "rdf:value": { "@id": "delete" }
+           }]
+        }]
+    }]
+}
