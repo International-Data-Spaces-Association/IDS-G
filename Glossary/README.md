@@ -214,8 +214,11 @@ See also:
 - IDS-G specification [IDSCP](../connector-interaction/Communication/protocols/idscp2/README.md) (current V.2)
 - Shortcut: `IDSCP`
 
+### IDS Testbeds
+Deployments of the IDS Reference Test Bed (with or without modifications), made by third-party organizations that are interested in experimenting with IDS-based solutions. Listed on [IDS Reference Test Bed](https://github.com/International-Data-Spaces-Association/IDS-testbed#deployment-scenarios-based-on-ids-testbed) repository.
+
 ### IDS Deployment Scenario
-IDS Deployment Scenario is any implementation made with IDS-compliant components that allows sovereign data sharing (as defined by IDSA), is built with the intention to resolve a problem by means of secure and sovereign data sharing and is adequately documented to enable others to follow the same path.
+IDS Deployment Scenario is any implementation made with IDS-compliant components that allows sovereign data sharing (as defined by IDSA), is built with the intention to resolve a problem by means of secure and sovereign data sharing and is adequately documented to enable others to follow the same path. [Repository](https://github.com/International-Data-Spaces-Association/IDS-Deployment-Scenarios)
 
 ### IDSA
 - Glossary [International Data Spaces Association](#international-data-spaces-association).
@@ -259,7 +262,7 @@ Distributed network of [Data Endpoint](#data-endpoint)s (i.e.,
 - Shortcut: `IDS`
 
 ### International Data Spaces Association
-Association for the developement and maintenace of the [IDS-RAM](#ids-reference-architecture-model) and associated standards, see [Executive Summary](https://www.internationaldataspaces.org/publications/sharing-data-while-keeping-data-ownership-the-potential-of-ids-for-the-data-economy/) and [IDSA Homepage](https://www.internationaldataspaces.org).
+Association for the development and maintenance of the [IDS-RAM](#ids-reference-architecture-model) and associated standards, see [Executive Summary](https://www.internationaldataspaces.org/publications/sharing-data-while-keeping-data-ownership-the-potential-of-ids-for-the-data-economy/) and [IDSA Homepage](https://www.internationaldataspaces.org).
 - Shortcut: `IDSA`
 
 ### IDS Reference Architecture Model
@@ -322,6 +325,7 @@ In addition, the Reference Architecture Model comprises three
 
 ### Minimum Viable Data Space (MVDS)
 A minimum viable data space (MVDS) is a combination of components to initiate a data space with just enough features to be usable for secure and sovereign data exchange.
+
 
 ## P
 
