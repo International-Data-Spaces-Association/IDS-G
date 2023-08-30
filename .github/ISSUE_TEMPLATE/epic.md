@@ -6,25 +6,34 @@ labels: ''
 assignees: ''
 
 ---
+## Scope ##
+[what do you want to change?]
 
 ## Rationale ##
+[why does it have to be changed?]
 
-## Owner ##
+## Tasks / Issues ##
 
-## Stakeholder Point of Contact ##
+- [ ] Task one
+- [ ] Task two
 
-## Dependencies ##
+- [ ]  Issue #one
+- [ ]  issue #two
 
-## Description ##
+## Timeline ##
+[When does this process start and when does it end?]
+
+### Dependencies ###
+[What Areas are effected by this?]
+
+## Involved People ##
+[Who is involved in what way? Who has to be informed? ]
+
+### Stakeholder Point of Contact ###
 
 ## Context ##
-
-## Issues ##
-
-- [ ]  Issue one
-- [ ]  issue two
-- [ ]  issue three
 
 ## Acceptance criteria ##
 
 ## Proof ##
+[Proof of met acceptance criteria]
