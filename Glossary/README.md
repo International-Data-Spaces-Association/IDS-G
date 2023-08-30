@@ -25,6 +25,10 @@ Intermediary managing a metadata repository that provides information
  International Data Spaces; multiple Broker Service Providers may be
  around at the same time, maintaining references to different,
  domain-specific subsets of [Data Endpoint](#data-endpoint)s.
+ 
+### Building Block
+Building blocks are fundamental components that can be implemented and combined in order to achieve functional data spaces. A building block encompasses at least the basic specifications, and evolves in maturity with more detailed specifications, with sample implementations or templates, and with the instructions, training, testing and support elements that are required to facilitate the delivery of the essential ingredients of data spaces.
+
 
 ## C
 
@@ -76,7 +80,7 @@ Description of a [Connector](#connector) participating in the IDS for
 ## D
 
 ### DAPS
-- - IDS-G specification: [Dynamic Attribute Provisioning Service](../Components/IdentityProvider/DAPS/README.md)
+- IDS-G specification: [Dynamic Attribute Provisioning Service](../Components/IdentityProvider/DAPS/README.md)
 - Glossary: [Dynamic Attribute Provisioning Service](#dynamic-attribute-provisioning-service).
 
 ### DAT
@@ -176,7 +180,9 @@ Concept defining the rights and duties (“rules of the game”) for formal
  International Data Spaces; mission critical to the
  International Data Spaces, as a central supervisory authority is
  missing.
-
+ 
+ ### Graduation Scheme
+Structure that consists of rules, processes and evaluation criteria to assess the maturity level of an open source project.
 
 ## I
 
@@ -208,8 +214,35 @@ See also:
 - IDS-G specification [IDSCP](../connector-interaction/Communication/protocols/idscp2/README.md) (current V.2)
 - Shortcut: `IDSCP`
 
+### IDS Deployment Scenario
+IDS Deployment Scenario is any implementation made with IDS-compliant components that allows sovereign data sharing (as defined by IDSA), is built with the intention to resolve a problem by means of secure and sovereign data sharing and is adequately documented to enable others to follow the same path.
+
 ### IDSA
 - Glossary [International Data Spaces Association](#international-data-spaces-association).
+
+### IDSA Graduation Scheme
+Set of rules, processes and evaluation criteria to assess the maturity level of a IDS-related open source project. See [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
+
+### IDSA Graduated
+The projects that are in the third grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
+See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
+
+### IDSA Incubating
+The projects that are in the second grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
+See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
+
+### IDSA Sandbox
+The projects that are in the first grade according to the criteria defined in [IDS Graduation Scheme](https://github.com/International-Data-Spaces-Association/idsa/tree/main/graduation_scheme)
+See [projects page](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/Projects.md).
+
+### IDSA Portfolio of Building Blocks
+Is the catalog of building blocks that lists various components and frameworks that are developed according to IDS principles.
+
+### IDSA-TSC
+The IDSA Technical Steering Committee. 
+
+### IDSA-Working Groups
+The IDSA Working Groups.
 
 ### IDSCP
 - Glossary [IDS Communication Protocol](#ids-communication-protocol).
@@ -287,6 +320,9 @@ In addition, the Reference Architecture Model comprises three
 - [IDS-G specification "Meta Data Broker"](../Component/MetaDataBroker/README.md)
 - Shortcut: `IDS-MDB`
 
+### Minimum Viable Data Space (MVDS)
+A minimum viable data space (MVDS) is a combination of components to initiate a data space with just enough features to be usable for secure and sovereign data exchange.
+
 ## P
 
 ### ParIS
@@ -303,6 +339,7 @@ Stakeholder in the International Data Spaces, assuming one or more of
 - [IDS-G specification "ParIS"](../Components/IdentityProvider/ParIS/README.md)
 - Shortcut: `ParIS`
 
+
 ## S
 
 ### Security Profile
@@ -316,6 +353,12 @@ Defined set of a [Connector](#connector)’s security properties;
 [Data App](#data-app) used for integration of custom
  [Data Source](#data-source)s and legacy systems with a
  [Connector](#connector).
+ 
+ 
+## T
+
+### Technical Due Diligence
+see [Technical Due Diligence](https://github.com/International-Data-Spaces-Association/idsa/blob/main/graduation_scheme/due_diligence_reports/Due_Diligence_Project_Review_Template.md))
 
 ## U
 
