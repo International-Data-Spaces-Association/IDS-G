@@ -11,7 +11,7 @@ The IDS Clearing House acts as an intermediary in the IDS ecosystem. All IDS Con
 - data sharing between a Data Provider (DP) and a Data Consumer (DC)
 - data usage according to Usage Contracts or Data Usage Policies
 
-More information on the Clearing House is provided in [IDSA Clearing House Specification 1.0](https://internationaldataspaces.org/wp-content/uploads/IDSA-White-Paper-Specification-IDS-Clearing-House.pdf)
+More information on the Clearing House is provided in [IDSA Clearing House Specification 1.0](https://internationaldataspaces.org/wp-content/uploads/dlm_uploads/IDSA-White-Paper-Specification-IDS-Clearing-House-.pdf)
 
 # IDS Clearing House Architecture
 ## Overview
