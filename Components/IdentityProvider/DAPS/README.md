@@ -118,8 +118,8 @@ Contains the public keys of the used transport certificates, hashed using SHA256
 The identifying X509 certificate should not be used for the communication encryption.
 Therefore, the receiving party needs to connect the identity of a connector by relating its hostname (from the communication encryption layer) and the used private/public key pair,
 with its IDS identity claim of the DAT.
-The public transportation key must be one of the `transportCertsSha256` values.
-Otherwise, the receiving connector must expect that the requesting connector is using a false identity claim.
+The public transportation key MUST be one of the `transportCertsSha256` values.
+Otherwise, the receiving connector MUST expect that the requesting connector is using a false identity claim.
 In general, this claim holds an Array of Strings, but it may optionally hold a single String instead if the Array would have exactly one element.
 
 * **extendedGuarantee**
@@ -191,7 +191,7 @@ DAPS implementations are advised to explicitly white-list any requestable claims
 and to check requested values as appropriate.
 
 To allow clients to specify their own transport certificates,
-DAPS implementations should support specifying values for the **transportCertsSha256** claim.
+DAPS implementations SHOULD support specifying values for the **transportCertsSha256** claim.
 
 ### Example
 

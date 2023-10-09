@@ -1,6 +1,6 @@
-# Contributing to IDS-G-pre
+# Contributing to IDS-G
 
-IDS-G is the official repository of [IDSA](https://www.internationaldataspaces.org) to publish the [IDS-RAM]() and the subsequent specifications.
+IDS-G is the official repository of [IDSA](https://www.internationaldataspaces.org) to publish the [IDS-RAM](https://github.com/International-Data-Spaces-Association/IDS-RAM_4_0) and the subsequent specifications.
 
 All content published here is approved by the IDSA Technical Steering Committee and the IDSA Working Groups. Detailed information on the contribution process can be found in the [IDS-G Handbook](Handbook/README.md). Nevertheless, you are very welcome to contribute
 to this project when you find a bug, want to suggest an improvement, or have an idea for a useful
@@ -52,7 +52,7 @@ should at least include the following information:
 
 ## Labels
 
-The [labels](https://github.com/International-Data-Spaces-Association/ids-g/labels) are listed at the
+The [labels](https://github.com/International-Data-Spaces-Association/IDS-G/labels) are listed at the
 [issues](https://github.com/International-Data-Spaces-Association/IDS-G/issues).
 There are two types of labels: one describes the content of the issue and should be used by the
 developer that creates the issue. The other one, starting with `status`, will be added from the
@@ -100,5 +100,5 @@ An example of a very good commit might look like this: `feat![login]: add awesom
 
 
 ## Versioning
-IDS-G-pre uses the [SemVer](https://semver.org/) for versioning. The release versions
+IDS-G uses the [SemVer](https://semver.org/) for versioning. The release versions
 are tagged with their respective version.
